@@ -11,6 +11,12 @@ function LandingPage() {
       <Hero />
       <About />
       <Projects />
+      <div
+        className="block"
+        style={{
+          height: "50vh",
+        }}
+      ></div>
     </Page>
   );
 }

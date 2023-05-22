@@ -1,29 +1,38 @@
 import { useRef, useEffect } from "react";
-import { motion, useInView, useAnimate } from "framer-motion";
-function UpReveal({ children }) {
-  const varient = {
-    hidden: {
-      opacity: 0,
-      y: 200,
-    },
+import { inView, motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+function UpReveal({ children, threshold }) {
+  // const revealRef = useRef();
+  // const isInView = useInView(revealRef, { once: true });
+  const { ref, inView, entry } = useInView({
+    threshold,
+  });
+  const visibleAnimation = useAnimation();
+
+  const theVarients = {
     visible: {
       opacity: 1,
       y: 0,
+      transition: {
+        type: "spring",
+        bounce: 0.3,
+        duration: 1.1,
+      },
+    },
+    hidden: {
+      opacity: 0,
+      y: 80,
     },
   };
-  const revealRef = useRef();
-  const isInView = useInView(revealRef, { once: true });
-  const visibleAnimation = useAnimate();
-
   useEffect(() => {
-    if (isInView) {
+    if (inView) {
       visibleAnimation.start("visible");
     }
   });
   return (
-    <div ref={revealRef}>
+    <div ref={ref}>
       <motion.div
-        variants={varient}
+        variants={theVarients}
         initial="hidden"
         animate={visibleAnimation}
       >
@@ -32,5 +41,4 @@ function UpReveal({ children }) {
     </div>
   );
 }
-
 export default UpReveal;

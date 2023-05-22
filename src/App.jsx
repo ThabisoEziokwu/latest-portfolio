@@ -1,12 +1,15 @@
 import Border from "./component/Border";
 import LandingPage from "./LandingPage";
 import "./index.css";
+// import Projects from "./component/Projects";
 
 function App() {
   return (
     <>
-      <Border />
-      <LandingPage />
+      <div>
+        <Border />
+        <LandingPage />
+      </div>
     </>
   );
 }

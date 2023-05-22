@@ -1,8 +1,11 @@
 import styled from "styled-components";
-// import Hamburger from "./Hamburger";
+// import Hamburger from "./Hamburger";\
+import logo from "../assets/images/portfolioLogo-01.png";
+import Button from "./Button";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import "bootstrap/dist/css/bootstrap.min.css";
+// import { IoIosDownload } from "react-icons/io";
 
 function NavBar() {
   const topPos = 0;
@@ -11,7 +14,7 @@ function NavBar() {
     const currentScrollPos =
       window.pageYOffset || document.documentElement.scrollTop;
     if (currentScrollPos - topPos > 250) {
-      gsap.to(".link", {
+      gsap.to(".link a", {
         y: -10,
         opacity: 0,
         transition: 0.1,
@@ -43,7 +46,8 @@ function NavBar() {
     >
       <Nav>
         <div className="name">
-          <p>Abolaji Temitope</p>
+          {/* <p>Abolaji Temitope</p> */}
+          <Logo src={logo} alt="" />
           {/* <Hamburger /> */}
         </div>
         <motion.div
@@ -84,7 +88,7 @@ function NavBar() {
           </motion.div>
         </motion.div>
         <div className="resume">
-          <button>Resume</button>
+          <Button>Resume</Button>
         </div>
       </Nav>
     </div>
@@ -112,7 +116,7 @@ const Nav = styled.div`
     gap: 30px;
   }
   button {
-    font-size: 11px;
+    font-size: 12px;
   }
   .links {
     display: flex;
@@ -135,5 +139,10 @@ const Nav = styled.div`
       text-decoration: none;
     }
   }
+  .resume {
+  }
+`;
+const Logo = styled.img`
+  width: 32px;
 `;
 export default NavBar;

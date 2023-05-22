@@ -1,8 +1,27 @@
 import styled from "styled-components";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Button from "./Button";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import gsap from "gsap";
+
 function Hero() {
+  const topLevel = 0;
+  const handleScroll = () => {
+    const currentScrollposition =
+      window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScrollposition - topLevel > 100) {
+      gsap.to(".hero-text", {
+        opacity: 0,
+      });
+    } else {
+      gsap.to(".hero-text", {
+        opacity: 1,
+      });
+    }
+  };
+  document.addEventListener("scroll", handleScroll);
   const heroRef = useRef();
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -10,7 +29,7 @@ function Hero() {
   });
   const y_para = useTransform(scrollYProgress, [0, 0.2], [0, -300]);
   const y_head = useTransform(scrollYProgress, [0, 0.35], [0, -300]);
-  const butt_opacity = useTransform(scrollYProgress, [0, 0.5, 0.55], [1, 1, 0]);
+
   return (
     <ViewPort ref={heroRef}>
       <div className="container-md">
@@ -21,7 +40,7 @@ function Hero() {
                 y: y_para,
               }}
             >
-              Build. Design. Improve
+              Build. Design. Improve 🔥
             </motion.p>
             <motion.h1
               style={{
@@ -30,9 +49,9 @@ function Hero() {
             >
               I transform ideas into visually striking web solution.
             </motion.h1>
-            <motion.button style={{ opacity: butt_opacity }}>
-              Let&apos;s do this
-            </motion.button>
+            <motion.div>
+              <Button>Let&apos;s do this</Button>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -57,9 +76,10 @@ const ViewPort = styled.div`
       align-items: center;
       flex-direction: column;
 
-      p {
+      /* p {
         color: #131313;
-      }
+      } */
+
       h1 {
         font-family: "euclidBold";
         width: 900px;

@@ -13,35 +13,37 @@ function About() {
   return (
     <Intro ref={aboutRef}>
       <div className="container-sm a-c">
-        <div className="row cont">
-          <div className="col-md-8">
-            <div className="about-text">
-              <div className="header">
-                <h2>About Me</h2>
-              </div>
-              <div className="body">
-                <p>
-                  Hello and welcome to my portfolio! My name is Tope, and I am a
-                  passionate programmer with a coding journey that beganin 2020,
-                  i have dedicated myself to mastering the art of JavaScript
-                  development. My expertise lies in creating dynamic web
-                  applications using the power of javaScript&apos;s vast
-                  ecosystem.
-                  <br />
-                  In addition to my work in web development, I am also studying
-                  Mechanical engineering at college. This unique combination of
-                  skills allows me to bring a fresh perspective to
-                  problem-solving. When I&apos;m not coding or studying, you can
-                  find me playing video games.
-                  <br />
-                  Here are a few technologies i&apos;ve been working with
-                  recently:
-                </p>
+        <UpReveal threshold={0.7}>
+          <div className="row cont">
+            <div className="col-md-8">
+              <div className="about-text">
+                <div className="header">
+                  <h2>About Me</h2>
+                </div>
+                <div className="body">
+                  <p>
+                    Hello and welcome to my portfolio! My name is Tope, and I am
+                    a passionate programmer with a coding journey that beganin
+                    2020, i have dedicated myself to mastering the art of
+                    JavaScript development. My expertise lies in creating
+                    dynamic web applications using the power of
+                    javaScript&apos;s vast ecosystem.
+                    <br />
+                    In addition to my work in web development, I am also
+                    studying Mechanical engineering at college. This unique
+                    combination of skills allows me to bring a fresh perspective
+                    to problem-solving. When I&apos;m not coding or studying,
+                    you can find me playing video games.
+                    <br />
+                    Here are a few technologies i&apos;ve been working with
+                    recently:
+                  </p>
+                </div>
               </div>
             </div>
+            <div className="col-md-4"></div>
           </div>
-          <div className="col-md-4"></div>
-        </div>
+        </UpReveal>
       </div>
       <Floater>
         <motion.h1

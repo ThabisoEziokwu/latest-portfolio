@@ -4,6 +4,23 @@ body {
   overflow-x: hidden;
   box-sizing: border-box;
 }
+::selection {
+  background-color: #0e8fa3;
+  color: white;
+}
+body::-webkit-scrollbar {
+  /* width: 10px; */
+  display: none;
+}
+/* body::-webkit-scrollbar-thumb {
+  background-color: #0e8fa3;
+  border-radius: 20px;
+}
+body::-webkit-scrollbar-track {
+  background-color: #a30e8f00;
+  border-radius: 20px;
+} */
+
 @font-face {
   font-family: "uniNeueBold";
   src: url(./assets/fonts/uniNeue/UniNeue-Trial-Heavy.ttf);
