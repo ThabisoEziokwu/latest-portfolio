@@ -38,6 +38,7 @@ function Hero() {
             <motion.p
               style={{
                 y: y_para,
+                fontFamily: "euclidRegular",
               }}
             >
               Build. Design. Improve 🔥
