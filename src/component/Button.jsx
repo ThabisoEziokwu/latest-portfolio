@@ -59,6 +59,7 @@ const Press = styled(motion.button)`
   border: solid 2px #0e8fa3;
   font-family: "euclidSemiBold";
   border-radius: 6px;
+  z-index: 4;
 
   ::before {
     content: "";

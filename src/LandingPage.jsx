@@ -2,10 +2,12 @@ import styled from "styled-components";
 import NavBar from "./component/NavBar";
 import Hero from "./component/Hero";
 import About from "./component/About";
-import Projects from "./component/AgentMeet";
+import AgentMeet from "./component/AgentMeet";
 import ImageRaft from "./component/ImageRaft";
+import Billette from "./component/Billette";
 import { useEffect, useState } from "react";
 import gsap from "gsap";
+import Footer from "./component/Footer";
 
 function LandingPage() {
   const [footerBack, setFooterBack] = useState(false);
@@ -13,13 +15,13 @@ function LandingPage() {
   useEffect(() => {
     if (footerBack) {
       gsap.to(".whole-page", {
-        backgroundColor: "#c7c7c7",
-        duration: 0.8,
+        backgroundColor: "#1b1b1b",
+        duration: 0.5,
       });
     } else {
       gsap.to(".whole-page", {
         backgroundColor: "#f6f6f6",
-        duration: 0.8,
+        duration: 0.5,
       });
     }
   });
@@ -29,14 +31,15 @@ function LandingPage() {
       <NavBar />
       <Hero />
       <About />
-      <Projects />
-      <ImageRaft />
-      <div
-        className="block"
-        style={{
-          height: "50vh",
-        }}
-      ></div>
+      <div className="projects">
+        <Head className="container-sm">
+          <span>Some things i&apos;ve built </span> 📂
+        </Head>
+        <AgentMeet />
+        <ImageRaft />
+        <Billette />
+      </div>
+      <Footer changeBack={setFooterBack} />
     </Page>
   );
 }
@@ -45,5 +48,19 @@ const Page = styled.div`
   max-width: 100%;
   padding: 20px;
   background: #c7c7c7;
+`;
+
+const Head = styled.h1`
+  font-family: "euclidSemiBold";
+  font-size: 30px;
+  margin-bottom: 60px;
+  position: relative;
+  span {
+    background: linear-gradient(90deg, #161616 20%, #5e5e63 70%);
+    background-size: 100% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 `;
 export default LandingPage;

@@ -1,25 +1,30 @@
 import styled from "styled-components";
-import { usePageLoading } from "react-use";
-function Loader() {
-  const isPageLoading = usePageLoading();
-
-  if (isPageLoading) {
-    console.log("Page is loading");
-  }
+import gsap from "gsap";
+import { useEffect } from "react";
+function Loader({ loadingStatus }) {
+  useEffect(() => {
+    if (!loadingStatus) {
+      gsap.to(".blanket", {
+        scaleY: 0,
+        stagger: 0.3,
+        ease: "power3.out",
+      });
+    }
+  });
   return (
     <Load>
       <LoaderBlanket>
-        <Blanket />
-        <Blanket />
-        <Blanket />
-        <Blanket />
-        <Blanket />
+        <Blanket className="blanket" />
+        <Blanket className="blanket" />
+        <Blanket className="blanket" />
+        <Blanket className="blanket" />
+        <Blanket className="blanket" />
       </LoaderBlanket>
     </Load>
   );
 }
 const Load = styled.div`
-  position: absolute;
+  position: fixed;
   height: 100vh;
   width: 100%;
   top: 0;

@@ -5,6 +5,8 @@ import { motion, useTransform, useScroll } from "framer-motion";
 import { useRef } from "react";
 import laptopImage from "../assets/images/agentMeet.png";
 import AgentPhone from "./AgentPhone";
+import Iphone from "./Iphone";
+import UpReveal from "../utils/UpReveal";
 
 function Projects() {
   const blockRef = useRef();
@@ -17,8 +19,7 @@ function Projects() {
       console.log("It works");
     }
   });
-  const agentPhone = useTransform(scrollYProgress, [0, 1], [300, -300]);
-  const agentPhone2 = useTransform(scrollYProgress, [0, 1], [150, -140]);
+  const agentPhone = useTransform(scrollYProgress, [0, 1], [500, -400]);
 
   {
     /* Code for initiating the sliding amination */
@@ -39,38 +40,45 @@ function Projects() {
   return (
     <Works ref={blockRef}>
       <div className="container-sm cont">
-        <Head>
-          <span>Some things i&apos;ve built </span> 📂
-        </Head>
+        <Listing>
+          <div className="number">
+            <h4>1</h4>
+          </div>
+          <div className="line"></div>
+        </Listing>
         <div className="row description-row">
           <div className="col-md-7">
-            <ProjectName>AgentMeet</ProjectName>
+            <UpReveal threshold={0.5}>
+              <ProjectName>AgentMeet</ProjectName>
+            </UpReveal>
           </div>
           <div className="col-md-5">
             <div className="project-description">
               <motion.div className="project-text">
-                <p className="description">
-                  A web app built with Node.js and Express, allows users to
-                  effortlessly post, manage, and rent out hostels. This platform
-                  enebles seamless CRUD operations, providing a user-friendly
-                  and intuitive experience.
-                </p>
-                <p className="stacks">
-                  <span>Node</span>
-                  <span>Express</span>
-                  <span>EJS</span>
-                  <span>Firebase</span>
-                </p>
+                <UpReveal threshold={0.5}>
+                  <p className="description">
+                    A web app built with Node.js and Express, allows users to
+                    effortlessly post, manage, and rent out hostels. This
+                    platform enebles seamless CRUD operations, providing a
+                    user-friendly and intuitive experience.
+                  </p>
+
+                  <p className="stacks">
+                    <span>Node</span>
+                    <span>Express</span>
+                    <span>EJS</span>
+                    <span>Firebase</span>
+                  </p>
+                </UpReveal>
               </motion.div>
             </div>
           </div>
         </div>
 
-        <Laptop backImage={laptopImage} />
+        <Laptop backImage={laptopImage} animate={true} />
         <div className="phone-area">
-          <AgentPhone y={agentPhone} />
-          <AgentPhone y={agentPhone2} />
           <AgentPhone y={null} />
+          <Iphone y={null} />
         </div>
       </div>
     </Works>
@@ -128,19 +136,7 @@ const Works = styled.div`
     }
   }
 `;
-const Head = styled.h1`
-  font-family: "euclidSemiBold";
-  font-size: 30px;
-  margin-bottom: 100px;
-  position: relative;
-  span {
-    background: linear-gradient(90deg, #161616 20%, #5e5e63 70%);
-    background-size: 100% auto;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-`;
+
 const ProjectName = styled.h1`
   position: relative;
   font-size: 6em;
@@ -150,5 +146,32 @@ const ProjectName = styled.h1`
   justify-content: center;
   align-items: center;
   margin: 0px;
+`;
+const Listing = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 70px;
+  padding: 30px;
+  .number {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: solid 2px #b1b1b1;
+
+    h4 {
+      margin: 0px;
+      color: #b1b1b1;
+      font-family: "euclidRegular";
+    }
+  }
+  .line {
+    height: 1px;
+    width: 100%;
+    background-color: #b1b1b1;
+  }
 `;
 export default Projects;

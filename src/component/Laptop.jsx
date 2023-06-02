@@ -5,13 +5,17 @@ import { useRef, useEffect } from "react";
 import { motion, useTransform, useScroll } from "framer-motion";
 import gsap from "gsap";
 
-function Laptop({ backImage }) {
+function Laptop({ backImage, animate }) {
   const lapRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: lapRef,
     offset: ["start end", "end start"],
   });
-  const scale = useTransform(scrollYProgress, [0, 0.15, 0.4, 1], [2, 2, 1, 1]);
+  const scale = useTransform(
+    scrollYProgress,
+    [0, 0.15, 0.4, 1],
+    [1.3, 1.3, 1, 1]
+  );
   const handleResize = () => {
     const viewportHeight = window.innerHeight;
     const divContainer = lapRef.current;
@@ -42,7 +46,7 @@ function Laptop({ backImage }) {
     <Lap
       ref={lapRef}
       style={{
-        scale,
+        scale: animate ? scale : "1",
       }}
     >
       <Notch src={notch} />
@@ -65,10 +69,10 @@ const Screen = styled.div`
   position: absolute;
   border-radius: 6px 6px 0px 0px;
   bottom: 0;
-  top: calc(100% / 41);
-  bottom: calc(100% / 8.2);
-  left: calc(100% / 10.5);
-  right: calc(100% / 10.5);
+  top: calc(100% / 42);
+  bottom: calc(100% / 8.4);
+  left: calc(100% / 10.6);
+  right: calc(100% / 10.6);
   background-image: url(${(props) => props.background});
   background-size: cover;
   background-position: center 0px;

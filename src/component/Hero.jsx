@@ -1,9 +1,12 @@
 import styled from "styled-components";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "../index.css";
 import Button from "./Button";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
 import gsap from "gsap";
+import Particle from "./Particle";
 
 function Hero() {
   const topLevel = 0;
@@ -15,9 +18,17 @@ function Hero() {
       gsap.to(".hero-text", {
         opacity: 0,
       });
+      gsap.to("Canvas", {
+        opacity: 0,
+        delay: 0.3,
+      });
     } else {
       gsap.to(".hero-text", {
         opacity: 1,
+      });
+      gsap.to("Canvas", {
+        opacity: 1,
+        delay: 0.3,
       });
     }
   };
@@ -56,6 +67,13 @@ function Hero() {
           </div>
         </div>
       </div>
+      <div className="canvas-container">
+        <Canvas id="hero-canvas" shadows>
+          <Suspense fallback={null}>
+            <Particle />
+          </Suspense>
+        </Canvas>
+      </div>
     </ViewPort>
   );
 }
@@ -67,8 +85,22 @@ const ViewPort = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   z-index: 2;
 
+  .canvas-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* z-index: -1; */
+  }
+
+  #hero-canvas {
+    height: 100%;
+    width: 100%;
+  }
   .flex-cont {
     .hero-text {
       text-align: center;
@@ -76,15 +108,15 @@ const ViewPort = styled.div`
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      gap: 80px;
 
       /* p {
         color: #131313;
       } */
 
       h1 {
-        font-family: "euclidBold";
-        width: 900px;
-        font-size: 60px;
+        font-family: "euclidMedium";
+        font-size: 90px;
         margin-bottom: 40px;
 
         background: linear-gradient(180deg, #161616 10%, #5e5e63 90%);

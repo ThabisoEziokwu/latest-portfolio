@@ -9,48 +9,37 @@ import { useEffect, useState } from "react";
 
 function NavBar() {
   const [navClick, setnavClick] = useState(false);
-  const sideNavTL = gsap.timeline();
-  const sideNavTL2 = gsap.timeline();
 
   useEffect(() => {
     if (navClick) {
-      sideNavTL.to(".background", {
-        width: "35vw",
-        height: "100vh",
-        duration: 0.4,
-        ease: "Back.easeOut",
+      gsap.to(".background", {
+        duration: 0.6,
+        right: "0px",
+        ease: "cubic-bezier(0.23, 1, 0.32, 1)",
       });
-      sideNavTL.to(
-        ".background",
-        {
-          borderRadius: "0px",
-          duration: 0.7,
-        },
-        ">-0.3"
-      );
-      gsap.to(".one", {
-        duration: 0.3,
-        transform: "rotate(45deg) translate(2px, 1px)",
+      gsap.to(".hamburger", {
+        backgroundColor: "#5e5e63",
+        delay: 0.2,
       });
-      gsap.to(".two", {
-        duration: 0.3,
-        transform: "rotate(-45deg) translate(2px, -1px)",
+      gsap.to(".hover", {
+        top: "0px",
+        duration: 0.2,
+        ease: "cubic-bezier(0.23, 1, 0.32, 1)",
       });
     } else {
-      sideNavTL2.to(".background", {
-        borderRadius: "60%",
-        width: "200px",
-        duration: 0.4,
+      gsap.to(".background", {
+        right: "-400px",
+        duration: 0.6,
+        ease: "cubic-bezier(0.23, 1, 0.32, 1)",
       });
-      sideNavTL2.to(".background", { scale: 1, duration: 0.4 }, ">-0.2");
-
-      sideNavTL.to(".one", {
+      gsap.to(".hamburger", {
+        backgroundColor: "#1b1b1b",
         duration: 0.3,
-        transform: "rotate(0deg) translate(0px, 0px)",
       });
-      sideNavTL.to(".two", {
-        duration: 0.3,
-        transform: "rotate(0deg) translate(0px, 0px)",
+      gsap.to(".hover", {
+        top: "105%",
+        duration: 0.2,
+        ease: "cubic-bezier(0.23, 1, 0.32, 1)",
       });
     }
   });
@@ -73,23 +62,9 @@ function NavBar() {
         transition: 0.005,
         pointerEvents: "all",
         cursor: "pointer",
-        delay: 0.5,
+        delay: 1.6,
       });
     }
-    // } else {
-    //   tl2.to(".hamburger", {
-    //     opacity: 0,
-    //     transition: 0.005,
-    //     pointerEvents: "none",
-    //   });
-    //   tl2.to([".link a", ".resume"], {
-    //     y: 0,
-    //     opacity: 1,
-    //     transition: 0.1,
-    //     stagger: 0.08,
-    //     pointerEvents: "all",
-    //   });
-    // }
   };
   const logoGo = useAnimation();
   const nameCome = useAnimation();
@@ -129,9 +104,6 @@ function NavBar() {
       }}
     >
       <Nav>
-        <SideNav>
-          <div className="background"></div>
-        </SideNav>
         <motion.div
           onMouseEnter={() => handleLogohover()}
           onMouseLeave={() => handleLogoReturn()}
@@ -170,7 +142,7 @@ function NavBar() {
         >
           <motion.div
             whileHover={{
-              y: -5,
+              y: -10,
             }}
             className="link"
           >
@@ -178,7 +150,7 @@ function NavBar() {
           </motion.div>
           <motion.div
             whileHover={{
-              y: -5,
+              y: -10,
             }}
             className="link"
           >
@@ -186,19 +158,24 @@ function NavBar() {
           </motion.div>
           <motion.div
             whileHover={{
-              y: -5,
+              y: -10,
             }}
             className="link"
           >
             <a href="#"> CONTACT</a>
           </motion.div>
         </motion.div>
+        <SideNav>
+          <div className="background"></div>
+        </SideNav>
         <div className="resume">
           <Button>Resume</Button>
         </div>
+
         <Hamburger className="hamburger" onClick={() => setnavClick(!navClick)}>
           <div className="line one"></div>
           <div className="line two"></div>
+          <div className="hover"></div>
         </Hamburger>
       </Nav>
     </div>
@@ -218,12 +195,11 @@ const Nav = styled.div`
     overflow: hidden;
     position: relative;
     p {
-      font-family: "euclidMedium";
       font-size: 14px;
       color: black;
       margin: 0px;
       font-size: 18px;
-      font-family: "euclidSemiBold";
+      font-family: "euclidBold";
     }
     display: flex;
     justify-content: space-between;
@@ -248,8 +224,8 @@ const Nav = styled.div`
     }
 
     a {
-      font-family: "euclidRegular";
-      font-size: 10px;
+      font-family: "euclidSemiBold";
+      font-size: 15px;
       color: black;
       text-decoration: none;
     }
@@ -261,15 +237,16 @@ const Logo = styled(motion.img)`
   width: 32px;
 `;
 const Hamburger = styled.div`
-  height: 50px;
-  width: 50px;
+  z-index: 10;
+  height: 70px;
+  width: 70px;
   background-color: #1b1b1b;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
   position: absolute;
   right: 100px;
   opacity: 0;
@@ -277,24 +254,51 @@ const Hamburger = styled.div`
   pointer-events: none;
   scale: 0;
   transform-origin: center;
+  border: solid 0.5px #c7c7c7;
+  overflow: hidden;
 
   .line {
     width: 35%;
     height: 2px;
     background-color: white;
   }
+  .one {
+    margin-top: 3px;
+    margin-right: 0px;
+    transition: all 0.2s ease-in-out;
+  }
+  .two {
+    margin-left: 0px;
+    transition: all 0.2s ease-in-out;
+  }
+  .hover {
+    background-color: #5e5e63;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    top: 105%;
+    z-index: -1;
+  }
+  :hover {
+    .one {
+      margin-right: 10px;
+      transition: all 0.2s ease-in-out;
+    }
+    .two {
+      margin-left: 10px;
+      transition: all 0.2s ease-in-out;
+    }
+  }
 `;
 const SideNav = styled.div`
-  position: fixed;
-  right: -210px;
-  top: 50%;
-  transform: translateY(-50%);
-
   .background {
-    width: 200px;
-    height: 200px;
+    position: fixed;
+    width: 400px;
+    top: 0;
+    right: -400px;
+    height: 100vh;
     background-color: #1b1b1b;
-    border-radius: 10%;
   }
 `;
 export default NavBar;

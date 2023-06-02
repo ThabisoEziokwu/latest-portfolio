@@ -1,10 +1,8 @@
-import { useRef, useEffect } from "react";
-import { inView, motion, useAnimation } from "framer-motion";
+import { useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 function UpReveal({ children, threshold }) {
-  // const revealRef = useRef();
-  // const isInView = useInView(revealRef, { once: true });
-  const { ref, inView, entry } = useInView({
+  const { ref, inView } = useInView({
     threshold,
   });
   const visibleAnimation = useAnimation();
@@ -16,12 +14,14 @@ function UpReveal({ children, threshold }) {
       transition: {
         type: "spring",
         bounce: 0.3,
-        duration: 1.1,
+        duration: 0.9,
+        y: 0,
+        delay: 0.1,
       },
     },
     hidden: {
       opacity: 0,
-      y: 80,
+      y: 2,
     },
   };
   useEffect(() => {
