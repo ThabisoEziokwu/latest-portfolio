@@ -16,30 +16,31 @@ function Laptop({ backImage, animate }) {
     [0, 0.15, 0.4, 1],
     [1.3, 1.3, 1, 1]
   );
-  const handleResize = () => {
-    const viewportHeight = window.innerHeight;
-    const divContainer = lapRef.current;
-    const { top } = divContainer.getBoundingClientRect();
-    const distanceFromTop = top + pageYOffset;
 
-    const scrollPosition =
-      window.pageYOffset || document.documentElement.scrollTop;
-
-    let theScroll =
-      ((distanceFromTop - scrollPosition) / viewportHeight - 1) * 200;
-
-    // Make the scroll effect start when element enters the viewport a
-    if (
-      distanceFromTop - scrollPosition < viewportHeight + 500 &&
-      scrollPosition - distanceFromTop < viewportHeight
-    ) {
-      gsap.to(".screen", {
-        backgroundPosition: `center ${theScroll}px`,
-        duration: 1,
-      });
-    }
-  };
   useEffect(() => {
+    const handleResize = () => {
+      const viewportHeight = window.innerHeight;
+      const divContainer = lapRef.current;
+      const { top } = divContainer.getBoundingClientRect();
+      const distanceFromTop = top + pageYOffset;
+
+      const scrollPosition =
+        window.pageYOffset || document.documentElement.scrollTop;
+
+      let theScroll =
+        ((distanceFromTop - scrollPosition) / viewportHeight - 1) * 200;
+
+      // Make the scroll effect start when element enters the viewport a
+      if (
+        distanceFromTop - scrollPosition < viewportHeight + 500 &&
+        scrollPosition - distanceFromTop < viewportHeight
+      ) {
+        gsap.to(".screen", {
+          backgroundPosition: `center ${theScroll}px`,
+          duration: 1,
+        });
+      }
+    };
     document.addEventListener("scroll", handleResize);
   }, []);
   return (
@@ -58,9 +59,29 @@ function Laptop({ backImage, animate }) {
 const Lap = styled(motion.div)`
   margin: 100px auto;
   position: relative;
-  z-index: 2;
+  z-index: 0;
   width: 1100px;
   transform-origin: top;
+  pointer-events: none;
+  @media screen and (max-width: 1300px) {
+    width: 1000px;
+  }
+  @media screen and (max-width: 1100px) {
+    width: 900px;
+  }
+  @media screen and (max-width: 1050px) {
+    margin-top: 20px;
+  }
+  @media screen and (max-width: 1000px) {
+    width: 700px;
+  }
+  @media screen and (max-width: 767px) {
+    width: 700px;
+    margin: 10px auto;
+  }
+  @media screen and (max-width: 750px) {
+    display: none;
+  }
 `;
 const MainImg = styled.img`
   width: inherit;

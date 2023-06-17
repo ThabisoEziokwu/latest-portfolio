@@ -1,25 +1,23 @@
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  max-width: 100vw;
   box-sizing: border-box;
 }
 ::selection {
-  background-color: #0e8fa3;
+  background-color: #178582;
   color: white;
 }
 body::-webkit-scrollbar {
-  /* width: 10px; */
-  display: none;
+  width: 4px;
 }
-/* body::-webkit-scrollbar-thumb {
-  background-color: #0e8fa3;
-  border-radius: 20px;
+body::-webkit-scrollbar-thumb {
+  background-color: #2929298f;
+  border-radius: 30px;
 }
 body::-webkit-scrollbar-track {
-  background-color: #a30e8f00;
-  border-radius: 20px;
-} */
+  background-color: #f6f6f6;
+}
 
 @font-face {
   font-family: "uniNeueBold";
@@ -36,6 +34,10 @@ body::-webkit-scrollbar-track {
 @font-face {
   font-family: "euclidMedium";
   src: url(./assets/fonts/euclid-circular-a-cufonfonts/Euclid-Circular-A-Medium.ttf);
+}
+@font-face {
+  font-family: "euclidLight";
+  src: url(./assets/fonts/euclid-circular-a-cufonfonts/Euclid-Circular-A-Light.ttf);
 }
 @font-face {
   font-family: "euclidBold";

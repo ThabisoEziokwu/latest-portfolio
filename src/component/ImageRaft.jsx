@@ -8,6 +8,10 @@ import raftHeader from "../assets/images/imageRaftHeader.png";
 import Iphone from "./Iphone";
 import PhoneIMG from "../assets/images/imageRaftPhone.jpg";
 import UpReveal from "../utils/UpReveal";
+import PicCaro from "./PicCaro";
+import BigPic from "../assets/images/imageRaftTab.jpg";
+import smallPicOne from "../assets/images/imageRaftSmall.png";
+import smallPicTwo from "../assets/images/imageRaftSmallTwo.png";
 
 function Projects() {
   // const [animation, setAnimation] = useState(false);
@@ -41,18 +45,15 @@ function Projects() {
     <Works ref={blockRef}>
       <div className="container-sm cont">
         <Listing>
-          <div className="number">
-            <h4>2</h4>
-          </div>
           <div className="line"></div>
         </Listing>
         <div className="row description-row">
-          <div className="col-md-7">
+          <div className="col-lg-7">
             <UpReveal threshold={0.5}>
               <ProjectName>imageRaft</ProjectName>
             </UpReveal>
           </div>
-          <div className="col-md-5">
+          <div className="col-lg-5">
             <div className="project-description">
               <motion.div className="project-text">
                 <UpReveal threshold={0.5}>
@@ -74,6 +75,13 @@ function Projects() {
             </div>
           </div>
         </div>
+        <div className="new">
+          <PicCaro
+            bigPic={BigPic}
+            smallPicOne={smallPicOne}
+            smallPicTwo={smallPicTwo}
+          />
+        </div>
         <div className="container m-200">
           <div className="row">
             <div className="col-lg-9 col-md-12">
@@ -93,17 +101,42 @@ function Projects() {
 const Works = styled.div`
   min-height: 100vh;
   position: relative;
-  z-index: 2;
+  z-index: 5;
+  background: #f6f6f6;
+  @media screen and (max-width: 750px) {
+    padding-bottom: 50px;
+  }
 
   .description-row {
     margin-top: 50px;
     margin-bottom: 200px;
+    @media screen and (max-width: 1050px) {
+      margin-bottom: 100px;
+    }
+    @media screen and (max-width: 750px) {
+      margin-bottom: 50px;
+    }
   }
   .cont {
     width: 100%;
     height: 100%;
+
+    .new {
+      width: 100%;
+      height: fit-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     .m-200 {
-      margin-bottom: 200px;
+      padding-bottom: 200px;
+
+      @media screen and (max-width: 1050px) {
+        padding-bottom: 100px;
+      }
+      @media screen and (max-width: 750px) {
+        display: none;
+      }
     }
 
     .phone-area {
@@ -113,6 +146,10 @@ const Works = styled.div`
       width: 100%;
       justify-content: center;
       align-items: center;
+
+      @media screen and (max-width: 991px) {
+        margin-top: 70px;
+      }
     }
 
     .project-description {
@@ -125,16 +162,26 @@ const Works = styled.div`
 
       .project-text {
         width: 80%;
+        @media screen and (max-width: 500px) {
+          width: 95%;
+        }
         p.description {
           font-family: "euclidMedium";
           font-size: 20px;
           margin: 0px;
+          @media screen and (max-width: 991px) {
+            text-align: center;
+            font-size: 18px;
+          }
         }
         p.stacks {
           margin-top: 25px;
           width: 100%;
           display: flex;
           gap: 40px;
+          @media screen and (max-width: 991px) {
+            justify-content: center;
+          }
           span {
             font-family: "euclidRegular";
             font-size: 14px;
@@ -155,6 +202,23 @@ const ProjectName = styled.h1`
   justify-content: center;
   align-items: center;
   margin: 0px;
+
+  @media screen and (max-width: 991px) {
+    margin-bottom: 100px;
+  }
+  @media screen and (max-width: 650px) {
+    font-size: 2em;
+    font-family: "euclidSemiBold";
+    margin-bottom: 20px;
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 2em;
+    margin-bottom: 40px;
+  }
+  @media screen and (max-width: 380px) {
+    font-size: 2em;
+    margin-bottom: 40px;
+  }
 `;
 const Listing = styled.div`
   display: flex;
@@ -162,21 +226,10 @@ const Listing = styled.div`
   align-items: center;
   gap: 70px;
   padding: 30px;
-  .number {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    border: solid 2px #b1b1b1;
-
-    h4 {
-      margin: 0px;
-      color: #b1b1b1;
-      font-family: "euclidRegular";
-    }
+  @media screen and (max-width: 750px) {
+    padding: 20px;
   }
+
   .line {
     height: 1px;
     width: 100%;

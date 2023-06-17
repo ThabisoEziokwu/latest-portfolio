@@ -14,19 +14,20 @@ function Hero() {
     const currentScrollposition =
       window.pageYOffset || document.documentElement.scrollTop;
 
-    if (currentScrollposition - topLevel > 100) {
-      gsap.to(".hero-text", {
-        opacity: 0,
-      });
-      gsap.to("Canvas", {
+    if (currentScrollposition - topLevel > 300) {
+      // gsap.to(".hero-text", {
+      //   opacity: 0,
+      //   duration: 0.5,
+      // });
+      gsap.to(".canvas-container", {
         opacity: 0,
         delay: 0.3,
       });
     } else {
-      gsap.to(".hero-text", {
-        opacity: 1,
-      });
-      gsap.to("Canvas", {
+      // gsap.to(".hero-text", {
+      //   opacity: 1,
+      // });
+      gsap.to(".canvas-container", {
         opacity: 1,
         delay: 0.3,
       });
@@ -38,22 +39,29 @@ function Hero() {
     target: heroRef,
     offset: ["end end", "end start"],
   });
-  const y_para = useTransform(scrollYProgress, [0, 0.2], [0, -300]);
-  const y_head = useTransform(scrollYProgress, [0, 0.35], [0, -300]);
+  const y_para = useTransform(scrollYProgress, [0, 1], [0, -10]);
+  const y_head = useTransform(scrollYProgress, [0, 0.35], [0, -500]);
 
   return (
     <ViewPort ref={heroRef}>
       <div className="container-md">
         <div className="flex-cont">
           <div className="hero-text">
-            <motion.p
+            <motion.div
               style={{
                 y: y_para,
-                fontFamily: "euclidRegular",
               }}
+              className="first-text"
             >
-              Build. Design. Improve 🔥
-            </motion.p>
+              <motion.p
+                style={{
+                  fontFamily: "euclidMedium",
+                }}
+              >
+                Build. Design. Improve 🔥
+              </motion.p>
+            </motion.div>
+
             <motion.h1
               style={{
                 y: y_head,
@@ -85,8 +93,17 @@ const ViewPort = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 5;
+  background: #f6f6f6;
 
-  z-index: 2;
+  @media screen and (max-width: 1100px) {
+    height: 98vh;
+  }
+  @media screen and (max-width: 1000px) {
+    justify-content: end;
+    align-items: center;
+    padding-bottom: 8vh;
+  }
 
   .canvas-container {
     width: 100%;
@@ -100,6 +117,8 @@ const ViewPort = styled.div`
   #hero-canvas {
     height: 100%;
     width: 100%;
+    pointer-events: none;
+    /* z-index: -1; */
   }
   .flex-cont {
     .hero-text {
@@ -108,23 +127,81 @@ const ViewPort = styled.div`
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      gap: 80px;
-
-      /* p {
-        color: #131313;
+      gap: 30px;
+      color: #292929;
+      /* @media screen and (max-width: 900px) {
+        gap: 40px;
       } */
+      @media screen and (max-width: 700px) {
+        gap: 80px;
+      }
+      @media screen and (max-width: 500px) {
+        gap: 30px;
+      }
+      @media screen and (max-width: 400px) {
+        gap: 10px;
+      }
+      @media screen and (max-width: 400px) {
+        gap: 10px;
+      }
+      @media screen and (max-width: 300px) {
+        gap: 0px;
+      }
+      .first-text {
+        pointer-events: none;
+        padding: 15px 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50px;
+        background-color: #f6f6f6;
+        box-shadow: rgba(87, 87, 87, 0.288) 0px 7px 29px 0px;
+        z-index: 11;
+        @media screen and (max-width: 500px) {
+          margin-bottom: 30px;
+        }
+
+        p {
+          margin-bottom: 0px;
+        }
+      }
 
       h1 {
         font-family: "euclidMedium";
-        font-size: 90px;
+        pointer-events: none;
+        font-size: 100px;
         margin-bottom: 40px;
 
-        background: linear-gradient(180deg, #161616 10%, #5e5e63 90%);
+        background: linear-gradient(180deg, #292929 10%, #5e5e63 90%);
         background-size: 50% auto;
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        /* animation: animate 10s linear infinite; */
+
+        @media screen and (max-width: 1100px) {
+          font-size: 80px;
+        }
+        @media screen and (max-width: 700px) {
+          font-family: "euclidBold";
+          font-size: 70px;
+          width: 80%;
+        }
+        @media screen and (max-width: 700px) {
+          font-size: 60px;
+          width: 95%;
+        }
+        @media screen and (max-width: 430px) {
+          font-size: 50px;
+          width: 95%;
+        }
+        @media screen and (max-width: 430px) {
+          font-size: 50px;
+          width: 100%;
+        }
+        @media screen and (max-width: 300px) {
+          font-size: 42px;
+          width: 100%;
+        }
       }
     }
   }

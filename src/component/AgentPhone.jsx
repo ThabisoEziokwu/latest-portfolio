@@ -9,27 +9,27 @@ import { motion } from "framer-motion";
 function AgentPhone({ y }) {
   const phoneRef = useRef(null);
 
-  const scrollEffect = () => {
-    const screenHeight = window.innerHeight;
-    const { top } = phoneRef.current.getBoundingClientRect();
-    const distance = top + pageYOffset;
-
-    const phoneScrollPosition =
-      window.pageYOffset || document.documentElement.scrollTop;
-
-    let scroll = ((distance - phoneScrollPosition) / screenHeight - 1) * 80;
-
-    if (
-      distance - phoneScrollPosition < screenHeight + 500 &&
-      phoneScrollPosition - distance < screenHeight
-    ) {
-      gsap.to(".phone-screen", {
-        backgroundPosition: `center ${scroll}px`,
-        duration: 0.8,
-      });
-    }
-  };
   useEffect(() => {
+    const scrollEffect = () => {
+      const screenHeight = window.innerHeight;
+      const { top } = phoneRef.current.getBoundingClientRect();
+      const distance = top + pageYOffset;
+
+      const phoneScrollPosition =
+        window.pageYOffset || document.documentElement.scrollTop;
+
+      let scroll = ((distance - phoneScrollPosition) / screenHeight - 1) * 80;
+
+      if (
+        distance - phoneScrollPosition < screenHeight + 500 &&
+        phoneScrollPosition - distance < screenHeight
+      ) {
+        gsap.to(".phone-screen", {
+          backgroundPosition: `center ${scroll}px`,
+          duration: 0.6,
+        });
+      }
+    };
     document.addEventListener("scroll", scrollEffect);
   }, []);
   return (
@@ -52,6 +52,19 @@ const Phone = styled(motion.div)`
   width: 300px;
   z-index: 3;
   display: inline-block;
+  pointer-events: none;
+  @media screen and (max-width: 1300px) {
+    width: 290px;
+  }
+  @media screen and (max-width: 1100px) {
+    width: 270px;
+  }
+  @media screen and (max-width: 1000px) {
+    width: 220px;
+  }
+  @media screen and (max-width: 750px) {
+    display: none;
+  }
 
   img.phone {
     width: inherit;

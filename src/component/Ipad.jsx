@@ -6,30 +6,31 @@ import headerImg from "../assets/images/imageRaftHeader.png";
 
 function Ipad({ backImg, header }) {
   const padRef = useRef(null);
-  const handlePadResize = () => {
-    const viewportHeight = window.innerHeight;
-    const padContainer = padRef.current;
-    const { top } = padContainer.getBoundingClientRect();
-    const topDistance = top + pageYOffset;
 
-    const padScrollPosition =
-      window.pageYOffset || document.documentElement.scrollTop;
-
-    let scrollMovement =
-      ((topDistance - padScrollPosition) / viewportHeight - 1) * 200;
-
-    // Make the scroll effect start when element enters the viewport
-    if (
-      topDistance - padScrollPosition < viewportHeight + 500 &&
-      padScrollPosition - topDistance < viewportHeight
-    ) {
-      gsap.to(".tab-screen", {
-        backgroundPosition: `center ${scrollMovement}px`,
-        duration: 1.5,
-      });
-    }
-  };
   useEffect(() => {
+    const handlePadResize = () => {
+      const viewportHeight = window.innerHeight;
+      const padContainer = padRef.current;
+      const { top } = padContainer.getBoundingClientRect();
+      const topDistance = top + pageYOffset;
+
+      const padScrollPosition =
+        window.pageYOffset || document.documentElement.scrollTop;
+
+      let scrollMovement =
+        ((topDistance - padScrollPosition) / viewportHeight - 1) * 200;
+
+      // Make the scroll effect start when element enters the viewport
+      if (
+        topDistance - padScrollPosition < viewportHeight + 500 &&
+        padScrollPosition - topDistance < viewportHeight
+      ) {
+        gsap.to(".tab-screen", {
+          backgroundPosition: `center ${scrollMovement}px`,
+          duration: 1.5,
+        });
+      }
+    };
     document.addEventListener("scroll", handlePadResize);
   }, []);
   return (
@@ -46,13 +47,27 @@ const Pad = styled.div`
   z-index: 2;
   width: 900px;
   margin: 0px auto;
+  pointer-events: none;
+  transform-origin: top;
+
+  @media screen and (max-width: 1300px) {
+    width: 760px;
+  }
+  @media screen and (max-width: 1100px) {
+    width: 660px;
+  }
+  @media screen and (max-width: 1000px) {
+    width: 500px;
+  }
+  @media screen and (max-width: 750px) {
+    display: none;
+  }
 `;
 const PadImg = styled.img`
   width: inherit;
 `;
 const TabScreen = styled.div`
   position: absolute;
-
   top: calc(100% / 24);
   bottom: calc(100% / 24);
   left: calc(100% / 35);

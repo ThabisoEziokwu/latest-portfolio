@@ -6,7 +6,13 @@ import laptopBackground from "../assets/images/billetteLaptop.jpg";
 import tabBackground from "../assets/images/billette.jpg";
 import { motion, useScroll } from "framer-motion";
 import { useRef } from "react";
-import laptopImage from "../assets/images/agentMeet.png";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
+import PicCaro from "./PicCaro";
+import BigPic from "../assets/images/billette.jpg";
+import smallPicOne from "../assets/images/billetteSmall.png";
+import smallPicTwo from "../assets/images/billetteSmallTwo.png";
+
 import UpReveal from "../utils/UpReveal";
 
 function Projects() {
@@ -20,39 +26,26 @@ function Projects() {
       console.log("It works");
     }
   });
-
-  {
-    /* Code for initiating the sliding amination */
-  }
-  // const animate = useTransform(scrollYProgress, (pos) => {
-  //   return pos >= 0.39 ? "start" : "wait";
-  // });
-  // document.addEventListener("scroll", () => {
-  //   if (animate.current === "start") {
-  //     setAnimation(true);
-  //   }
-  // });
-
-  {
-    /* Code for initiating the sliding amination */
-  }
+  const [ref, inView] = useInView({});
+  useEffect(() => {
+    if (inView) {
+      return;
+    }
+  });
 
   return (
     <Works ref={blockRef}>
-      <div className="container-sm cont">
+      <div className="container cont" ref={ref}>
         <Listing>
-          <div className="number">
-            <h4>3</h4>
-          </div>
           <div className="line"></div>
         </Listing>
         <div className="row description-row">
-          <div className="col-md-7">
+          <div className="col-lg-7">
             <UpReveal threshold={0.5}>
               <ProjectName>Billette</ProjectName>
             </UpReveal>
           </div>
-          <div className="col-md-5">
+          <div className="col-lg-5">
             <div className="project-description">
               <motion.div className="project-text">
                 <UpReveal threshold={0.5}>
@@ -74,7 +67,16 @@ function Projects() {
             </div>
           </div>
         </div>
-        <Laptop backImage={laptopBackground} animate={false} />
+
+        <div className="new">
+          <PicCaro
+            bigPic={BigPic}
+            smallPicOne={smallPicOne}
+            smallPicTwo={smallPicTwo}
+          />
+          <Laptop backImage={laptopBackground} animate={false} />
+        </div>
+
         <div className="phone-area">
           <Ipad backImg={tabBackground} header={null} />
         </div>
@@ -85,22 +87,47 @@ function Projects() {
 const Works = styled.div`
   min-height: 100vh;
   position: relative;
-  z-index: 2;
+  z-index: 5;
+  background: #f6f6f6;
+  padding-bottom: 200px;
+  @media screen and (max-width: 750px) {
+    padding-bottom: 90px;
+  }
 
   .description-row {
     margin-top: 50px;
-    margin-bottom: 200px;
+    margin-bottom: 150px;
+    @media screen and (max-width: 1050px) {
+      margin-bottom: 100px;
+    }
+    @media screen and (max-width: 750px) {
+      margin-bottom: 50px;
+    }
   }
   .cont {
     width: 100%;
     height: 100%;
 
+    .new {
+      width: 100%;
+      height: fit-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     .phone-area {
-      margin: 200px auto;
+      margin-top: 100px;
       display: flex;
       width: 100%;
       justify-content: space-evenly;
       align-items: center;
+      @media screen and (max-width: 1050px) {
+        margin-top: 100px;
+      }
+      @media screen and (max-width: 750px) {
+        display: none;
+      }
     }
 
     .project-description {
@@ -113,16 +140,26 @@ const Works = styled.div`
 
       .project-text {
         width: 80%;
+        @media screen and (max-width: 500px) {
+          width: 95%;
+        }
         p.description {
           font-family: "euclidMedium";
           font-size: 20px;
           margin: 0px;
+          @media screen and (max-width: 991px) {
+            text-align: center;
+            font-size: 18px;
+          }
         }
         p.stacks {
           margin-top: 25px;
           width: 100%;
           display: flex;
           gap: 40px;
+          @media screen and (max-width: 991px) {
+            justify-content: center;
+          }
           span {
             font-family: "euclidRegular";
             font-size: 14px;
@@ -144,6 +181,22 @@ const ProjectName = styled.h1`
   justify-content: center;
   align-items: center;
   margin: 0px;
+  @media screen and (max-width: 991px) {
+    margin-bottom: 100px;
+  }
+  @media screen and (max-width: 650px) {
+    font-size: 2em;
+    font-family: "euclidSemiBold";
+    margin-bottom: 20px;
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 2em;
+    margin-bottom: 40px;
+  }
+  @media screen and (max-width: 380px) {
+    font-size: 2em;
+    margin-bottom: 40px;
+  }
 `;
 const Listing = styled.div`
   display: flex;
@@ -151,21 +204,7 @@ const Listing = styled.div`
   align-items: center;
   gap: 70px;
   padding: 30px;
-  .number {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    border: solid 2px #b1b1b1;
 
-    h4 {
-      margin: 0px;
-      color: #b1b1b1;
-      font-family: "euclidRegular";
-    }
-  }
   .line {
     height: 1px;
     width: 100%;

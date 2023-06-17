@@ -3,7 +3,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 function UpReveal({ children, threshold }) {
   const { ref, inView } = useInView({
-    threshold,
+    threshold: 0.5,
   });
   const visibleAnimation = useAnimation();
 

@@ -3,12 +3,19 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Laptop from "./Laptop";
 import { motion, useTransform, useScroll } from "framer-motion";
 import { useRef } from "react";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
 import laptopImage from "../assets/images/agentMeet.png";
 import AgentPhone from "./AgentPhone";
 import Iphone from "./Iphone";
 import UpReveal from "../utils/UpReveal";
+import Distance from "../utils/Distance";
+import PicCaro from "./PicCaro";
+import CaroPic from "../assets/images/agentMeet.png";
+import smallPicOne from "../assets/images/agentmeetGlass.jpg";
+import smallPicTwo from "../assets/images/ageentMeetSmall.png";
 
-function Projects() {
+function Projects({ setprojectHeight }) {
   const blockRef = useRef();
   const { scrollYProgress } = useScroll({
     target: blockRef,
@@ -19,7 +26,6 @@ function Projects() {
       console.log("It works");
     }
   });
-  const agentPhone = useTransform(scrollYProgress, [0, 1], [500, -400]);
 
   {
     /* Code for initiating the sliding amination */
@@ -36,73 +42,103 @@ function Projects() {
   {
     /* Code for initiating the sliding amination */
   }
-
+  const [ref, inView] = useInView({});
+  useEffect(() => {
+    if (inView) {
+      return;
+    }
+  });
   return (
-    <Works ref={blockRef}>
-      <div className="container-sm cont">
-        <Listing>
-          <div className="number">
-            <h4>1</h4>
-          </div>
-          <div className="line"></div>
-        </Listing>
-        <div className="row description-row">
-          <div className="col-md-7">
-            <UpReveal threshold={0.5}>
-              <ProjectName>AgentMeet</ProjectName>
-            </UpReveal>
-          </div>
-          <div className="col-md-5">
-            <div className="project-description">
-              <motion.div className="project-text">
-                <UpReveal threshold={0.5}>
-                  <p className="description">
-                    A web app built with Node.js and Express, allows users to
-                    effortlessly post, manage, and rent out hostels. This
-                    platform enebles seamless CRUD operations, providing a
-                    user-friendly and intuitive experience.
-                  </p>
+    <Distance dist={setprojectHeight}>
+      <Works ref={blockRef}>
+        <div className="container-md cont" ref={ref}>
+          <Listing>
+            <div className="line"></div>
+          </Listing>
+          <div className="row description-row">
+            <div className="col-lg-7">
+              <UpReveal threshold={0.5}>
+                <ProjectName>AgentMeet</ProjectName>
+              </UpReveal>
+            </div>
+            <div className="col-lg-5">
+              <div className="project-description">
+                <motion.div className="project-text">
+                  <UpReveal threshold={0.5}>
+                    <p className="description">
+                      A web app built with Node.js and Express, allows users to
+                      effortlessly post, manage, and rent out hostels. This
+                      platform enebles seamless CRUD operations, providing a
+                      user-friendly and intuitive experience.
+                    </p>
 
-                  <p className="stacks">
-                    <span>Node</span>
-                    <span>Express</span>
-                    <span>EJS</span>
-                    <span>Firebase</span>
-                  </p>
-                </UpReveal>
-              </motion.div>
+                    <p className="stacks">
+                      <span>Node</span>
+                      <span>Express</span>
+                      <span>EJS</span>
+                      <span>Firebase</span>
+                    </p>
+                  </UpReveal>
+                </motion.div>
+              </div>
             </div>
           </div>
-        </div>
+          <PicCaro
+            bigPic={CaroPic}
+            smallPicOne={smallPicOne}
+            smallPicTwo={smallPicTwo}
+          />
 
-        <Laptop backImage={laptopImage} animate={true} />
-        <div className="phone-area">
-          <AgentPhone y={null} />
-          <Iphone y={null} />
+          <Laptop backImage={laptopImage} animate={true} />
+          <div className="phone-area">
+            <AgentPhone y={null} />
+            <Iphone y={null} />
+          </div>
         </div>
-      </div>
-    </Works>
+      </Works>
+    </Distance>
   );
 }
 const Works = styled.div`
   min-height: 100vh;
   position: relative;
-  z-index: 2;
+  z-index: 5;
+  background: #f6f6f6;
+  padding-bottom: 200px;
+  @media screen and (max-width: 1050px) {
+    padding-bottom: 100px;
+  }
+  @media screen and (max-width: 750px) {
+    padding-bottom: 60px;
+  }
 
   .description-row {
     margin-top: 50px;
     margin-bottom: 200px;
+    @media screen and (max-width: 1050px) {
+      margin-bottom: 100px;
+    }
+
+    @media screen and (max-width: 750px) {
+      margin-bottom: 50px;
+    }
   }
   .cont {
     width: 100%;
     height: 100%;
 
     .phone-area {
-      margin: 200px auto;
+      margin-top: 200px;
       display: flex;
       width: 100%;
       justify-content: space-evenly;
       align-items: center;
+      @media screen and (max-width: 1050px) {
+        margin-top: 100px;
+      }
+      @media screen and (max-width: 750px) {
+        display: none;
+      }
     }
 
     .project-description {
@@ -115,16 +151,28 @@ const Works = styled.div`
 
       .project-text {
         width: 80%;
+        @media screen and (max-width: 500px) {
+          width: 95%;
+        }
         p.description {
           font-family: "euclidMedium";
           font-size: 20px;
           margin: 0px;
+
+          @media screen and (max-width: 991px) {
+            text-align: center;
+            font-size: 18px;
+          }
         }
         p.stacks {
           margin-top: 25px;
           width: 100%;
           display: flex;
           gap: 40px;
+          @media screen and (max-width: 991px) {
+            justify-content: center;
+          }
+
           span {
             font-family: "euclidRegular";
             font-size: 14px;
@@ -146,6 +194,22 @@ const ProjectName = styled.h1`
   justify-content: center;
   align-items: center;
   margin: 0px;
+  @media screen and (max-width: 991px) {
+    margin-bottom: 100px;
+  }
+  @media screen and (max-width: 650px) {
+    font-size: 2em;
+    font-family: "euclidSemiBold";
+    margin-bottom: 20px;
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 2em;
+    margin-bottom: 40px;
+  }
+  @media screen and (max-width: 380px) {
+    font-size: 2em;
+    margin-bottom: 40px;
+  }
 `;
 const Listing = styled.div`
   display: flex;
@@ -153,6 +217,9 @@ const Listing = styled.div`
   align-items: center;
   gap: 70px;
   padding: 30px;
+  @media screen and (max-width: 750px) {
+    padding: 20px;
+  }
   .number {
     width: 40px;
     height: 40px;

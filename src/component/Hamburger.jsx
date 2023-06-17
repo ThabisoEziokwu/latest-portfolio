@@ -1,62 +1,270 @@
 import styled from "styled-components";
-// import { NavLink } from "react-router-dom";
-import "../index.css";
+import gsap from "gsap";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 function Hamburger() {
-  const color = "#040404";
+  const [press, setPress] = useState(false);
+  const linksUp = (e) => {
+    const element = e.target;
+    gsap.to(element, {
+      y: -20,
+      duration: 0.001,
+    });
+  };
+  const linksDown = (e) => {
+    const element = e.target;
+    gsap.to(element, {
+      y: 0,
+      duration: 0.001,
+    });
+  };
+
+  useEffect(() => {
+    if (press) {
+      gsap.set(".bg-links", {
+        x: 0,
+        opacity: 1,
+      });
+      gsap.to(".icon", {
+        scale: 0,
+        duration: 0.3,
+      });
+      gsap.to(".tab-list", {
+        right: "0px",
+        delay: 0.3,
+      });
+      gsap.from(".bg-links", {
+        x: 100,
+        opacity: 0,
+        delay: 0.3,
+        stagger: 0.2,
+        duration: 0.05,
+        transition: "all .3s cubic-bezier(0.455, 0.03, 0.515, 0.955)",
+      });
+    }
+    if (!press) {
+      gsap.to(".bg-links", {
+        x: 100,
+        opacity: 0,
+        stagger: 0.2,
+        duration: 0.05,
+        transition: "all .3s cubic-bezier(0.455, 0.03, 0.515, 0.955)",
+      });
+      gsap.to(".icon", {
+        scale: 1,
+        delay: 0.8,
+        duration: 0.3,
+      });
+      gsap.to(".tab-list", {
+        right: "-360px",
+        delay: 0.5,
+      });
+    }
+  });
   return (
-    <HamBurger BackgroundColor={color}>
-      <nav role="navigation">
-        <div id="menuToggle" className="toggle">
-          <input type="checkbox" />
-          <span></span>
-          <span></span>
-          <span></span>
-          <ul id="menu">
-            <Dlinks>
-              <li>Pricing</li>
-            </Dlinks>
-            <Dlinks>
-              <li>Event Catelogue</li>
-            </Dlinks>
-            <Dlinks>
-              <li>Resources</li>
-            </Dlinks>
-            <Dlinks>
-              <li>Contact</li>
-            </Dlinks>
-          </ul>
+    <Cluster>
+      <div
+        className="icon"
+        onClick={() => {
+          setPress(true);
+        }}
+      >
+        <Hands className="one" />
+        <Hands className="two" />
+      </div>
+
+      <TabList
+        className="tab-list"
+        onClick={() => {
+          setPress(false);
+        }}
+      >
+        <CloseIcon
+          onClick={() => {
+            setPress(false);
+          }}
+        >
+          <Close className="one" />
+          <Close className="two" />
+        </CloseIcon>
+
+        <div className="link-list">
+          <SlideLink
+            className="bg-links"
+            onMouseEnter={linksUp}
+            onMouseLeave={linksDown}
+          >
+            ABOUT
+          </SlideLink>
+          <SlideLink
+            className="bg-links"
+            onMouseEnter={linksUp}
+            onMouseLeave={linksDown}
+          >
+            PROJECTS
+          </SlideLink>
+          <SlideLink
+            className="bg-links"
+            to={"/contact"}
+            onMouseEnter={linksUp}
+            onMouseLeave={linksDown}
+          >
+            CONTACT
+          </SlideLink>
+          <SlideLink
+            className="bg-links"
+            onMouseEnter={linksUp}
+            onMouseLeave={linksDown}
+          >
+            RESUME
+          </SlideLink>
+          <div className="line"></div>
+
+          <div className="contact-ab">
+            <p>TW</p>
+            <p>LI</p>
+            <p>IS</p>
+            <p>GH</p>
+          </div>
         </div>
-      </nav>
-    </HamBurger>
+      </TabList>
+    </Cluster>
   );
 }
-const HamBurger = styled.div`
-  padding: 0px;
-  margin: 0px;
-  position: relative;
+const Cluster = styled.div`
+  width: 60px;
+  border-radius: 50%;
+  height: 60px;
+  display: none;
+  box-shadow: rgba(87, 87, 87, 0.288) 0px 7px 29px 0px;
 
-  .toggle {
-    span {
-      background: ${(props) => props.BackgroundColor};
-    }
-  }
-  @media screen and (max-width: 992px) {
+  @media screen and (max-width: 750px) {
     display: block;
   }
-`;
-const Dlinks = styled.a`
-  li {
-    text-decoration: none;
-    color: #303030bc;
-    transition: color 0.3s ease;
-  }
-  :hover {
-    li {
-      color: #16ce72;
+
+  .icon {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #292929;
+    border-radius: 50%;
+    gap: 5px;
+    width: 100%;
+    height: 100%;
+    .one {
+      transform: translateX(-3px);
+      transition: all 0.2s ease-in-out;
+    }
+    .two {
+      transform: translateX(3px);
+      transition: all 0.2s ease-in-out;
+    }
+
+    :hover {
+      .one {
+        transform: translateX(0px);
+        transition: all 0.2s ease-in-out;
+      }
+      .two {
+        transform: translateX(0px);
+        transition: all 0.2s ease-in-out;
+      }
     }
   }
-  &.active {
-    color: #303030;
+`;
+const Hands = styled.div`
+  position: relative;
+  background-color: #f6f6f6;
+  width: 21px;
+  height: 2px;
+`;
+
+const TabList = styled.div`
+  position: absolute;
+  height: 100vh;
+  width: 360px;
+  right: -360px;
+  top: 0;
+  background-color: #292929;
+
+  .link-list {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+
+    .contact-ab {
+      margin: 0px auto;
+      display: flex;
+      width: 80%;
+      justify-content: space-between;
+      p {
+        color: #666666;
+      }
+    }
+    .line {
+      width: 100%;
+      margin: 0px auto;
+      height: 1px;
+      background-color: #999999;
+    }
+  }
+`;
+const CloseIcon = styled.div`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: solid 2px #f6f6f6;
+  background-color: #292929;
+  transition: all 0.2s ease-in-out;
+
+  :hover {
+    border: solid 2px #178582;
+    transition: all 0.2s ease-in-out;
+    transition: all 0.3s cubic-bezier(0.895, 0.03, 0.685, 0.22);
+  }
+
+  .one {
+    transform: rotate(45deg) translate(2px, 3px);
+  }
+  .two {
+    transform: rotate(-45deg) translate(2px, -3px);
+  }
+`;
+const Close = styled.div`
+  position: relative;
+  background-color: #f6f6f6;
+  width: 25px;
+  height: 2px;
+`;
+
+const SlideLink = styled(Link)`
+  text-decoration: none;
+  font-size: 45px;
+  color: #f6f6f6;
+  font-family: "euclidLight";
+  transition: all 0.3s ease-in-out;
+
+  :hover {
+    color: #178582;
+    transform: translateY(-10px);
+    transition: all 0.2s ease-in-out;
   }
 `;
 export default Hamburger;
