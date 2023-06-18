@@ -10,7 +10,7 @@ import { angleRadian } from "../utils/angleToradian";
 import { Environment } from "@react-three/drei";
 import * as THREE from "three";
 import gsap from "gsap";
-import cursor from "../assets/images/cursorr-01.png";
+import cursor from "../assets/images/cursor-01.png";
 
 function About({ setaboutHeight, setNavAbout }) {
   const lightRef = useRef();
@@ -88,17 +88,13 @@ function About({ setaboutHeight, setNavAbout }) {
         <div className="canva-container" ref={ref}>
           <Canvas id="model-canvas">
             <Suspense fallback={null}>
-              <GldModels
-                path={"trySculpt.glb"}
-                scale={12}
-                position={[0, -1, 0]}
-              />
+              <GldModels path={"head.glb"} scale={10} position={[0, -2.3, 0]} />
               {/* <ambientLight intensity={1} /> */}
               <directionalLight args={["#0a0a0a", 5]} position={[0, 0, 5]} />
               <spotLight
-                args={["#ffffff", 4]}
+                args={["#ffffff", 3]}
                 position={[0, 0, 2]}
-                distance={7}
+                distance={5}
                 angle={angleRadian(40)}
                 penumbra={1}
                 decay={2}
@@ -137,9 +133,11 @@ const Intro = styled.div`
   padding-bottom: 40px;
 
   @media screen and (max-width: 750px) {
-    min-height: 100vh;
+    margin: 30px 0px;
+    height: fit-content;
     align-items: center;
     justify-content: center;
+    cursor: auto;
   }
 
   .canva-container {
@@ -154,7 +152,10 @@ const Intro = styled.div`
     border-radius: 40px;
     z-index: -1;
     overflow: hidden;
-    display: none;
+
+    @media screen and (max-width: 750px) {
+      display: none;
+    }
   }
   #model-canvas {
     width: 100%;
@@ -170,19 +171,23 @@ const Intro = styled.div`
     }
     p.main {
       font-family: "euclidRegular";
-      color: #000000;
-      /* color: #f6f6f6; */
+      color: #f6f6f6;
       font-size: 19px;
+      @media screen and (max-width: 750px) {
+        color: #000000;
+      }
     }
     h1 {
       font-family: "euclidSemiBold";
       color: #f6f6f6;
-      /* color: #f6f6f6; */
-      background: linear-gradient(90deg, #161616 20%, #5e5e63 70%);
-      background-size: 100% auto;
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #f6f6f6;
+      @media screen and (max-width: 750px) {
+        background: linear-gradient(90deg, #161616 20%, #5e5e63 70%);
+        background-size: 100% auto;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
     }
     span {
       color: #178582;
@@ -196,5 +201,6 @@ const Floater = styled(motion.h1)`
   top: 50%;
   left: 0px;
   color: #00000097;
+  display: none;
 `;
 export default About;

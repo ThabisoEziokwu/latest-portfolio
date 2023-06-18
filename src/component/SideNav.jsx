@@ -109,6 +109,12 @@ function SideNav({
     letterAnimation2,
     letterAnimation3,
   ]);
+  const toAbout = () => {
+    window.scrollTo(0, aboutHeight);
+  };
+  const toProjects = () => {
+    window.scrollTo(0, projectHeight);
+  };
   const screenHeight = window.innerHeight;
 
   useEffect(() => {
@@ -159,6 +165,9 @@ function SideNav({
             opacity: 1,
           }}
           animate={letterAnimation}
+          onClick={() => {
+            toAbout();
+          }}
         >
           ABOUT
         </motion.p>
@@ -186,6 +195,9 @@ function SideNav({
             opacity: 1,
           }}
           animate={letterAnimation2}
+          onClick={() => {
+            toProjects();
+          }}
         >
           PROJECTS
         </motion.p>
@@ -259,6 +271,7 @@ const Side = styled.div`
 
   p {
     writing-mode: vertical-lr;
+    cursor: pointer;
     font-family: "euclidMedium";
     font-size: 12px;
     transition: all 0.2s ease-in-out;

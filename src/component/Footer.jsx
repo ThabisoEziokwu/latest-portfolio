@@ -58,7 +58,7 @@ function Footer({ setcontactHeight, setNavFooter, setShowLogo }) {
           </Mid>
           <div className="press">
             <ConButton>
-              <p>+234 818 399 0614</p>
+              <p>+234 811 342 0013</p>
             </ConButton>
             <ConButton>
               <p>td.bolaji@gmail.com</p>
@@ -84,10 +84,28 @@ function Footer({ setcontactHeight, setNavFooter, setShowLogo }) {
                 <p>SOCIALS</p>
               </div>
               <div className="bottom">
-                <SocLinks>LinkedIn</SocLinks>
-                <SocLinks>instagram</SocLinks>
-                <SocLinks>Twitter</SocLinks>
-                <SocLinks>GitHub</SocLinks>
+                <SocLinks to={"/contact"}>LinkedIn</SocLinks>
+                <SocLinks
+                  to={"https://instagram.com/hayinla_"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  instagram
+                </SocLinks>
+                <SocLinks
+                  to={"https://twitter.com/td_bolaji?s=21"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Twitter
+                </SocLinks>
+                <SocLinks
+                  to={"https://github.com/topghostly/"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub
+                </SocLinks>
               </div>
             </BotBox>
           </div>
