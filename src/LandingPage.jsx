@@ -7,10 +7,12 @@ import ImageRaft from "./component/ImageRaft";
 import Billette from "./component/Billette";
 import SideNav from "./component/SideNav";
 import Footer from "./component/Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 function LandingPage() {
+  useEffect(() => {});
+
   const [navFooter, setNavFooter] = useState(false);
   const [navAbout, setNavAbout] = useState(false);
   const [aboutHeight, setaboutHeight] = useState(0);

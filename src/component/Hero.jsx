@@ -67,7 +67,8 @@ function Hero() {
                 y: y_head,
               }}
             >
-              I transform ideas into visually striking web solution.
+              I transform <span>ideas</span> into visually striking{" "}
+              <span>web solution</span>.
             </motion.h1>
             <motion.div>
               <Button>Let&apos;s do this</Button>
@@ -177,6 +178,10 @@ const ViewPort = styled.div`
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+
+        span {
+          font-family: "euclidBold";
+        }
 
         @media screen and (max-width: 1100px) {
           font-size: 80px;

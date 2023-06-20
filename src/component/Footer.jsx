@@ -58,10 +58,14 @@ function Footer({ setcontactHeight, setNavFooter, setShowLogo }) {
           </Mid>
           <div className="press">
             <ConButton>
-              <p>+234 811 342 0013</p>
+              <p>
+                <a href="tel:+2348113420013">+234 811 342 0013</a>
+              </p>
             </ConButton>
             <ConButton>
-              <p>td.bolaji@gmail.com</p>
+              <p>
+                <a href="mailto:td.bolaji@gmail.com">td.bolaji@gmail.com</a>
+              </p>
             </ConButton>
           </div>
         </div>
@@ -316,6 +320,10 @@ const ConButton = styled.div`
     color: white;
     margin-bottom: 0px;
     font-family: "euclidRegular";
+    a {
+      color: white;
+      text-decoration: none;
+    }
 
     @media screen and (max-width: 600px) {
       font-size: 18px;

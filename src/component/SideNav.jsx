@@ -20,7 +20,7 @@ function SideNav({
       x: -100,
     });
     gsap.to(".link", {
-      delay: 1,
+      delay: 3.5,
       x: 0,
       stagger: 0.2,
     });
@@ -235,8 +235,7 @@ function SideNav({
   );
 }
 const LinkOut = styled(Link)`
-  color: ${(props) =>
-    props.navabout || props.navfooter ? "#ffffff" : "#212529"};
+  color: ${(props) => (props.navfooter ? "#ffffff" : "#212529")};
 
   text-decoration: none;
   :hover {
@@ -276,8 +275,7 @@ const Side = styled.div`
     font-size: 12px;
     transition: all 0.2s ease-in-out;
     margin-bottom: 0px;
-    color: ${(props) =>
-      props.navAbout || props.navFooter ? "white" : "#212529"};
+    color: ${(props) => (props.navFooter ? "white" : "#212529")};
   }
 
   .link {

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import logo from "../assets/images/portfolioLogo-01.png";
+import resume from "../assets/tope-resume.pdf";
 import Button from "./Button";
 import { motion, useAnimation } from "framer-motion";
 // import gsap from "gsap";
@@ -57,34 +58,19 @@ function NavBar({ showLogo }) {
       }}
     >
       <Nav>
-        {/* <motion.div
-          onMouseEnter={() => handleLogohover()}
-          onMouseLeave={() => handleLogoReturn()}
-          className="name"
+        <motion.div
+          className="logo-cont"
+          initial={{
+            scale: 0,
+          }}
+          animate={{
+            scale: 1,
+          }}
+          transition={{
+            delay: 6,
+            duration: 0.4,
+          }}
         >
-          <div className="logo-cont">
-            <Logo
-              src={logo}
-              alt=""
-              initial={{
-                opacity: 1,
-                x: 0,
-              }}
-              animate={logoGo}
-            />
-          </div>
-
-          <motion.p
-            initial={{
-              opacity: 0,
-              x: 0,
-            }}
-            animate={nameCome}
-          >
-            Abolaji Temitope
-          </motion.p>
-        </motion.div> */}
-        <div className="logo-cont">
           <Logo
             src={logo}
             alt=""
@@ -93,13 +79,29 @@ function NavBar({ showLogo }) {
               x: 0,
             }}
           />
-        </div>
+        </motion.div>
 
         <div className="social-media"></div>
-        <div className="resume">
+        <motion.div
+          className="resume"
+          initial={{
+            scale: 0,
+          }}
+          animate={{
+            scale: 1,
+          }}
+          transition={{
+            delay: 5.3,
+            duration: 0.4,
+          }}
+        >
           {/* <Button>Resume</Button> */}
-          <p>Résume</p>
-        </div>
+          <p>
+            <a href={resume} target="_blank" rel="noopener noreferrer">
+              Résume
+            </a>
+          </p>
+        </motion.div>
         <Hamburger />
       </Nav>
     </div>
@@ -171,6 +173,11 @@ const Nav = styled.div`
       margin-bottom: 0px;
       font-family: "euclidSemiBold";
       font-size: 19px;
+
+      a {
+        color: #292929;
+        text-decoration: none;
+      }
     }
     @media screen and (max-width: 750px) {
       display: none;

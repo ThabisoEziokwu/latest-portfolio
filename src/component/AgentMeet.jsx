@@ -14,7 +14,10 @@ import PicCaro from "./PicCaro";
 import CaroPic from "../assets/images/agentMeet.png";
 import smallPicOne from "../assets/images/agentmeetGlass.jpg";
 import smallPicTwo from "../assets/images/ageentMeetSmall.png";
-
+import backG from "../assets/images/agentphone2.png";
+import realPhone from "../assets/images/agentPhoneReal-01.png";
+import { RiExternalLinkLine, RiGithubLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 function Projects({ setprojectHeight }) {
   const blockRef = useRef();
   const { scrollYProgress } = useScroll({
@@ -77,7 +80,20 @@ function Projects({ setprojectHeight }) {
                       <span>Express</span>
                       <span>EJS</span>
                       <span>Firebase</span>
+                      <span>JWT</span>
                     </p>
+                    <div className="icons">
+                      <Link target="_blank" rel="noopener noreferrer">
+                        <RiGithubLine />
+                      </Link>
+                      <Link
+                        to={"https://fragile-wear-frog.cyclic.app/"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <RiExternalLinkLine t />
+                      </Link>
+                    </div>
                   </UpReveal>
                 </motion.div>
               </div>
@@ -92,7 +108,7 @@ function Projects({ setprojectHeight }) {
           <Laptop backImage={laptopImage} animate={true} />
           <div className="phone-area">
             <AgentPhone y={null} />
-            <Iphone y={null} />
+            <IphoneIMG src={realPhone} />
           </div>
         </div>
       </Works>
@@ -133,6 +149,7 @@ const Works = styled.div`
       width: 100%;
       justify-content: space-evenly;
       align-items: center;
+      pointer-events: none;
       @media screen and (max-width: 1050px) {
         margin-top: 100px;
       }
@@ -151,6 +168,23 @@ const Works = styled.div`
 
       .project-text {
         width: 80%;
+
+        .icons {
+          display: flex;
+          gap: 20px;
+          @media screen and (max-width: 991px) {
+            justify-content: center;
+          }
+          svg {
+            font-size: 30px;
+            color: #222222;
+            transition: all 0.2s ease-in-out;
+            :hover {
+              color: #0e8fa3;
+              transition: all 0.2s ease-in-out;
+            }
+          }
+        }
         @media screen and (max-width: 500px) {
           width: 95%;
         }
@@ -160,7 +194,7 @@ const Works = styled.div`
           margin: 0px;
 
           @media screen and (max-width: 991px) {
-            text-align: center;
+            text-align: left;
             font-size: 18px;
           }
         }
@@ -198,17 +232,17 @@ const ProjectName = styled.h1`
     margin-bottom: 100px;
   }
   @media screen and (max-width: 650px) {
-    font-size: 2em;
+    font-size: 2.2em;
     font-family: "euclidSemiBold";
     margin-bottom: 20px;
   }
   @media screen and (max-width: 500px) {
-    font-size: 2em;
+    font-size: 2.2em;
     margin-bottom: 40px;
   }
   @media screen and (max-width: 380px) {
-    font-size: 2em;
-    margin-bottom: 40px;
+    font-size: 2.2em;
+    margin-bottom: 30px;
   }
 `;
 const Listing = styled.div`
@@ -239,6 +273,25 @@ const Listing = styled.div`
     height: 1px;
     width: 100%;
     background-color: #b1b1b1;
+  }
+`;
+const IphoneIMG = styled.img`
+  position: relative;
+  width: 275px;
+  z-index: 3;
+  display: inline-block;
+  pointer-events: none;
+  @media screen and (max-width: 1300px) {
+    width: 265px;
+  }
+  @media screen and (max-width: 1100px) {
+    width: 245px;
+  }
+  @media screen and (max-width: 1000px) {
+    width: 195px;
+  }
+  @media screen and (max-width: 750px) {
+    display: none;
   }
 `;
 export default Projects;

@@ -19,8 +19,8 @@ function PicCaro({ bigPic, smallPicOne, smallPicTwo }) {
 
       // Make the scroll effect start when element enters the viewport a
       if (
-        topDistance - scrollLevel < nviewportHeight + 500 &&
-        scrollLevel - topDistance < nviewportHeight
+        topDistance - scrollLevel < nviewportHeight &&
+        scrollLevel - topDistance < nviewportHeight - 400
       ) {
         gsap.to(".picscreen", {
           backgroundPosition: `center ${scrollValue}px`,
@@ -42,6 +42,7 @@ function PicCaro({ bigPic, smallPicOne, smallPicTwo }) {
 }
 const Carosel = styled.div`
   width: 90vw;
+  pointer-events: none;
   height: 90vw;
   margin: 0px auto;
   z-index: 10;

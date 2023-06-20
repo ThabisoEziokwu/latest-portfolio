@@ -12,8 +12,10 @@ import PicCaro from "./PicCaro";
 import BigPic from "../assets/images/billette.jpg";
 import smallPicOne from "../assets/images/billetteSmall.png";
 import smallPicTwo from "../assets/images/billetteSmallTwo.png";
-
+import { RiExternalLinkLine, RiGithubLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 import UpReveal from "../utils/UpReveal";
+import laptopPic from "../assets/images/billetteLaptop.png";
 
 function Projects() {
   const blockRef = useRef();
@@ -50,18 +52,31 @@ function Projects() {
               <motion.div className="project-text">
                 <UpReveal threshold={0.5}>
                   <p className="description">
-                    A web app built with Node.js and Express, allows users to
-                    effortlessly post, manage, and rent out hostels. This
-                    platform enebles seamless CRUD operations, providing a
-                    user-friendly and intuitive experience.
+                    Created a responsive online ticket sale website with react
+                    and framer motion for cool animations.
                   </p>
 
                   <p className="stacks">
-                    <span>Node</span>
-                    <span>Express</span>
-                    <span>EJS</span>
-                    <span>Firebase</span>
+                    <span>React</span>
+                    <span>GSAP</span>
+                    <span>Framer Motion</span>
                   </p>
+                  <div className="icons">
+                    <Link
+                      to={"https://github.com/topghostly/billette"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <RiGithubLine />
+                    </Link>
+                    <Link
+                      to={"https://topghostly.github.io/Billette/"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <RiExternalLinkLine />
+                    </Link>
+                  </div>
                 </UpReveal>
               </motion.div>
             </div>
@@ -74,7 +89,8 @@ function Projects() {
             smallPicOne={smallPicOne}
             smallPicTwo={smallPicTwo}
           />
-          <Laptop backImage={laptopBackground} animate={false} />
+          {/* <Laptop backImage={laptopBackground} animate={false} /> */}
+          <LapPic src={laptopPic} />
         </div>
 
         <div className="phone-area">
@@ -114,9 +130,11 @@ const Works = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+      pointer-events: none;
     }
 
     .phone-area {
+      pointer-events: none;
       margin-top: 100px;
       display: flex;
       width: 100%;
@@ -140,6 +158,22 @@ const Works = styled.div`
 
       .project-text {
         width: 80%;
+        .icons {
+          display: flex;
+          gap: 20px;
+          @media screen and (max-width: 991px) {
+            justify-content: center;
+          }
+          svg {
+            font-size: 30px;
+            color: #222222;
+            transition: all 0.2s ease-in-out;
+            :hover {
+              color: #0e8fa3;
+              transition: all 0.2s ease-in-out;
+            }
+          }
+        }
         @media screen and (max-width: 500px) {
           width: 95%;
         }
@@ -148,7 +182,7 @@ const Works = styled.div`
           font-size: 20px;
           margin: 0px;
           @media screen and (max-width: 991px) {
-            text-align: center;
+            text-align: left;
             font-size: 18px;
           }
         }
@@ -185,17 +219,17 @@ const ProjectName = styled.h1`
     margin-bottom: 100px;
   }
   @media screen and (max-width: 650px) {
-    font-size: 2em;
+    font-size: 2.2em;
     font-family: "euclidSemiBold";
     margin-bottom: 20px;
   }
   @media screen and (max-width: 500px) {
-    font-size: 2em;
+    font-size: 2.2em;
     margin-bottom: 40px;
   }
   @media screen and (max-width: 380px) {
-    font-size: 2em;
-    margin-bottom: 40px;
+    font-size: 2.2em;
+    margin-bottom: 30px;
   }
 `;
 const Listing = styled.div`
@@ -209,6 +243,34 @@ const Listing = styled.div`
     height: 1px;
     width: 100%;
     background-color: #b1b1b1;
+  }
+`;
+
+const LapPic = styled.img`
+  margin: 100px auto;
+  position: relative;
+  z-index: 0;
+  width: 1100px;
+  transform-origin: top;
+  pointer-events: none;
+  @media screen and (max-width: 1300px) {
+    width: 1000px;
+  }
+  @media screen and (max-width: 1100px) {
+    width: 900px;
+  }
+  @media screen and (max-width: 1050px) {
+    margin-top: 20px;
+  }
+  @media screen and (max-width: 1000px) {
+    width: 700px;
+  }
+  @media screen and (max-width: 767px) {
+    width: 700px;
+    margin: 10px auto;
+  }
+  @media screen and (max-width: 750px) {
+    display: none;
   }
 `;
 export default Projects;

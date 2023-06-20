@@ -12,6 +12,8 @@ import PicCaro from "./PicCaro";
 import BigPic from "../assets/images/imageRaftTab.jpg";
 import smallPicOne from "../assets/images/imageRaftSmall.png";
 import smallPicTwo from "../assets/images/imageRaftSmallTwo.png";
+import { RiExternalLinkLine, RiGithubLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 function Projects() {
   // const [animation, setAnimation] = useState(false);
@@ -70,6 +72,22 @@ function Projects() {
                     <span>Styled Components</span>
                     <span>Framer Motion</span>
                   </p>
+                  <div className="icons">
+                    <Link
+                      to={"https://github.com/topghostly/imageraft-site"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <RiGithubLine />
+                    </Link>
+                    <Link
+                      to={"https://topghostly.github.io/imageraft-site"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <RiExternalLinkLine />
+                    </Link>
+                  </div>
                 </UpReveal>
               </motion.div>
             </div>
@@ -145,7 +163,7 @@ const Works = styled.div`
       display: flex;
       width: 100%;
       justify-content: center;
-      align-items: center;
+      align-items: end;
 
       @media screen and (max-width: 991px) {
         margin-top: 70px;
@@ -161,6 +179,22 @@ const Works = styled.div`
       align-items: center;
 
       .project-text {
+        .icons {
+          display: flex;
+          gap: 20px;
+          @media screen and (max-width: 991px) {
+            justify-content: center;
+          }
+          svg {
+            font-size: 30px;
+            color: #222222;
+            transition: all 0.2s ease-in-out;
+            :hover {
+              color: #0e8fa3;
+              transition: all 0.2s ease-in-out;
+            }
+          }
+        }
         width: 80%;
         @media screen and (max-width: 500px) {
           width: 95%;
@@ -170,7 +204,7 @@ const Works = styled.div`
           font-size: 20px;
           margin: 0px;
           @media screen and (max-width: 991px) {
-            text-align: center;
+            text-align: left;
             font-size: 18px;
           }
         }
@@ -178,7 +212,7 @@ const Works = styled.div`
           margin-top: 25px;
           width: 100%;
           display: flex;
-          gap: 40px;
+          gap: 25px;
           @media screen and (max-width: 991px) {
             justify-content: center;
           }
@@ -207,17 +241,17 @@ const ProjectName = styled.h1`
     margin-bottom: 100px;
   }
   @media screen and (max-width: 650px) {
-    font-size: 2em;
+    font-size: 2.2em;
     font-family: "euclidSemiBold";
     margin-bottom: 20px;
   }
   @media screen and (max-width: 500px) {
-    font-size: 2em;
+    font-size: 2.2em;
     margin-bottom: 40px;
   }
   @media screen and (max-width: 380px) {
-    font-size: 2em;
-    margin-bottom: 40px;
+    font-size: 2.2em;
+    margin-bottom: 30px;
   }
 `;
 const Listing = styled.div`

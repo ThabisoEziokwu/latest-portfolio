@@ -11,10 +11,12 @@ import { Environment } from "@react-three/drei";
 import * as THREE from "three";
 import gsap from "gsap";
 import cursor from "../assets/images/cursor-01.png";
+import { TbPointFilled } from "react-icons/tb";
 
 function About({ setaboutHeight, setNavAbout }) {
   const lightRef = useRef();
   const aboutRef = useRef(null);
+
   const { ref, inView } = useInView({
     threshold: 0.4,
   });
@@ -23,13 +25,14 @@ function About({ setaboutHeight, setNavAbout }) {
     offset: ["start end", "end start"],
   });
   const x = useTransform(scrollYProgress, [0, 1], [-1000, 4000]);
+  const y_head = useTransform(scrollYProgress, [0, 0.35], [200, -500]);
 
   useEffect(() => {
     if (inView) {
-      gsap.to(".canva-container", {
-        opacity: 1,
-        delay: 0.6,
-        duration: 1.5,
+      gsap.to(".back", {
+        opacity: 0,
+        delay: 0.9,
+        duration: 2,
       });
       setNavAbout(true);
       // console.log("its in view");
@@ -67,56 +70,143 @@ function About({ setaboutHeight, setNavAbout }) {
   return (
     <Distance dist={setaboutHeight}>
       <Intro cursor={cursor} ref={aboutRef}>
-        <div className="text-section">
-          <h1>About Me</h1>
-          <p className="main">
-            Hello and welcome to my portfolio! My name is <span>Tope</span>, and
-            I am a passionate programmer with a coding journey that beganin
-            2020, i have dedicated myself to mastering the art of{" "}
-            <span>JavaScript development</span>. My expertise lies in creating
-            <span>dynamic web applications</span> using the power of
-            javaScript&apos;s vast ecosystem.
-            <br />
-            In addition to my work in web development, I am also studying
-            <span>Mechanical engineering</span> at college. This unique
-            combination of skills allows me to bring a fresh perspective to
-            problem-solving.
-            <br />
-            Here are a few technologies i&apos;ve been working with recently:
-          </p>
-        </div>
-        <div className="canva-container" ref={ref}>
-          <Canvas id="model-canvas">
+        <div className="small-model">
+          <Canvas id="model-canvas2">
             <Suspense fallback={null}>
-              <GldModels path={"head.glb"} scale={10} position={[0, -2.3, 0]} />
+              <GldModels
+                path={"head.glb"}
+                scale={12}
+                position={[0, -4.7, 0]}
+                className="model"
+              />
               {/* <ambientLight intensity={1} /> */}
-              <directionalLight args={["#0a0a0a", 5]} position={[0, 0, 5]} />
-              <spotLight
+              <directionalLight args={["#15c5bf", 5]} position={[0, 0, 5]} />
+              {/* <spotLight
                 args={["#ffffff", 3]}
                 position={[0, 0, 2]}
-                distance={5}
+                distance={7}
                 angle={angleRadian(40)}
                 penumbra={1}
                 decay={2}
                 ref={lightRef}
-              />
+              /> */}
 
               <Environment background>
                 <mesh scale={10} receiveShadow>
                   <sphereGeometry args={[1, 64, 64]} />
-                  <meshBasicMaterial side={THREE.BackSide} color="#0a0a0a" />
+                  <meshBasicMaterial
+                    side={THREE.BackSide}
+                    color="#63ceca"
+                    // color="#0a0a0a"
+                  />
                 </mesh>
               </Environment>
             </Suspense>
           </Canvas>
         </div>
-        <Floater
-          style={{
-            x,
-          }}
-        >
-          ABOUT ME
-        </Floater>
+        <div className="canva-container" ref={ref}>
+          <div className="model-container">
+            <div className="new-cont">
+              <Canvas id="model-canvas">
+                <Suspense fallback={null}>
+                  <GldModels
+                    path={"head.glb"}
+                    scale={12}
+                    position={[0, -3.4, 0]}
+                    className="model"
+                  />
+                  {/* <ambientLight intensity={1} /> */}
+                  <directionalLight
+                    args={["#0a0a0a", 5]}
+                    position={[0, 0, 5]}
+                  />
+                  <spotLight
+                    args={["#ffffff", 3]}
+                    position={[0, 0, 2]}
+                    distance={7}
+                    angle={angleRadian(40)}
+                    penumbra={1}
+                    decay={2}
+                    ref={lightRef}
+                  />
+
+                  <Environment background>
+                    <mesh scale={10} receiveShadow>
+                      <sphereGeometry args={[1, 64, 64]} />
+                      <meshBasicMaterial
+                        side={THREE.BackSide}
+                        color="#0a0a0a"
+                        // color="#0a0a0a"
+                      />
+                    </mesh>
+                  </Environment>
+                </Suspense>
+              </Canvas>
+              <div className="back"></div>
+            </div>
+            {/* <motion.h1
+              style={{
+                y: y_head,
+              }}
+            >
+              ABOUT ME
+            </motion.h1> */}
+            <div className="text-section">
+              <h1>About Me 👨‍🏭</h1>
+              <p className="main">
+                Hello and welcome to my portfolio! My name is <span>Tope</span>,
+                and I am a passionate programmer with a coding journey that
+                began in 2020, I have dedicated myself to mastering the art of{" "}
+                <span>JavaScript development</span>. My expertise lies in
+                creating
+                <span> dynamic web applications</span> using the power of
+                javaScript&apos;s vast ecosystem.
+                <br />
+                <br />
+                In addition to my work in web development, I am also studying
+                <span> Mechanical engineering</span> at college. This unique
+                combination of skills allows me to bring a fresh perspective to
+                problem-solving.
+                <br />
+                <br />
+                Here are a few technologies i&apos;ve been working with
+                recently:
+                <div className="languages">
+                  <div className="lang">
+                    <p>
+                      <TbPointFilled />
+                      JavaScript (ES6+)
+                    </p>
+                    <p>
+                      <TbPointFilled />
+                      React
+                    </p>
+                  </div>
+                  <div className="lang">
+                    <p>
+                      <TbPointFilled />
+                      Node
+                    </p>
+                    <p>
+                      <TbPointFilled />
+                      Three.js
+                    </p>
+                  </div>
+                  <div className="lang">
+                    <p>
+                      <TbPointFilled />
+                      GSAP
+                    </p>
+                    <p>
+                      <TbPointFilled />
+                      Framer Motion
+                    </p>
+                  </div>
+                </div>
+              </p>
+            </div>
+          </div>
+        </div>
       </Intro>
     </Distance>
   );
@@ -125,82 +215,164 @@ const Intro = styled.div`
   position: relative;
   z-index: 5;
   width: 100%;
-  height: 130vh;
-  cursor: url(${(props) => props.cursor}), auto;
+  /* height: 130vh; */
+  cursor: auto;
   background-color: #f6f6f6;
-  display: flex;
-  align-items: end;
-  padding-bottom: 40px;
+  margin-top: 50px;
 
   @media screen and (max-width: 750px) {
     margin: 30px 0px;
     height: fit-content;
     align-items: center;
     justify-content: center;
-    cursor: auto;
+  }
+  .small-model {
+    display: none;
+    height: 400px;
+    width: 95%;
+    margin: 0px auto;
+    margin-bottom: 50px;
+    @media screen and (max-width: 750px) {
+      display: block;
+      width: 90%;
+    }
+    @media screen and (max-width: 700px) {
+      display: block;
+    }
+    @media screen and (max-width: 550px) {
+      display: block;
+      width: 95%;
+      height: 320px;
+    }
+
+    #model-canvas2 {
+      border-radius: 20px;
+    }
   }
 
   .canva-container {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    width: 98%;
+    /* opacity: 0; */
+    width: 100%;
     margin: 0px auto;
-    height: 100%;
-    border-radius: 40px;
-    z-index: -1;
-    overflow: hidden;
+    /* height: fit-content; */
 
+    z-index: -1;
+    /* background-color: #0a0a0a; */
+    margin-bottom: 100px;
+    @media screen and (max-width: 1200px) {
+      /* height: 70vh; */
+    }
+    @media screen and (max-width: 950px) {
+      /* height: 60vh; */
+    }
     @media screen and (max-width: 750px) {
-      display: none;
+    }
+
+    .model-container {
+      width: 85vw;
+      margin: 0px auto;
+      padding: 0px 30px;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 50% 45%;
+      gap: 70px;
+
+      @media screen and (max-width: 990px) {
+        display: flex;
+        flex-direction: column;
+      }
+      @media screen and (max-width: 750px) {
+        padding: 0px;
+      }
+
+      .new-cont {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        border-radius: 20px;
+        cursor: url(${(props) => props.cursor}), auto;
+        @media screen and (max-width: 750px) {
+          display: none;
+        }
+
+        .back {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          background-color: #0a0a0a;
+          opacity: 1;
+          @media screen and (max-width: 750px) {
+            display: none;
+          }
+        }
+      }
     }
   }
   #model-canvas {
     width: 100%;
-    height: 100%;
+    max-height: 70vh;
+    min-height: 500px;
+    border-radius: 20px;
+    cursor: url(${(props) => props.cursor}), auto;
   }
   .text-section {
-    max-width: 800px;
     margin: 0px auto;
-    text-align: center;
+    text-align: left;
 
     @media screen and (max-width: 750px) {
-      width: 80%;
     }
     p.main {
-      font-family: "euclidRegular";
-      color: #f6f6f6;
+      font-family: "euclidMedium";
+      color: #2b2b2b;
       font-size: 19px;
+      margin-bottom: 0px;
       @media screen and (max-width: 750px) {
-        color: #000000;
+        color: #292929;
+      }
+      @media screen and (max-width: 991px) {
+        text-align: left;
+        font-size: 18px;
+      }
+
+      .languages {
+        margin-top: 40px;
+        color: #5e5e63;
+        width: 70%;
+        font-size: 16px;
+        font-family: "euclidRegular";
+        @media screen and;
+         {
+          width: 90%;
+        }
+
+        svg {
+          color: #178582;
+        }
+        .lang {
+          width: 100%;
+          display: grid;
+          grid-template-columns: 50% 50%;
+        }
       }
     }
     h1 {
       font-family: "euclidSemiBold";
-      color: #f6f6f6;
-      color: #f6f6f6;
+      /* background: linear-gradient(90deg, #161616 20%, #5e5e63 70%);
+      background-size: 100% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; */
+      margin-bottom: 20px;
       @media screen and (max-width: 750px) {
-        background: linear-gradient(90deg, #161616 20%, #5e5e63 70%);
-        background-size: 100% auto;
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        display: block;
       }
     }
     span {
       color: #178582;
     }
   }
-`;
-const Floater = styled(motion.h1)`
-  font-family: "euclidRegular";
-  font-size: 60px;
-  position: fixed;
-  top: 50%;
-  left: 0px;
-  color: #00000097;
-  display: none;
 `;
 export default About;
