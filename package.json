@@ -24,7 +24,6 @@
     "react-router-dom": "^6.12.1",
     "react-scrollbars": "^0.0.5",
     "react-use": "^17.4.0",
-    "split-type": "^0.3.3",
     "styled-components": "^5.3.8",
     "three": "^0.152.2"
   },

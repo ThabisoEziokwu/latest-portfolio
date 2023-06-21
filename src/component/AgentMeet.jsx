@@ -83,7 +83,11 @@ function Projects({ setprojectHeight }) {
                       <span>JWT</span>
                     </p>
                     <div className="icons">
-                      <Link target="_blank" rel="noopener noreferrer">
+                      <Link
+                        to={"https://github.com/topghostly/AgentMeet"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <RiGithubLine />
                       </Link>
                       <Link
@@ -175,6 +179,10 @@ const Works = styled.div`
           @media screen and (max-width: 991px) {
             justify-content: center;
           }
+          @media screen and (max-width: 650px) {
+            justify-content: start;
+            gap: 30px;
+          }
           svg {
             font-size: 30px;
             color: #222222;
@@ -206,6 +214,10 @@ const Works = styled.div`
           @media screen and (max-width: 991px) {
             justify-content: center;
           }
+          @media screen and (max-width: 650px) {
+            justify-content: start;
+            gap: 20px;
+          }
 
           span {
             font-family: "euclidRegular";
@@ -231,15 +243,22 @@ const ProjectName = styled.h1`
   @media screen and (max-width: 991px) {
     margin-bottom: 100px;
   }
+  @media screen and (max-width: 750px) {
+  }
   @media screen and (max-width: 650px) {
+    width: 80%;
+    margin: 0px auto;
     font-size: 2.2em;
     font-family: "euclidSemiBold";
     margin-bottom: 20px;
+    justify-content: start;
   }
   @media screen and (max-width: 500px) {
     font-size: 2.2em;
     margin-bottom: 40px;
+    width: 95%;
   }
+
   @media screen and (max-width: 380px) {
     font-size: 2.2em;
     margin-bottom: 30px;

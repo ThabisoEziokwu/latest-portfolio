@@ -185,6 +185,10 @@ const Works = styled.div`
           @media screen and (max-width: 991px) {
             justify-content: center;
           }
+          @media screen and (max-width: 650px) {
+            justify-content: start;
+            gap: 30px;
+          }
           svg {
             font-size: 30px;
             color: #222222;
@@ -216,6 +220,10 @@ const Works = styled.div`
           @media screen and (max-width: 991px) {
             justify-content: center;
           }
+          @media screen and (max-width: 650px) {
+            justify-content: start;
+            gap: 20px;
+          }
           span {
             font-family: "euclidRegular";
             font-size: 14px;
@@ -242,12 +250,16 @@ const ProjectName = styled.h1`
   }
   @media screen and (max-width: 650px) {
     font-size: 2.2em;
+    width: 80%;
+    margin: 0px auto;
+    justify-content: start;
     font-family: "euclidSemiBold";
     margin-bottom: 20px;
   }
   @media screen and (max-width: 500px) {
     font-size: 2.2em;
     margin-bottom: 40px;
+    width: 95%;
   }
   @media screen and (max-width: 380px) {
     font-size: 2.2em;

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/index.css" />
     <title>Vite + React</title>
     <style>
       .Loader-container {
@@ -35,6 +36,32 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
+        gap: 40px;
+      }
+      .mobile-alert {
+        color: white;
+        display: none;
+        opacity: 0;
+      }
+      .mobile-alert p {
+        color: white;
+        font-family: "euclidLight";
+      }
+      @media screen and (max-width: 750px) {
+        .mobile-alert {
+          display: block;
+        }
+      }
+      @media screen and (max-width: 500px) {
+        .mobile-alert p {
+          font-size: 13px;
+        }
+      }
+      @media screen and (max-width: 400px) {
+        .mobile-alert p {
+          font-size: 12px;
+        }
       }
       .logo svg {
         width: 60px;
@@ -107,6 +134,9 @@
             points="95.3 316.69 17.6 451.26 173 451.26 95.3 316.69"
           />
         </svg>
+        <div class="mobile-alert">
+          <p>View on a computer for a better experience</p>
+        </div>
       </div>
       <div class="loader-blanket">
         <div class="blanket"></div>
@@ -120,6 +150,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script type="module" src="/src/main.jsx"></script>
     <script>
+      gsap.to(".mobile-alert", {
+        opacity: 1,
+        delay: 1.7,
+      });
       const blanketUp = () => {
         setTimeout(() => {
           gsap.to(".blanket", {
