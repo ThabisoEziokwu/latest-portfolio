@@ -161,7 +161,7 @@
             stagger: 0.3,
             ease: "power3.out",
           });
-        }, 2400);
+        }, 4400);
       };
       const logoOut = () => {
         setTimeout(() => {
@@ -169,13 +169,13 @@
             scale: 0,
             duration: 0.3,
           });
-        }, 2000);
+        }, 4000);
       };
       const pageRemove = () => {
         const loader = document.querySelector(".Loader-container");
         setTimeout(() => {
           loader.style.display = "none";
-        }, 4500);
+        }, 6500);
       };
       window.addEventListener("load", async () => {
         await logoOut();

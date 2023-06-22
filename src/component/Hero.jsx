@@ -39,8 +39,8 @@ function Hero() {
     target: heroRef,
     offset: ["end end", "end start"],
   });
-  const y_para = useTransform(scrollYProgress, [0, 1], [0, -10]);
-  const y_head = useTransform(scrollYProgress, [0, 0.35], [0, -500]);
+  const y_para = useTransform(scrollYProgress, [0, 1], [0, 300]);
+  // const y_head = useTransform(scrollYProgress, [0, 0.35], [0, -500]);
 
   return (
     <ViewPort ref={heroRef}>
@@ -62,14 +62,10 @@ function Hero() {
               </motion.p>
             </motion.div>
 
-            <motion.h1
-              style={{
-                y: y_head,
-              }}
-            >
+            <h1>
               I transform <span>ideas</span> into visually striking{" "}
               <span>web solution</span>.
-            </motion.h1>
+            </h1>
             <motion.div>
               <Button>Let&apos;s do this</Button>
             </motion.div>
@@ -187,7 +183,6 @@ const ViewPort = styled.div`
           font-size: 80px;
         }
         @media screen and (max-width: 700px) {
-          font-family: "euclidBold";
           font-size: 70px;
           width: 80%;
         }

@@ -45,7 +45,7 @@ function Projects() {
   }
   return (
     <Works ref={blockRef}>
-      <div className="container-sm cont">
+      <div className="container-md cont">
         <Listing>
           <div className="line"></div>
         </Listing>
@@ -68,7 +68,7 @@ function Projects() {
 
                   <p className="stacks">
                     <span>React</span>
-                    <span>Pixels APi</span>
+                    <span>Pixels API</span>
                     <span>Styled Components</span>
                     <span>Framer Motion</span>
                   </p>
@@ -179,11 +179,12 @@ const Works = styled.div`
       align-items: center;
 
       .project-text {
+        width: 80%;
         .icons {
           display: flex;
           gap: 20px;
           @media screen and (max-width: 991px) {
-            justify-content: center;
+            justify-content: start;
           }
           @media screen and (max-width: 650px) {
             justify-content: start;
@@ -211,12 +212,16 @@ const Works = styled.div`
             text-align: left;
             font-size: 18px;
           }
+          @media screen and (max-width: 500px) {
+            text-align: left;
+            font-size: 15px;
+            font-family: "euclidRegular";
+          }
         }
         p.stacks {
-          margin-top: 25px;
+          margin: 15px 0px;
           width: 100%;
-          display: flex;
-          gap: 25px;
+
           @media screen and (max-width: 991px) {
             justify-content: center;
           }
@@ -224,10 +229,20 @@ const Works = styled.div`
             justify-content: start;
             gap: 20px;
           }
+
           span {
-            font-family: "euclidRegular";
-            font-size: 14px;
-            color: #5e5e63;
+            font-family: "euclidLight";
+            padding: 4px 10px;
+            display: inline-block;
+            border-radius: 50px;
+            background-color: #f2f2f2;
+            box-shadow: rgba(87, 87, 87, 0.2) 0px 7px 29px 0px;
+            font-size: 13px;
+            margin: 10px 15px 5px 0px;
+            pointer-events: none;
+            @media screen and (max-width: 500px) {
+              font-size: 12px;
+            }
           }
         }
       }
@@ -253,7 +268,7 @@ const ProjectName = styled.h1`
     width: 80%;
     margin: 0px auto;
     justify-content: start;
-    font-family: "euclidSemiBold";
+    font-family: "euclidMedium";
     margin-bottom: 20px;
   }
   @media screen and (max-width: 500px) {

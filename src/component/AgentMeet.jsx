@@ -177,7 +177,7 @@ const Works = styled.div`
           display: flex;
           gap: 20px;
           @media screen and (max-width: 991px) {
-            justify-content: center;
+            justify-content: start;
           }
           @media screen and (max-width: 650px) {
             justify-content: start;
@@ -205,12 +205,16 @@ const Works = styled.div`
             text-align: left;
             font-size: 18px;
           }
+          @media screen and (max-width: 500px) {
+            text-align: left;
+            font-size: 15px;
+            font-family: "euclidRegular";
+          }
         }
         p.stacks {
-          margin-top: 25px;
+          margin: 15px 0px;
           width: 100%;
-          display: flex;
-          gap: 40px;
+
           @media screen and (max-width: 991px) {
             justify-content: center;
           }
@@ -220,10 +224,18 @@ const Works = styled.div`
           }
 
           span {
-            font-family: "euclidRegular";
-            font-size: 14px;
-            color: #5e5e63;
-            /* color: #0e8fa3; */
+            font-family: "euclidLight";
+            padding: 4px 10px;
+            display: inline-block;
+            border-radius: 50px;
+            background-color: #f2f2f2;
+            box-shadow: rgba(87, 87, 87, 0.2) 0px 7px 29px 0px;
+            font-size: 13px;
+            margin: 10px 15px 5px 0px;
+            pointer-events: none;
+            @media screen and (max-width: 500px) {
+              font-size: 12px;
+            }
           }
         }
       }
@@ -249,7 +261,7 @@ const ProjectName = styled.h1`
     width: 80%;
     margin: 0px auto;
     font-size: 2.2em;
-    font-family: "euclidSemiBold";
+    font-family: "euclidMedium";
     margin-bottom: 20px;
     justify-content: start;
   }

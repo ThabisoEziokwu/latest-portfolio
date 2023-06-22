@@ -152,7 +152,7 @@ function About({ setaboutHeight, setNavAbout }) {
               ABOUT ME
             </motion.h1> */}
             <div className="text-section">
-              <h1>About Me 👨‍🏭</h1>
+              <h1>About Me </h1>
               <p className="main">
                 Hello and welcome to my portfolio! My name is <span>Tope</span>,
                 and I am a passionate programmer with a coding journey that
@@ -171,39 +171,39 @@ function About({ setaboutHeight, setNavAbout }) {
                 <br />
                 Here are a few technologies i&apos;ve been working with
                 recently:
-                <div className="languages">
-                  <div className="lang">
-                    <p>
-                      <TbPointFilled />
-                      JavaScript (ES6+)
-                    </p>
-                    <p>
-                      <TbPointFilled />
-                      React
-                    </p>
-                  </div>
-                  <div className="lang">
-                    <p>
-                      <TbPointFilled />
-                      Node
-                    </p>
-                    <p>
-                      <TbPointFilled />
-                      Three.js
-                    </p>
-                  </div>
-                  <div className="lang">
-                    <p>
-                      <TbPointFilled />
-                      GSAP
-                    </p>
-                    <p>
-                      <TbPointFilled />
-                      Framer Motion
-                    </p>
-                  </div>
-                </div>
               </p>
+              <div className="languages">
+                <div className="lang">
+                  <p>
+                    <TbPointFilled />
+                    JavaScript (ES6+)
+                  </p>
+                  <p>
+                    <TbPointFilled />
+                    React
+                  </p>
+                </div>
+                <div className="lang">
+                  <p>
+                    <TbPointFilled />
+                    Node
+                  </p>
+                  <p>
+                    <TbPointFilled />
+                    Three.js
+                  </p>
+                </div>
+                <div className="lang">
+                  <p>
+                    <TbPointFilled />
+                    GSAP
+                  </p>
+                  <p>
+                    <TbPointFilled />
+                    Framer Motion
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -233,14 +233,14 @@ const Intro = styled.div`
     margin: 0px auto;
     margin-bottom: 50px;
     @media screen and (max-width: 750px) {
-      display: block;
+      display: none;
       width: 90%;
     }
     @media screen and (max-width: 700px) {
-      display: block;
+      display: none;
     }
     @media screen and (max-width: 550px) {
-      display: block;
+      display: none;
       width: 95%;
       height: 320px;
     }
@@ -336,26 +336,29 @@ const Intro = styled.div`
         text-align: left;
         font-size: 18px;
       }
+      @media screen and (max-width: 500px) {
+        text-align: left;
+        font-size: 15px;
+      }
+    }
+    .languages {
+      margin-top: 20px;
+      color: #5e5e63;
+      width: 70%;
+      font-size: 16px;
+      font-family: "euclidRegular";
+      @media screen and (max-width: 500px) {
+        width: 90%;
+        font-size: 13px;
+      }
 
-      .languages {
-        margin-top: 40px;
-        color: #5e5e63;
-        width: 70%;
-        font-size: 16px;
-        font-family: "euclidRegular";
-        @media screen and;
-         {
-          width: 90%;
-        }
-
-        svg {
-          color: #178582;
-        }
-        .lang {
-          width: 100%;
-          display: grid;
-          grid-template-columns: 50% 50%;
-        }
+      svg {
+        color: #178582;
+      }
+      .lang {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 50% 50%;
       }
     }
     h1 {

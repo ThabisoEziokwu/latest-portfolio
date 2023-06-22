@@ -312,8 +312,9 @@ const ConButton = styled.div`
     padding: 22px 30px;
   }
   @media screen and (max-width: 470px) {
-    width: 95%;
-    padding: 15px 15px;
+    width: 80%;
+    margin: 5px auto;
+    padding: 10px 10px;
   }
 
   p {
