@@ -11,26 +11,28 @@ function AgentPhone({ y }) {
 
   useEffect(() => {
     const scrollEffect = () => {
-      const screenHeight = window.innerHeight;
-      const { top } = phoneRef.current.getBoundingClientRect();
-      const distance = top + pageYOffset;
+      if (phoneRef.current) {
+        const screenHeight = window.innerHeight;
+        const { top } = phoneRef.current.getBoundingClientRect();
+        const distance = top + pageYOffset;
 
-      const phoneScrollPosition =
-        window.pageYOffset || document.documentElement.scrollTop;
+        const phoneScrollPosition =
+          window.pageYOffset || document.documentElement.scrollTop;
 
-      let scroll = ((distance - phoneScrollPosition) / screenHeight - 1) * 80;
+        let scroll = ((distance - phoneScrollPosition) / screenHeight - 1) * 80;
 
-      if (
-        distance - phoneScrollPosition < screenHeight + 500 &&
-        phoneScrollPosition - distance < screenHeight
-      ) {
-        gsap.to(".phone-screen", {
-          backgroundPosition: `center ${scroll}px`,
-          duration: 0.6,
-        });
+        if (
+          distance - phoneScrollPosition < screenHeight + 500 &&
+          phoneScrollPosition - distance < screenHeight
+        ) {
+          gsap.to(".phone-screen", {
+            backgroundPosition: `center ${scroll}px`,
+            duration: 0.6,
+          });
+        }
       }
+      document.addEventListener("scroll", scrollEffect);
     };
-    document.addEventListener("scroll", scrollEffect);
   }, []);
   return (
     <Phone

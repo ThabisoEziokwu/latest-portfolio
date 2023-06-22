@@ -18,30 +18,38 @@ function Laptop({ backImage, animate }) {
   );
 
   useEffect(() => {
-    const handleResize = () => {
-      const viewportHeight = window.innerHeight;
-      const divContainer = lapRef.current;
-      const { top } = divContainer.getBoundingClientRect();
-      const distanceFromTop = top + pageYOffset;
+    if (lapRef.current) {
+      const distFromTop = () => {
+        const divContainer = lapRef.current;
+        const { top } = divContainer.getBoundingClientRect();
+        const distanceFromTop = top + pageYOffset;
+        return distanceFromTop;
+      };
+      const distanceFromTop = distFromTop();
+      const handleResize = () => {
+        const viewportHeight = window.innerHeight;
 
-      const scrollPosition =
-        window.pageYOffset || document.documentElement.scrollTop;
+        const scrollPosition =
+          window.pageYOffset || document.documentElement.scrollTop;
 
-      let theScroll =
-        ((distanceFromTop - scrollPosition) / viewportHeight - 1) * 200;
+        let theScroll =
+          ((distanceFromTop - scrollPosition) / viewportHeight - 1) * 200;
 
-      // Make the scroll effect start when element enters the viewport a
-      if (
-        distanceFromTop - scrollPosition < viewportHeight + 500 &&
-        scrollPosition - distanceFromTop < viewportHeight
-      ) {
-        gsap.to(".screen", {
-          backgroundPosition: `center ${theScroll}px`,
-          duration: 1,
-        });
-      }
-    };
-    document.addEventListener("scroll", handleResize);
+        // Make the scroll effect start when element enters the viewport a
+        if (
+          distanceFromTop - scrollPosition < viewportHeight + 500 &&
+          scrollPosition - distanceFromTop < viewportHeight
+        ) {
+          gsap.to(".screen", {
+            backgroundPosition: `center ${theScroll}px`,
+            duration: 0.3,
+          });
+        }
+      };
+      setInterval(() => {
+        document.addEventListener("scroll", handleResize);
+      }, 2000);
+    }
   }, []);
   return (
     <Lap

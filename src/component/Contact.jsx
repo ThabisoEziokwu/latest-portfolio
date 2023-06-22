@@ -4,6 +4,7 @@ import profilePic from "../assets/images/profilePic.png";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import logo from "../assets/images/portfolioLogoWhite.png";
+import arrow from "../assets/images/arrowWhite-01.png";
 
 function Contact() {
   return (
@@ -15,6 +16,9 @@ function Contact() {
             <SLink to={"/"}>HOME</SLink>
           </div>
         </Nav>
+        <div className="arrow">
+          <img src={arrow} alt="" />
+        </div>
         <div className="row the-row">
           <div className="col-md-4">
             <FullTop>
@@ -182,6 +186,18 @@ const Contacts = styled.div`
   background-color: #292929;
   color: white;
   overflow-x: hidden;
+  .arrow {
+    width: 80%;
+    height: 20px;
+    margin: 0px auto;
+    position: relative;
+    img {
+      width: 15px;
+      position: absolute;
+      top: 0;
+      right: 10px;
+    }
+  }
   .the-row {
     @media screen and (max-width: 430px) {
       padding-left: 10px;
@@ -201,6 +217,7 @@ const Contacts = styled.div`
   .box {
     margin-top: 20px;
     margin-bottom: 40px;
+    width: fit-content;
     .top {
       p {
         font-size: 8px;

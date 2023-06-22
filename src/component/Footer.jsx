@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import profilePic from "../assets/images/profilePic.png";
+import arrow from "../assets/images/arrowWhite-01.png";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
@@ -49,6 +50,7 @@ function Footer({ setcontactHeight, setNavFooter, setShowLogo }) {
             </Head>
           </Intro>
           <Mid>
+            <img src={arrow} alt="" />
             <div className="line"></div>
             <ButLink to={"/contact"}>
               <div className="button">
@@ -209,6 +211,12 @@ const ProfileImage = styled.img`
 const Mid = styled.div`
   width: 700px;
   position: relative;
+  img {
+    width: 15px;
+    position: absolute;
+    bottom: 200px;
+    right: -10px;
+  }
 
   .button {
     width: 150px;

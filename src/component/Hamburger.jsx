@@ -2,8 +2,9 @@ import styled from "styled-components";
 import gsap from "gsap";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import resume from "../assets/tope-resume.pdf";
 
-function Hamburger() {
+function Hamburger({ aboutHeight, projectHeight }) {
   const [press, setPress] = useState(false);
   const linksUp = (e) => {
     const element = e.target;
@@ -18,6 +19,12 @@ function Hamburger() {
       y: 0,
       duration: 0.001,
     });
+  };
+  const toAbout = () => {
+    window.scrollTo(0, aboutHeight);
+  };
+  const toProjects = () => {
+    window.scrollTo(0, projectHeight);
   };
 
   useEffect(() => {
@@ -39,7 +46,7 @@ function Hamburger() {
         opacity: 0,
         delay: 0.3,
         stagger: 0.2,
-        duration: 0.05,
+        duration: 0.2,
         transition: "all .3s cubic-bezier(0.455, 0.03, 0.515, 0.955)",
       });
     }
@@ -48,17 +55,17 @@ function Hamburger() {
         x: 100,
         opacity: 0,
         stagger: 0.2,
-        duration: 0.05,
+        duration: 0.2,
         transition: "all .3s cubic-bezier(0.455, 0.03, 0.515, 0.955)",
       });
       gsap.to(".icon", {
         scale: 1,
-        delay: 0.8,
+        delay: 1,
         duration: 0.3,
       });
       gsap.to(".tab-list", {
         right: "-360px",
-        delay: 0.5,
+        delay: 0.8,
       });
     }
   });
@@ -94,6 +101,9 @@ function Hamburger() {
             className="bg-links"
             onMouseEnter={linksUp}
             onMouseLeave={linksDown}
+            onClick={() => {
+              toAbout();
+            }}
           >
             ABOUT
           </SlideLink>
@@ -101,6 +111,9 @@ function Hamburger() {
             className="bg-links"
             onMouseEnter={linksUp}
             onMouseLeave={linksDown}
+            onClick={() => {
+              toProjects();
+            }}
           >
             PROJECTS
           </SlideLink>
@@ -113,6 +126,9 @@ function Hamburger() {
             CONTACT
           </SlideLink>
           <SlideLink
+            to={resume}
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-links"
             onMouseEnter={linksUp}
             onMouseLeave={linksDown}
@@ -137,7 +153,6 @@ const Cluster = styled.div`
   border-radius: 50%;
   height: 60px;
   display: none;
-  box-shadow: rgba(87, 87, 87, 0.288) 0px 7px 29px 0px;
 
   @media screen and (max-width: 750px) {
     display: block;
@@ -154,6 +169,7 @@ const Cluster = styled.div`
     gap: 5px;
     width: 100%;
     height: 100%;
+    box-shadow: rgb(87, 87, 87, 0.288) 0px 7px 29px 0px;
     .one {
       transform: translateX(-3px);
       transition: all 0.2s ease-in-out;
@@ -265,6 +281,10 @@ const SlideLink = styled(Link)`
     color: #178582;
     transform: translateY(-10px);
     transition: all 0.2s ease-in-out;
+  }
+  a {
+    color: currentColor;
+    text-decoration: none;
   }
 `;
 export default Hamburger;

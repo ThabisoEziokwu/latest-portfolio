@@ -16,6 +16,7 @@ import { RiExternalLinkLine, RiGithubLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import UpReveal from "../utils/UpReveal";
 import laptopPic from "../assets/images/billetteLaptop.png";
+import gsap from "gsap";
 
 function Projects() {
   const blockRef = useRef();
@@ -28,10 +29,19 @@ function Projects() {
       console.log("It works");
     }
   });
-  const [ref, inView] = useInView({});
+  const [ref, inView] = useInView({
+    threshold: 0.5,
+  });
   useEffect(() => {
     if (inView) {
-      return;
+      gsap.to(".carol", {
+        opacity: 1,
+      });
+    }
+    if (!inView) {
+      gsap.to(".carol", {
+        opacity: 0,
+      });
     }
   });
 
@@ -83,14 +93,16 @@ function Projects() {
           </div>
         </div>
 
-        <div className="new">
+        <div className="carol" ref={ref}>
           <PicCaro
             bigPic={BigPic}
             smallPicOne={smallPicOne}
             smallPicTwo={smallPicTwo}
           />
           {/* <Laptop backImage={laptopBackground} animate={false} /> */}
-          <LapPic src={laptopPic} />
+        </div>
+        <div className="newp">
+          <LapPic src={laptopPic} alt="rghepix" />
         </div>
 
         <div className="phone-area">
@@ -125,7 +137,15 @@ const Works = styled.div`
     width: 100%;
     height: 100%;
 
-    .new {
+    .carol {
+      width: 100%;
+      height: fit-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none;
+    }
+    .newp {
       width: 100%;
       height: fit-content;
       display: flex;
@@ -250,12 +270,12 @@ const ProjectName = styled.h1`
   }
   @media screen and (max-width: 500px) {
     font-size: 2.2em;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     width: 95%;
   }
   @media screen and (max-width: 380px) {
     font-size: 2.2em;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
   }
 `;
 const Listing = styled.div`

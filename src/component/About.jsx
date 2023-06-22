@@ -300,7 +300,9 @@ const Intro = styled.div`
           position: absolute;
           top: 0;
           left: 0;
-          height: 100%;
+          max-height: 70vh;
+          min-height: 500px;
+          border-radius: 20px;
           width: 100%;
           background-color: #0a0a0a;
           opacity: 1;

@@ -10,7 +10,7 @@ import Hamburger from "./Hamburger";
 import { useEffect } from "react";
 import gsap from "gsap";
 
-function NavBar({ showLogo }) {
+function NavBar({ showLogo, aboutHeight, projectHeight }) {
   // const logoGo = useAnimation();
   // const nameCome = useAnimation();
   // const handleLogohover = () => {
@@ -102,7 +102,7 @@ function NavBar({ showLogo }) {
             </a>
           </p>
         </motion.div>
-        <Hamburger />
+        <Hamburger projectHeight={projectHeight} aboutHeight={aboutHeight} />
       </Nav>
     </div>
   );

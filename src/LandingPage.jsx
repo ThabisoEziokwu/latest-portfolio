@@ -28,7 +28,11 @@ function LandingPage() {
         navFooter={navFooter}
         navAbout={navAbout}
       />
-      <NavBar showLogo={showLogo} />
+      <NavBar
+        showLogo={showLogo}
+        aboutHeight={aboutHeight}
+        projectHeight={projectHeight}
+      />
       <Hero />
       <About setaboutHeight={setaboutHeight} setNavAbout={setNavAbout} />
       <div className="projects">

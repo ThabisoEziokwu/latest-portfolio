@@ -3,32 +3,40 @@ import styled from "styled-components";
 import gsap from "gsap";
 
 function PicCaro({ bigPic, smallPicOne, smallPicTwo }) {
-  const picRef = useRef(null);
+  const picRef = useRef();
   useEffect(() => {
-    const handlePicResize = () => {
-      const nviewportHeight = window.innerHeight;
-      const divContainer = picRef.current;
-      const { top } = divContainer.getBoundingClientRect();
-      const topDistance = top + pageYOffset;
+    if (picRef.current) {
+      const fromTheTop = () => {
+        const divContainer = picRef.current;
+        const { top } = divContainer.getBoundingClientRect();
+        const topDistanceNumber = top + pageYOffset;
+        return topDistanceNumber;
+      };
+      const topDistanceNumber = fromTheTop();
+      const handlePicResize = () => {
+        const nviewportHeight = window.innerHeight;
 
-      const scrollLevel =
-        window.pageYOffset || document.documentElement.scrollTop;
+        const scrollLevel =
+          window.pageYOffset || document.documentElement.scrollTop;
 
-      let scrollValue =
-        ((topDistance - scrollLevel) / nviewportHeight - 1) * 200;
+        let scrollValue =
+          ((topDistanceNumber - scrollLevel) / nviewportHeight - 1) * 200;
 
-      // Make the scroll effect start when element enters the viewport a
-      if (
-        topDistance - scrollLevel < nviewportHeight &&
-        scrollLevel - topDistance < nviewportHeight - 400
-      ) {
-        gsap.to(".picscreen", {
-          backgroundPosition: `center ${scrollValue}px`,
-          duration: 1,
-        });
-      }
-    };
-    document.addEventListener("scroll", handlePicResize);
+        // Make the scroll effect start when element enters the viewport a
+        if (
+          topDistanceNumber - scrollLevel < nviewportHeight + 100 &&
+          scrollLevel - topDistanceNumber < nviewportHeight - 400
+        ) {
+          gsap.to(".picscreen", {
+            backgroundPosition: `center ${scrollValue}px`,
+            duration: 0.1,
+          });
+        }
+      };
+      document.addEventListener("scroll", handlePicResize);
+    } else {
+      return;
+    }
   }, []);
   return (
     <Carosel ref={picRef}>
@@ -66,6 +74,7 @@ const BigPic = styled.div`
   background-image: url(${(props) => props.background});
   background-size: cover;
   /* background-position: center 0px; */
+  border-radius: 10px;
 `;
 const SmallPic = styled.div`
   width: 49%;
@@ -73,6 +82,7 @@ const SmallPic = styled.div`
   background-color: aquamarine;
   background-image: url(${(props) => props.backgroundOne});
   background-size: cover;
+  border-radius: 10px;
   /* background-position: center 0px; */
 `;
 export default PicCaro;

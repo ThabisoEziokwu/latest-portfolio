@@ -22,6 +22,7 @@ function Hero() {
       gsap.to(".canvas-container", {
         opacity: 0,
         delay: 0.3,
+        duration: 1,
       });
     } else {
       // gsap.to(".hero-text", {
@@ -30,6 +31,7 @@ function Hero() {
       gsap.to(".canvas-container", {
         opacity: 1,
         delay: 0.3,
+        duration: 1,
       });
     }
   };
@@ -169,7 +171,7 @@ const ViewPort = styled.div`
         font-size: 100px;
         margin-bottom: 40px;
 
-        background: linear-gradient(180deg, #292929 10%, #5e5e63 90%);
+        background: linear-gradient(180deg, #292929 10%, #919194 90%);
         background-size: 50% auto;
         background-clip: text;
         -webkit-background-clip: text;
@@ -191,15 +193,15 @@ const ViewPort = styled.div`
           width: 95%;
         }
         @media screen and (max-width: 430px) {
-          font-size: 50px;
+          font-size: 55px;
           width: 95%;
         }
         @media screen and (max-width: 430px) {
-          font-size: 50px;
+          font-size: 55px;
           width: 100%;
         }
         @media screen and (max-width: 300px) {
-          font-size: 42px;
+          font-size: 45px;
           width: 100%;
         }
       }

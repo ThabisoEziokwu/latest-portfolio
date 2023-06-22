@@ -13,6 +13,7 @@
         width: 100%;
         top: 0;
         z-index: 999;
+        display: none;
       }
       .loader-blanket {
         position: absolute;
@@ -48,21 +49,7 @@
         color: white;
         font-family: "euclidLight";
       }
-      @media screen and (max-width: 750px) {
-        .mobile-alert {
-          display: block;
-        }
-      }
-      @media screen and (max-width: 500px) {
-        .mobile-alert p {
-          font-size: 13px;
-        }
-      }
-      @media screen and (max-width: 400px) {
-        .mobile-alert p {
-          font-size: 12px;
-        }
-      }
+
       .logo svg {
         width: 60px;
         animation: contAnimation 2s forwards infinite;
@@ -78,6 +65,24 @@
         stroke-dashoffset: 1100;
 
         animation: logoAnimation 2.3s linear forwards;
+      }
+      @media screen and (max-width: 750px) {
+        .mobile-alert {
+          display: block;
+        }
+      }
+      @media screen and (max-width: 500px) {
+        .mobile-alert p {
+          font-size: 13px;
+        }
+        .logo svg {
+          width: 45px;
+        }
+      }
+      @media screen and (max-width: 400px) {
+        .mobile-alert p {
+          font-size: 12px;
+        }
       }
       @keyframes logoAnimation {
         0% {

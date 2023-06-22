@@ -1,23 +1,22 @@
 import styled from "styled-components";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Laptop from "./Laptop";
-import { motion, useTransform, useScroll } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import laptopImage from "../assets/images/agentMeet.png";
 import AgentPhone from "./AgentPhone";
-import Iphone from "./Iphone";
 import UpReveal from "../utils/UpReveal";
 import Distance from "../utils/Distance";
 import PicCaro from "./PicCaro";
 import CaroPic from "../assets/images/agentMeet.png";
 import smallPicOne from "../assets/images/agentmeetGlass.jpg";
 import smallPicTwo from "../assets/images/ageentMeetSmall.png";
-import backG from "../assets/images/agentphone2.png";
 import realPhone from "../assets/images/agentPhoneReal-01.png";
 import { RiExternalLinkLine, RiGithubLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import gsap from "gsap";
 function Projects({ setprojectHeight }) {
   const blockRef = useRef();
   const { scrollYProgress } = useScroll({
@@ -45,16 +44,25 @@ function Projects({ setprojectHeight }) {
   {
     /* Code for initiating the sliding amination */
   }
-  const [ref, inView] = useInView({});
+  const [ref, inView] = useInView({
+    threshold: 0.5,
+  });
   useEffect(() => {
     if (inView) {
-      return;
+      gsap.to(".carousel", {
+        opacity: 1,
+      });
+    }
+    if (!inView) {
+      gsap.to(".carousel", {
+        opacity: 0,
+      });
     }
   });
   return (
     <Distance dist={setprojectHeight}>
       <Works ref={blockRef}>
-        <div className="container-md cont" ref={ref}>
+        <div className="container-md cont">
           <Listing>
             <div className="line"></div>
           </Listing>
@@ -103,11 +111,19 @@ function Projects({ setprojectHeight }) {
               </div>
             </div>
           </div>
-          <PicCaro
-            bigPic={CaroPic}
-            smallPicOne={smallPicOne}
-            smallPicTwo={smallPicTwo}
-          />
+          <div
+            className="carousel"
+            ref={ref}
+            style={{
+              opacity: "0",
+            }}
+          >
+            <PicCaro
+              bigPic={CaroPic}
+              smallPicOne={smallPicOne}
+              smallPicTwo={smallPicTwo}
+            />
+          </div>
 
           <Laptop backImage={laptopImage} animate={true} />
           <div className="phone-area">
@@ -267,13 +283,13 @@ const ProjectName = styled.h1`
   }
   @media screen and (max-width: 500px) {
     font-size: 2.2em;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     width: 95%;
   }
 
   @media screen and (max-width: 380px) {
     font-size: 2.2em;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
   }
 `;
 const Listing = styled.div`

@@ -13,7 +13,10 @@ import BigPic from "../assets/images/imageRaftTab.jpg";
 import smallPicOne from "../assets/images/imageRaftSmall.png";
 import smallPicTwo from "../assets/images/imageRaftSmallTwo.png";
 import { RiExternalLinkLine, RiGithubLine } from "react-icons/ri";
+import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
+import gsap from "gsap";
+import { useEffect } from "react";
 
 function Projects() {
   // const [animation, setAnimation] = useState(false);
@@ -43,6 +46,22 @@ function Projects() {
   {
     /* Code for initiating the sliding amination */
   }
+
+  const [ref, inView] = useInView({
+    threshold: 0.5,
+  });
+  useEffect(() => {
+    if (inView) {
+      gsap.to(".new", {
+        opacity: 1,
+      });
+    }
+    if (!inView) {
+      gsap.to(".new", {
+        opacity: 0,
+      });
+    }
+  });
   return (
     <Works ref={blockRef}>
       <div className="container-md cont">
@@ -93,7 +112,7 @@ function Projects() {
             </div>
           </div>
         </div>
-        <div className="new">
+        <div className="new" ref={ref}>
           <PicCaro
             bigPic={BigPic}
             smallPicOne={smallPicOne}
@@ -273,12 +292,12 @@ const ProjectName = styled.h1`
   }
   @media screen and (max-width: 500px) {
     font-size: 2.2em;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     width: 95%;
   }
   @media screen and (max-width: 380px) {
     font-size: 2.2em;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
   }
 `;
 const Listing = styled.div`
