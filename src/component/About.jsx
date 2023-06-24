@@ -105,7 +105,7 @@ function About({ setaboutHeight, setNavAbout }) {
             </Suspense>
           </Canvas>
           <div className="spinnig__container">
-            <SpinningTextSmall text={"ABOLAJI TEMITOPE * DEVELOPER * "} />
+            <SpinningTextSmall text={"ABOLAJI TEMITOPE • DEVELOPER • "} />
           </div>
         </div>
         <div className="canva-container" ref={ref}>

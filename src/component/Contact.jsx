@@ -9,6 +9,7 @@ import { useEffect } from "react";
 
 function Contact() {
   useEffect(() => {
+    document.title = "Contact • Temitope Abolaji";
     window.scrollTo(0, 0);
   }, []);
   return (

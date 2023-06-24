@@ -42,7 +42,6 @@ const BigPic = styled.div`
 const SmallPic = styled.div`
   width: 49%;
   height: 100%;
-  background-color: aquamarine;
   background-image: url(${(props) => props.backgroundOne});
   background-size: cover;
   border-radius: 8px;

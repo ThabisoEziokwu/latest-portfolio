@@ -12,7 +12,9 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 function LandingPage() {
-  useEffect(() => {});
+  useEffect(() => {
+    document.title = "Temitope Abolaji • web developer";
+  });
 
   const [navFooter, setNavFooter] = useState(false);
   const [navAbout, setNavAbout] = useState(false);

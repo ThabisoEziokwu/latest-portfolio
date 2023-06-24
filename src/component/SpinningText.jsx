@@ -4,7 +4,7 @@ import logo from "../assets/images/portfolioLogoGrey.png";
 import { useRef } from "react";
 function SpinningText() {
   const ref = useRef(null);
-  const words = " ABOLAJI TOPE * WEB DEVELOPER * 3D ARTIST *";
+  const words = " ABOLAJI TOPE • WEB DEVELOPER • 3D ARTIST •";
   useEffect(() => {
     const containerRef = ref.current;
     const textElement = containerRef.querySelectorAll(".chara");

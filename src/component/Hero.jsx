@@ -176,6 +176,14 @@ const ViewPort = styled.div`
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        @media screen and (max-width: 750px) {
+          background: #292929;
+          color: #292929;
+          background-size: 50% auto;
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
 
         span {
           font-family: "euclidBold";
