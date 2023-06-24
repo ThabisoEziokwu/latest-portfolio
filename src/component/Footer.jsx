@@ -141,7 +141,6 @@ const Foot = styled.div`
     gap: 5px;
     z-index: 0;
     opacity: 0;
-
     .press {
       width: 700px;
       margin-bottom: 90px;

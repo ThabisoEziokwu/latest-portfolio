@@ -7,6 +7,7 @@ import ImageRaft from "./component/ImageRaft";
 import Billette from "./component/Billette";
 import SideNav from "./component/SideNav";
 import Footer from "./component/Footer";
+import SpinningText from "./component/SpinningText";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
@@ -34,6 +35,12 @@ function LandingPage() {
         projectHeight={projectHeight}
       />
       <Hero />
+      <Line>
+        <div className="line"></div>
+        <div className="spinning__container">
+          <SpinningText />
+        </div>
+      </Line>
       <About setaboutHeight={setaboutHeight} setNavAbout={setNavAbout} />
       <div className="projects">
         <Head className="container-sm">
@@ -48,7 +55,6 @@ function LandingPage() {
         setNavFooter={setNavFooter}
         setShowLogo={setShowLogo}
       />
-
       <CurtainIN
         initial={{ x: 0 }}
         animate={{
@@ -163,6 +169,32 @@ const CurtainOUT = styled(motion.div)`
     color: white;
     font-family: "euclidLight";
     opacity: 0;
+  }
+`;
+const Line = styled.div`
+  width: 100%;
+  padding: 30px;
+  position: relative;
+  pointer-events: none;
+  @media screen and (max-width: 750px) {
+    display: none;
+  }
+  .spinning__container {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    justify-content: end;
+    padding-right: 80px;
+  }
+  .line {
+    height: 1px;
+    width: 90%;
+    margin: auto;
+    background-color: #b1b1b1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 `;
 export default LandingPage;

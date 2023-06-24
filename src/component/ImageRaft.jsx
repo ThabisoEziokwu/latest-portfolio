@@ -12,6 +12,7 @@ import PicCaro from "./PicCaro";
 import BigPic from "../assets/images/imageRaftTab.jpg";
 import smallPicOne from "../assets/images/imageRaftSmall.png";
 import smallPicTwo from "../assets/images/imageRaftSmallTwo.png";
+import arrow from "../assets/images/arrowBlack-01.png";
 import { RiExternalLinkLine, RiGithubLine } from "react-icons/ri";
 import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
@@ -47,21 +48,6 @@ function Projects() {
     /* Code for initiating the sliding amination */
   }
 
-  const [ref, inView] = useInView({
-    threshold: 0.5,
-  });
-  useEffect(() => {
-    if (inView) {
-      gsap.to(".new", {
-        opacity: 1,
-      });
-    }
-    if (!inView) {
-      gsap.to(".new", {
-        opacity: 0,
-      });
-    }
-  });
   return (
     <Works ref={blockRef}>
       <div className="container-md cont">
@@ -71,7 +57,10 @@ function Projects() {
         <div className="row description-row">
           <div className="col-lg-7">
             <UpReveal threshold={0.5}>
-              <ProjectName>imageRaft</ProjectName>
+              <ProjectName>
+                <img src={arrow} alt="" className="arrow" />
+                imageRaft
+              </ProjectName>
             </UpReveal>
           </div>
           <div className="col-lg-5">
@@ -112,7 +101,7 @@ function Projects() {
             </div>
           </div>
         </div>
-        <div className="new" ref={ref}>
+        <div className="new">
           <PicCaro
             bigPic={BigPic}
             smallPicOne={smallPicOne}
@@ -298,6 +287,24 @@ const ProjectName = styled.h1`
   @media screen and (max-width: 380px) {
     font-size: 2.2em;
     margin-bottom: 15px;
+  }
+  img.arrow {
+    width: 15px;
+    position: absolute;
+    right: 40px;
+    top: -20px;
+    @media screen and (max-width: 1300px) {
+      right: 0px;
+    }
+    @media screen and (max-width: 990px) {
+      right: 40px;
+    }
+    @media screen and (max-width: 650px) {
+      right: 0px;
+      left: 220px;
+      top: -20px;
+      width: 12px;
+    }
   }
 `;
 const Listing = styled.div`

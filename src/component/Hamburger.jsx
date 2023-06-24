@@ -47,7 +47,6 @@ function Hamburger({ aboutHeight, projectHeight }) {
         delay: 0.3,
         stagger: 0.2,
         duration: 0.2,
-        transition: "all .3s cubic-bezier(0.455, 0.03, 0.515, 0.955)",
       });
     }
     if (!press) {
@@ -56,11 +55,10 @@ function Hamburger({ aboutHeight, projectHeight }) {
         opacity: 0,
         stagger: 0.2,
         duration: 0.2,
-        transition: "all .3s cubic-bezier(0.455, 0.03, 0.515, 0.955)",
       });
       gsap.to(".icon", {
         scale: 1,
-        delay: 1,
+        delay: 1.4,
         duration: 0.3,
       });
       gsap.to(".tab-list", {
@@ -253,7 +251,6 @@ const CloseIcon = styled.div`
   :hover {
     border: solid 2px #178582;
     transition: all 0.2s ease-in-out;
-    transition: all 0.3s cubic-bezier(0.895, 0.03, 0.685, 0.22);
   }
 
   .one {

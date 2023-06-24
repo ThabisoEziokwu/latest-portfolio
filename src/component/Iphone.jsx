@@ -10,34 +10,36 @@ function AgentPhone({ y, backGround }) {
   const phoneRef = useRef(null);
 
   useEffect(() => {
-    if (phoneRef.current) {
-      const theTop = () => {
-        const { top } = phoneRef.current.getBoundingClientRect();
-        const distance = top + pageYOffset;
-        return distance;
-      };
-      const distance = theTop();
-      const scrollEffect = () => {
-        const screenHeight = window.innerHeight;
+    setTimeout(() => {
+      if (phoneRef.current) {
+        const theTop = () => {
+          const { top } = phoneRef.current.getBoundingClientRect();
+          const thedistance = top + pageYOffset;
+          return thedistance;
+        };
+        const distance = theTop();
+        const scrollEffect = () => {
+          const screenHeight = window.innerHeight;
 
-        const phoneScrollPosition =
-          window.pageYOffset || document.documentElement.scrollTop;
+          const phoneScrollPosition =
+            window.pageYOffset || document.documentElement.scrollTop;
 
-        let scroll =
-          ((distance - phoneScrollPosition) / screenHeight - 1) * 150;
+          let scroll =
+            ((distance - phoneScrollPosition) / screenHeight - 1) * 200;
 
-        if (
-          distance - phoneScrollPosition < screenHeight + 500 &&
-          phoneScrollPosition - distance < screenHeight
-        ) {
-          gsap.to(".phone-screen", {
-            backgroundPosition: `center ${scroll}px`,
-            // duration: 0.6,
-          });
-        }
-      };
-      document.addEventListener("scroll", scrollEffect);
-    }
+          if (
+            distance - phoneScrollPosition < screenHeight + 500 &&
+            phoneScrollPosition - distance < screenHeight
+          ) {
+            gsap.to(".phone-screen", {
+              backgroundPosition: `center ${scroll}px`,
+              // duration: 0.5,
+            });
+          }
+        };
+        document.addEventListener("scroll", scrollEffect);
+      }
+    }, 2000);
   }, []);
   return (
     <Phone

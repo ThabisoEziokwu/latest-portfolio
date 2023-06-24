@@ -8,37 +8,39 @@ function Ipad({ backImg, header }) {
   const padRef = useRef(null);
 
   useEffect(() => {
-    if (padRef.current) {
-      const topValue = () => {
-        const padContainer = padRef.current;
-        const { top } = padContainer.getBoundingClientRect();
-        const topDistanceValue = top + pageYOffset;
-        return topDistanceValue;
-      };
-      const topDistanceValue = topValue();
-      const handlePadResize = () => {
-        const viewportHeight = window.innerHeight;
+    setTimeout(() => {
+      if (padRef.current) {
+        const topValue = () => {
+          const padContainer = padRef.current;
+          const { top } = padContainer.getBoundingClientRect();
+          const topDistanceValue = top + pageYOffset;
+          return topDistanceValue;
+        };
+        const topDistanceValue = topValue();
+        const handlePadResize = () => {
+          const viewportHeight = window.innerHeight;
 
-        const padScrollPosition =
-          window.pageYOffset || document.documentElement.scrollTop;
+          const padScrollPosition =
+            window.pageYOffset || document.documentElement.scrollTop;
 
-        let scrollMovement =
-          ((topDistanceValue - padScrollPosition) / viewportHeight - 1) * 200;
+          let scrollMovement =
+            ((topDistanceValue - padScrollPosition) / viewportHeight - 1) * 200;
 
-        // Make the scroll effect start when element enters the viewport
-        if (
-          topDistanceValue - padScrollPosition < viewportHeight + 500 &&
-          padScrollPosition - topDistanceValue < viewportHeight
-        ) {
-          gsap.to(".tab-screen", {
-            backgroundPosition: `center ${scrollMovement}px`,
-            duration: 0.5,
-          });
-        }
-      };
+          // Make the scroll effect start when element enters the viewport
+          if (
+            topDistanceValue - padScrollPosition < viewportHeight + 500 &&
+            padScrollPosition - topDistanceValue < viewportHeight
+          ) {
+            gsap.to(".tab-screen", {
+              backgroundPosition: `center ${scrollMovement}px`,
+              duration: 0.5,
+            });
+          }
+        };
 
-      document.addEventListener("scroll", handlePadResize);
-    }
+        document.addEventListener("scroll", handlePadResize);
+      }
+    }, 2000);
   }, []);
   return (
     <Pad ref={padRef}>

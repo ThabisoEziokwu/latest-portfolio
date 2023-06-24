@@ -5,8 +5,12 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import logo from "../assets/images/portfolioLogoWhite.png";
 import arrow from "../assets/images/arrowWhite-01.png";
+import { useEffect } from "react";
 
 function Contact() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <Contacts>
       <div className="container-sm" style={{ marginBottom: "60px" }}>

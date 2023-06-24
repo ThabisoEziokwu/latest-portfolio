@@ -10,29 +10,34 @@ function AgentPhone({ y }) {
   const phoneRef = useRef(null);
 
   useEffect(() => {
-    const scrollEffect = () => {
-      if (phoneRef.current) {
-        const screenHeight = window.innerHeight;
+    if (phoneRef.current) {
+      const Top = () => {
         const { top } = phoneRef.current.getBoundingClientRect();
-        const distance = top + pageYOffset;
+        const distancee = top + pageYOffset;
+        return distancee;
+      };
+      const distances = Top();
+      const scrollEffect = () => {
+        const screenHeight = window.innerHeight;
 
-        const phoneScrollPosition =
+        const phoneScrollPosition2 =
           window.pageYOffset || document.documentElement.scrollTop;
 
-        let scroll = ((distance - phoneScrollPosition) / screenHeight - 1) * 80;
+        let scroll2 =
+          ((distances - phoneScrollPosition2) / screenHeight - 1) * 80;
 
         if (
-          distance - phoneScrollPosition < screenHeight + 500 &&
-          phoneScrollPosition - distance < screenHeight
+          distances - phoneScrollPosition2 < screenHeight + 500 &&
+          phoneScrollPosition2 - distances < screenHeight
         ) {
           gsap.to(".phone-screen", {
-            backgroundPosition: `center ${scroll}px`,
+            backgroundPosition: `center ${scroll2}px`,
             duration: 0.6,
           });
         }
-      }
+      };
       document.addEventListener("scroll", scrollEffect);
-    };
+    }
   }, []);
   return (
     <Phone

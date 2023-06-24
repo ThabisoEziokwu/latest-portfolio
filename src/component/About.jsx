@@ -12,6 +12,7 @@ import * as THREE from "three";
 import gsap from "gsap";
 import cursor from "../assets/images/cursor-01.png";
 import { TbPointFilled } from "react-icons/tb";
+import SpinningTextSmall from "./SpinningTextSmall";
 
 function About({ setaboutHeight, setNavAbout }) {
   const lightRef = useRef();
@@ -103,6 +104,9 @@ function About({ setaboutHeight, setNavAbout }) {
               </Environment>
             </Suspense>
           </Canvas>
+          <div className="spinnig__container">
+            <SpinningTextSmall text={"ABOLAJI TEMITOPE * DEVELOPER * "} />
+          </div>
         </div>
         <div className="canva-container" ref={ref}>
           <div className="model-container">
@@ -232,17 +236,22 @@ const Intro = styled.div`
     width: 95%;
     margin: 0px auto;
     margin-bottom: 50px;
+    position: relative;
     @media screen and (max-width: 750px) {
-      display: none;
+      display: block;
       width: 90%;
     }
     @media screen and (max-width: 700px) {
-      display: none;
     }
     @media screen and (max-width: 550px) {
-      display: none;
       width: 95%;
       height: 320px;
+    }
+    .spinnig__container {
+      position: absolute;
+      bottom: -45px;
+      right: -5px;
+      z-index: 2;
     }
 
     #model-canvas2 {

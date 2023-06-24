@@ -3,20 +3,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Laptop from "./Laptop";
 import { motion, useScroll } from "framer-motion";
 import { useRef } from "react";
-import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
 import laptopImage from "../assets/images/agentMeet.png";
 import AgentPhone from "./AgentPhone";
 import UpReveal from "../utils/UpReveal";
 import Distance from "../utils/Distance";
 import PicCaro from "./PicCaro";
-import CaroPic from "../assets/images/agentMeet.png";
+import CaroPic from "../assets/images/agentMeetBig.png";
 import smallPicOne from "../assets/images/agentmeetGlass.jpg";
 import smallPicTwo from "../assets/images/ageentMeetSmall.png";
 import realPhone from "../assets/images/agentPhoneReal-01.png";
+import arrow from "../assets/images/arrowBlack-01.png";
 import { RiExternalLinkLine, RiGithubLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
-import gsap from "gsap";
 function Projects({ setprojectHeight }) {
   const blockRef = useRef();
   const { scrollYProgress } = useScroll({
@@ -44,21 +42,7 @@ function Projects({ setprojectHeight }) {
   {
     /* Code for initiating the sliding amination */
   }
-  const [ref, inView] = useInView({
-    threshold: 0.5,
-  });
-  useEffect(() => {
-    if (inView) {
-      gsap.to(".carousel", {
-        opacity: 1,
-      });
-    }
-    if (!inView) {
-      gsap.to(".carousel", {
-        opacity: 0,
-      });
-    }
-  });
+
   return (
     <Distance dist={setprojectHeight}>
       <Works ref={blockRef}>
@@ -69,7 +53,10 @@ function Projects({ setprojectHeight }) {
           <div className="row description-row">
             <div className="col-lg-7">
               <UpReveal threshold={0.5}>
-                <ProjectName>AgentMeet</ProjectName>
+                <ProjectName>
+                  <img src={arrow} alt="" className="arrow" />
+                  AgentMeet
+                </ProjectName>
               </UpReveal>
             </div>
             <div className="col-lg-5">
@@ -111,13 +98,7 @@ function Projects({ setprojectHeight }) {
               </div>
             </div>
           </div>
-          <div
-            className="carousel"
-            ref={ref}
-            style={{
-              opacity: "0",
-            }}
-          >
+          <div className="carousel">
             <PicCaro
               bigPic={CaroPic}
               smallPicOne={smallPicOne}
@@ -290,6 +271,24 @@ const ProjectName = styled.h1`
   @media screen and (max-width: 380px) {
     font-size: 2.2em;
     margin-bottom: 15px;
+  }
+  img.arrow {
+    width: 15px;
+    position: absolute;
+    right: 40px;
+    top: -20px;
+    @media screen and (max-width: 1300px) {
+      right: 0px;
+    }
+    @media screen and (max-width: 990px) {
+      right: 40px;
+    }
+    @media screen and (max-width: 650px) {
+      right: 0px;
+      left: 220px;
+      top: -20px;
+      width: 12px;
+    }
   }
 `;
 const Listing = styled.div`

@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Ipad from "./Ipad";
-import Laptop from "./Laptop";
-import laptopBackground from "../assets/images/billetteLaptop.jpg";
 import tabBackground from "../assets/images/billette.jpg";
 import { motion, useScroll } from "framer-motion";
 import { useRef } from "react";
@@ -16,6 +14,7 @@ import { RiExternalLinkLine, RiGithubLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import UpReveal from "../utils/UpReveal";
 import laptopPic from "../assets/images/billetteLaptop.png";
+import arrow from "../assets/images/arrowBlack-01.png";
 import gsap from "gsap";
 
 function Projects() {
@@ -29,32 +28,19 @@ function Projects() {
       console.log("It works");
     }
   });
-  const [ref, inView] = useInView({
-    threshold: 0.5,
-  });
-  useEffect(() => {
-    if (inView) {
-      gsap.to(".carol", {
-        opacity: 1,
-      });
-    }
-    if (!inView) {
-      gsap.to(".carol", {
-        opacity: 0,
-      });
-    }
-  });
-
   return (
     <Works ref={blockRef}>
-      <div className="container-md cont" ref={ref}>
+      <div className="container-md cont">
         <Listing>
           <div className="line"></div>
         </Listing>
         <div className="row description-row">
           <div className="col-lg-7">
             <UpReveal threshold={0.5}>
-              <ProjectName>Billette</ProjectName>
+              <ProjectName>
+                <img src={arrow} alt="" className="arrow" />
+                Billette
+              </ProjectName>
             </UpReveal>
           </div>
           <div className="col-lg-5">
@@ -93,7 +79,7 @@ function Projects() {
           </div>
         </div>
 
-        <div className="carol" ref={ref}>
+        <div className="carol">
           <PicCaro
             bigPic={BigPic}
             smallPicOne={smallPicOne}
@@ -102,7 +88,7 @@ function Projects() {
           {/* <Laptop backImage={laptopBackground} animate={false} /> */}
         </div>
         <div className="newp">
-          <LapPic src={laptopPic} alt="rghepix" />
+          <LapPic src={laptopPic} />
         </div>
 
         <div className="phone-area">
@@ -276,6 +262,24 @@ const ProjectName = styled.h1`
   @media screen and (max-width: 380px) {
     font-size: 2.2em;
     margin-bottom: 15px;
+  }
+  img.arrow {
+    width: 15px;
+    position: absolute;
+    right: 40px;
+    top: -20px;
+    @media screen and (max-width: 1300px) {
+      right: 0px;
+    }
+    @media screen and (max-width: 990px) {
+      right: 40px;
+    }
+    @media screen and (max-width: 650px) {
+      right: 0px;
+      left: 220px;
+      top: -20px;
+      width: 12px;
+    }
   }
 `;
 const Listing = styled.div`
