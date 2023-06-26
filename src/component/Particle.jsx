@@ -51,7 +51,7 @@ function Particle() {
           <pointsMaterial
             args={[
               {
-                size: 0.03,
+                size: 0.02,
                 color: "#686868",
                 map: starTexture,
                 transparent: true,

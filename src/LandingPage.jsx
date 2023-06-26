@@ -36,7 +36,7 @@ function LandingPage() {
         aboutHeight={aboutHeight}
         projectHeight={projectHeight}
       />
-      <Hero />
+      <Hero contactHeight={contactHeight} />
       <Line>
         <div className="line"></div>
         <div className="spinning__container">
@@ -152,6 +152,9 @@ const CurtainIN = styled(motion.div)`
     font-size: 35px;
     color: white;
     font-family: "euclidLight";
+    @media screen and (max-width: 600px) {
+      font-size: 20px;
+    }
   }
 `;
 const CurtainOUT = styled(motion.div)`
@@ -171,6 +174,9 @@ const CurtainOUT = styled(motion.div)`
     color: white;
     font-family: "euclidLight";
     opacity: 0;
+    @media screen and (max-width: 600px) {
+      font-size: 20px;
+    }
   }
 `;
 const Line = styled.div`

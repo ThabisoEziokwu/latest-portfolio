@@ -8,8 +8,12 @@ import { Canvas } from "@react-three/fiber";
 import gsap from "gsap";
 import Particle from "./Particle";
 
-function Hero() {
+function Hero({ contactHeight }) {
   const topLevel = 0;
+
+  const handleClick = () => {
+    window.scrollTo(0, contactHeight);
+  };
   const handleScroll = () => {
     const currentScrollposition =
       window.pageYOffset || document.documentElement.scrollTop;
@@ -68,7 +72,11 @@ function Hero() {
               I transform <span>ideas</span> into visually striking{" "}
               <span>web solution</span>.
             </h1>
-            <motion.div>
+            <motion.div
+              onClick={() => {
+                handleClick();
+              }}
+            >
               <Button>Let&apos;s do this</Button>
             </motion.div>
           </div>
@@ -111,6 +119,9 @@ const ViewPort = styled.div`
     top: 0;
     left: 0;
     /* z-index: -1; */
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
   }
 
   #hero-canvas {

@@ -36,8 +36,12 @@ function Contact() {
                 <p>CONTACT DETAILS</p>
               </div>
               <div className="bottom">
-                <p>td.bolaji@gmail.com</p>
-                <p>+234 811 342 0013</p>
+                <p>
+                  <a href="mailto:td.bolaji@gmail.com">td.bolaji@gmail.com</a>
+                </p>
+                <p>
+                  <a href="tel:+2348113420013">+234 811 342 0013</a>
+                </p>
               </div>
             </div>
             <div className="box">
@@ -45,10 +49,28 @@ function Contact() {
                 <p>SOCIALS</p>
               </div>
               <div className="bottom">
-                <p>LinkedIn</p>
-                <p>instagram</p>
-                <p>Twitter</p>
-                <p>GitHub</p>
+                <SocLinks to={"/contact"}>LinkedIn</SocLinks>
+                <SocLinks
+                  to={"https://instagram.com/hayinla_"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  instagram
+                </SocLinks>
+                <SocLinks
+                  to={"https://twitter.com/td_bolaji?s=21"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Twitter
+                </SocLinks>
+                <SocLinks
+                  to={"https://github.com/topghostly/"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub
+                </SocLinks>
               </div>
             </div>
           </div>
@@ -242,6 +264,17 @@ const Contacts = styled.div`
         font-family: "euclidRegular";
         color: white;
         margin-bottom: 4px;
+
+        a {
+          color: white;
+          text-decoration: none;
+          transition: all 0.2s ease-in-out;
+
+          :hover {
+            color: #178582;
+            transition: all 0.2s ease-in-out;
+          }
+        }
         @media screen and (max-width: 767px) {
           font-size: 16px;
         }
@@ -389,6 +422,9 @@ const Curtain = styled(motion.div)`
     color: white;
     font-family: "euclidLight";
     opacity: 0;
+    @media screen and (max-width: 600px) {
+      font-size: 20px;
+    }
   }
 `;
 const CurtainIN = styled(motion.div)`
@@ -407,6 +443,9 @@ const CurtainIN = styled(motion.div)`
     font-size: 35px;
     color: white;
     font-family: "euclidLight";
+    @media screen and (max-width: 600px) {
+      font-size: 20px;
+    }
   }
 `;
 const FullTop = styled.h1`
@@ -461,6 +500,23 @@ const SLink = styled(Link)`
   }
   @media screen and (max-width: 750px) {
     display: block;
+  }
+`;
+const SocLinks = styled(Link)`
+  color: #f2f2f2;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  display: block;
+  font-size: 14px;
+  font-family: "euclidRegular";
+  margin-bottom: 4px;
+  @media screen and (max-width: 767px) {
+    font-size: 16px;
+  }
+
+  :hover {
+    color: #178582;
+    transition: all 0.2s ease-in-out;
   }
 `;
 export default Contact;
