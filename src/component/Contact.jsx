@@ -49,7 +49,7 @@ function Contact() {
                 <p>SOCIALS</p>
               </div>
               <div className="bottom">
-                <SocLinks to={"/contact"}>LinkedIn</SocLinks>
+                <SocLinks to={"https://www.linkedin.com/in/temitope-abolaji-frontend/"}>LinkedIn</SocLinks>
                 <SocLinks
                   to={"https://instagram.com/hayinla_"}
                   target="_blank"
