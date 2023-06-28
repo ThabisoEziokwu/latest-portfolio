@@ -1,17 +1,54 @@
 import styled from "styled-components";
+import AlertMessage from "./AlertMessage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import profilePic from "../assets/images/profilePic.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import logo from "../assets/images/portfolioLogoWhite.png";
 import arrow from "../assets/images/arrowWhite-01.png";
 import { useEffect } from "react";
+import { useState } from "react";
 
 function Contact() {
+  const navigate = useNavigate();
   useEffect(() => {
     document.title = "Contact • Temitope Abolaji";
     window.scrollTo(0, 0);
   }, []);
+  const [form, setForm] = useState({});
+
+  const getDetails = (event) => {
+    setForm({ ...form, [event.target.name]: event.target.value });
+  };
+  const sendMail = (e) => {
+    e.preventDefault();
+    const alert = document.querySelector(".alert");
+    const config = {
+      // Host: "smtp.elasticemail.com",
+      // Username: "td.bolaji@gmail.com",
+      // Password: "393688EDF095A404F5EC7ECE21FC82E616B3",
+      SecureToken: "30a059ec-0d45-45c1-b5d7-3482fd62d2c4",
+      To: "topghostly@gmail.com",
+      From: "topghostly@gmail.com",
+      Subject: "New portfolio message",
+      Body: `Name: ${form.name}, Email: ${form.mail}, Service: ${form.service}, Other Message: ${form.message}`,
+      // Port: "2525",
+    };
+    if (window.Email) {
+      window.Email.send(config)
+        .then((message) => {
+          console.log(message);
+          alert.style.display = "block";
+          setTimeout(() => {
+            navigate("/");
+          }, 2000);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
   return (
     <Contacts>
       <div className="container-sm" style={{ marginBottom: "60px" }}>
@@ -49,7 +86,11 @@ function Contact() {
                 <p>SOCIALS</p>
               </div>
               <div className="bottom">
-                <SocLinks to={"https://www.linkedin.com/in/temitope-abolaji-frontend/"}>LinkedIn</SocLinks>
+                <SocLinks
+                  to={"https://www.linkedin.com/in/temitope-abolaji-frontend/"}
+                >
+                  LinkedIn
+                </SocLinks>
                 <SocLinks
                   to={"https://instagram.com/hayinla_"}
                   target="_blank"
@@ -76,7 +117,7 @@ function Contact() {
           </div>
           <div className="col-md-8">
             <Head>Start a conversation</Head>
-            <form action="" method="post" className="contact-form">
+            <form onSubmit={sendMail} className="contact-form">
               <Form>
                 <div className="sn">
                   <p>01</p>
@@ -89,6 +130,8 @@ function Contact() {
                     type="text"
                     placeholder="Seun Daniel *"
                     name="name"
+                    onChange={getDetails}
+                    value={form.name}
                     required
                   />
                 </div>
@@ -105,6 +148,7 @@ function Contact() {
                     type="text"
                     placeholder="seun@daniel.com *"
                     name="mail"
+                    onChange={getDetails}
                     required
                   />
                 </div>
@@ -119,9 +163,10 @@ function Contact() {
                   </label>
                   <input
                     type="text"
-                    placeholder="3D Model, Web Development ... *"
+                    placeholder="3D Model, Web Development ... "
                     name="service"
-                    required
+                    onChange={getDetails}
+                    // required
                   />
                 </div>
               </Form>
@@ -137,6 +182,7 @@ function Contact() {
                     type="text"
                     placeholder="Hey Tope, I found your ... *"
                     name="message"
+                    onChange={getDetails}
                     required
                   />
                 </div>
@@ -151,6 +197,21 @@ function Contact() {
       <SideNav>
         <SideLink to={"/"}>HOME</SideLink>
       </SideNav>
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: 5,
+        }}
+        animate={{
+          opacity: 1,
+          duration: 10,
+          y: 0,
+        }}
+        className="alert"
+      >
+        <AlertMessage type={"success"} mssg={"Message sent🎉"} />
+      </motion.div>
+
       <Curtain
         initial={{ x: 0 }}
         animate={{}}
@@ -213,6 +274,12 @@ const Contacts = styled.div`
   background-color: #292929;
   color: white;
   overflow-x: hidden;
+  overflow-y: hidden;
+
+  .alert {
+    display: none;
+    opacity: 0;
+  }
   .arrow {
     width: 80%;
     height: 20px;

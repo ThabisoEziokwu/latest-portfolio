@@ -46,19 +46,13 @@ function Hero({ contactHeight }) {
     offset: ["end end", "end start"],
   });
   const y_para = useTransform(scrollYProgress, [0, 1], [0, 300]);
-  // const y_head = useTransform(scrollYProgress, [0, 0.35], [0, -500]);
 
   return (
     <ViewPort ref={heroRef}>
       <div className="container-md">
         <div className="flex-cont">
           <div className="hero-text">
-            <motion.div
-              style={{
-                y: y_para,
-              }}
-              className="first-text"
-            >
+            <motion.div className="first-text">
               <motion.p
                 style={{
                   fontFamily: "euclidMedium",
