@@ -58,7 +58,7 @@ function Projects() {
           <div className="col-lg-7">
             <UpReveal threshold={0.5}>
               <ProjectName>
-                <img src={arrow} alt="" className="arrow" />
+                <img src={arrow} className="arrow" alt="img" />
                 imageRaft
               </ProjectName>
             </UpReveal>

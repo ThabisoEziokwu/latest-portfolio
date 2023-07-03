@@ -12,9 +12,9 @@ function UpReveal({ children, threshold }) {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.7,
+        duration: 0.4,
         y: 0,
-        delay: 0.4,
+        delay: 0.2,
       },
     },
     hidden: {

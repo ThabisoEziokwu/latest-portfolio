@@ -44,9 +44,9 @@ function Ipad({ backImg, header }) {
   }, []);
   return (
     <Pad ref={padRef}>
-      {header && <Nav src={headerImg} />}
+      {header && <Nav src={headerImg} alt="img" />}
       <TabScreen background={backImg} className="tab-screen" />
-      <PadImg src={ipad} />
+      <PadImg src={ipad} alt="img" />
     </Pad>
   );
 }

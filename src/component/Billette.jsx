@@ -38,7 +38,7 @@ function Projects() {
           <div className="col-lg-7">
             <UpReveal threshold={0.5}>
               <ProjectName>
-                <img src={arrow} alt="" className="arrow" />
+                <img src={arrow} alt="img" className="arrow" />
                 Billette
               </ProjectName>
             </UpReveal>
@@ -88,7 +88,7 @@ function Projects() {
           {/* <Laptop backImage={laptopBackground} animate={false} /> */}
         </div>
         <div className="newp">
-          <LapPic src={laptopPic} />
+          <LapPic src={laptopPic} alt="img" />
         </div>
 
         <div className="phone-area">

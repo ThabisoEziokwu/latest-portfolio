@@ -58,7 +58,7 @@ function Laptop({ backImage, animate }) {
         scale: animate ? scale : "1",
       }}
     >
-      <Notch src={notch} />
+      <Notch src={notch} alt="img" />
       <Screen background={backImage} className="screen" />
       <MainImg src={macbook} alt="laptopImage" />
     </Lap>

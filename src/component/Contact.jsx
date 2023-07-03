@@ -24,15 +24,11 @@ function Contact() {
     e.preventDefault();
     const alert = document.querySelector(".alert");
     const config = {
-      // Host: "smtp.elasticemail.com",
-      // Username: "td.bolaji@gmail.com",
-      // Password: "393688EDF095A404F5EC7ECE21FC82E616B3",
       SecureToken: "30a059ec-0d45-45c1-b5d7-3482fd62d2c4",
       To: "topghostly@gmail.com",
       From: "topghostly@gmail.com",
       Subject: "New portfolio message",
       Body: `Name: ${form.name}, Email: ${form.mail}, Service: ${form.service}, Other Message: ${form.message}`,
-      // Port: "2525",
     };
     if (window.Email) {
       window.Email.send(config)
@@ -53,20 +49,20 @@ function Contact() {
     <Contacts>
       <div className="container-sm" style={{ marginBottom: "60px" }}>
         <Nav>
-          <img src={logo} alt="" />
+          <img src={logo} alt="img" />
           <div className="navLink">
             <SLink to={"/"}>HOME</SLink>
           </div>
         </Nav>
         <div className="arrow">
-          <img src={arrow} alt="" />
+          <img src={arrow} alt="img" />
         </div>
         <div className="row the-row">
           <div className="col-md-4">
             <FullTop>
-              <img src={profilePic} /> Start a conversation
+              <img src={profilePic} alt="img" /> Start a conversation
             </FullTop>
-            <img src={profilePic} className="profile" />
+            <img src={profilePic} className="profile" alt="img" />
 
             <div className="box">
               <div className="top">
@@ -489,9 +485,9 @@ const Curtain = styled(motion.div)`
     color: white;
     font-family: "euclidLight";
     opacity: 0;
-    @media screen and (max-width: 600px) {
+    /* @media screen and (max-width: 600px) {
       font-size: 20px;
-    }
+    } */
   }
 `;
 const CurtainIN = styled(motion.div)`
@@ -510,9 +506,9 @@ const CurtainIN = styled(motion.div)`
     font-size: 35px;
     color: white;
     font-family: "euclidLight";
-    @media screen and (max-width: 600px) {
+    /* @media screen and (max-width: 600px) {
       font-size: 20px;
-    }
+    } */
   }
 `;
 const FullTop = styled.h1`

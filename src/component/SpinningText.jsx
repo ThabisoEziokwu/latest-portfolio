@@ -18,7 +18,7 @@ function SpinningText() {
   }, [words]);
   return (
     <Spiner ref={ref}>
-      <img src={logo} alt="" />
+      <img src={logo} alt="img" />
       <div className="text">
         {words.split("").map((char, index) => (
           <Char key={index} className="chara">

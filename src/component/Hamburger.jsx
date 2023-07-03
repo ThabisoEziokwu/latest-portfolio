@@ -44,9 +44,9 @@ function Hamburger({ aboutHeight, projectHeight }) {
       gsap.from(".bg-links", {
         x: 100,
         opacity: 0,
-        delay: 0.3,
+        delay: 0.2,
         stagger: 0.2,
-        duration: 0.2,
+        duration: 0.5,
       });
     }
     if (!press) {
@@ -54,7 +54,7 @@ function Hamburger({ aboutHeight, projectHeight }) {
         x: 100,
         opacity: 0,
         stagger: 0.2,
-        duration: 0.2,
+        duration: 0.4,
       });
       gsap.to(".icon", {
         scale: 1,
@@ -63,7 +63,7 @@ function Hamburger({ aboutHeight, projectHeight }) {
       });
       gsap.to(".tab-list", {
         right: "-360px",
-        delay: 0.8,
+        delay: 0.9,
       });
     }
   });

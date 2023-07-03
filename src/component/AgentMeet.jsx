@@ -54,7 +54,7 @@ function Projects({ setprojectHeight }) {
             <div className="col-lg-7">
               <UpReveal threshold={0.5}>
                 <ProjectName>
-                  <img src={arrow} alt="" className="arrow" />
+                  <img src={arrow} className="arrow" alt="img" />
                   AgentMeet
                 </ProjectName>
               </UpReveal>
@@ -109,7 +109,7 @@ function Projects({ setprojectHeight }) {
           <Laptop backImage={laptopImage} animate={true} />
           <div className="phone-area">
             <AgentPhone y={null} />
-            <IphoneIMG src={realPhone} />
+            <IphoneIMG src={realPhone} alt="img" />
           </div>
         </div>
       </Works>

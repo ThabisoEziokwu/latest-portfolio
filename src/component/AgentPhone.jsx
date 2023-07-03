@@ -46,9 +46,9 @@ function AgentPhone({ y }) {
         y,
       }}
     >
-      <Logo src={whiteLogo} />
+      <Logo src={whiteLogo} alt="img" />
       <Screen background={backGround} className="phone-screen" />
-      <img src={phone} className="phone" />
+      <img src={phone} className="phone" alt="img" />
     </Phone>
   );
 }

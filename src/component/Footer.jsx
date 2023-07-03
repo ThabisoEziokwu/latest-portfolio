@@ -45,12 +45,12 @@ function Footer({ setcontactHeight, setNavFooter, setShowLogo }) {
             transition={{ duration: 0.5, delay: 0.4 }}
           >
             <Head colo={inView}>
-              <ProfileImage src={profilePic} />
+              <ProfileImage src={profilePic} alt="img" />
               Let&apos;s work together
             </Head>
           </Intro>
           <Mid>
-            <img src={arrow} alt="" />
+            <img src={arrow} alt="img" />
             <div className="line"></div>
             <ButLink to={"/contact"}>
               <div className="button">
@@ -90,7 +90,11 @@ function Footer({ setcontactHeight, setNavFooter, setShowLogo }) {
                 <p>SOCIALS</p>
               </div>
               <div className="bottom">
-                <SocLinks to={"https://www.linkedin.com/in/temitope-abolaji-frontend/"}>LinkedIn</SocLinks>
+                <SocLinks
+                  to={"https://www.linkedin.com/in/temitope-abolaji-frontend/"}
+                >
+                  LinkedIn
+                </SocLinks>
                 <SocLinks
                   to={"https://instagram.com/hayinla_"}
                   target="_blank"

@@ -73,7 +73,7 @@ function NavBar({ showLogo, aboutHeight, projectHeight }) {
         >
           <Logo
             src={logo}
-            alt=""
+            alt="img"
             initial={{
               opacity: 1,
               x: 0,
