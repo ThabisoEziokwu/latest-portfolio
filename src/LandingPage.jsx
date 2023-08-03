@@ -4,6 +4,7 @@ import Hero from "./component/Hero";
 import About from "./component/About";
 import AgentMeet from "./component/AgentMeet";
 import ImageRaft from "./component/ImageRaft";
+import TripQuest from "./component/TripQuest";
 import Billette from "./component/Billette";
 import SideNav from "./component/SideNav";
 import Footer from "./component/Footer";
@@ -50,6 +51,7 @@ function LandingPage() {
         </Head>
         <AgentMeet setprojectHeight={setprojectHeight} />
         <ImageRaft />
+        <TripQuest />
         <Billette />
       </div>
       <Footer
