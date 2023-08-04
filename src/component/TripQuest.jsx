@@ -52,10 +52,10 @@ function Projects() {
               <motion.div className="project-text">
                 <UpReveal threshold={0.5}>
                   <p className="description">
-                    Having learnt about how APIs work, I built a with React.js
-                    that integrates the Pixel API for accessing and downloading
-                    photos. It features search and filter options to refine
-                    image results based on keywords, color and type.
+                    Flight Reservation Site, seamless Travel Booking. Built with
+                    Node, Express, and MongoDB, my project offers real-time
+                    flight schedules via Amadeus API, streamlining flight
+                    reservations for a hassle-free travel experience.
                   </p>
 
                   <p className="stacks">
@@ -66,7 +66,9 @@ function Projects() {
                   </p>
                   <div className="icons">
                     <Link
-                      to={"https://github.com/topghostly/imageraft-site"}
+                      to={
+                        "https://github.com/topghostly/CODSOFT/tree/main/Level_2/Task_2"
+                      }
                       target="_blank"
                       rel="noopener noreferrer"
                     >
