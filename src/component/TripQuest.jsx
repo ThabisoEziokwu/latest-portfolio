@@ -1,23 +1,23 @@
 import styled from "styled-components";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Ipad from "./Ipad";
 import { motion, useScroll } from "framer-motion";
 import { useRef } from "react";
-import tabImage from "../assets/images/imageRaftTab.jpg";
-import raftHeader from "../assets/images/imageRaftHeader.png";
-import Iphone from "./Iphone";
-import PhoneIMG from "../assets/images/imageRaftPhone.jpg";
+// import tabImage from "../assets/images/imageRaftTab.jpg";
+// import tabBackground from "../assets/images/tripQuestPad-01.png";
+// import Iphone from "./Iphone";
+import laptopPic from "../assets/images/tripQustLaptop.png";
+import laptopPicTwo from "../assets/images/tripQuestLaptop2.png";
 import UpReveal from "../utils/UpReveal";
 import PicCaro from "./PicCaro";
-import BigPic from "../assets/images/imageRaftTab.jpg";
-import smallPicOne from "../assets/images/imageRaftSmall.png";
-import smallPicTwo from "../assets/images/imageRaftSmallTwo.png";
+import BigPic from "../assets/images/tripQuestBig.png";
+import smallPicOne from "../assets/images/tripQuestSmall.png";
+import smallPicTwo from "../assets/images/tripQuestSmall2.png";
 import arrow from "../assets/images/arrowBlack-01.png";
 import { RiExternalLinkLine, RiGithubLine } from "react-icons/ri";
-import { useInView } from "react-intersection-observer";
+// import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
-import gsap from "gsap";
-import { useEffect } from "react";
+// import gsap from "gsap";
+// import { useEffect } from "react";
 
 function Projects() {
   // const [animation, setAnimation] = useState(false);
@@ -66,16 +66,14 @@ function Projects() {
                   </p>
                   <div className="icons">
                     <Link
-                      to={
-                        "https://github.com/topghostly/CODSOFT/tree/main/Level_2/Task_2"
-                      }
+                      to={"https://github.com/topghostly/tripquest"}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <RiGithubLine />
                     </Link>
                     <Link
-                      to={"https://topghostly.github.io/imageraft-site"}
+                      to={"https://kind-tan-pig-gear.cyclic.app/"}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -87,25 +85,22 @@ function Projects() {
             </div>
           </div>
         </div>
-        <div className="new">
+        <div className="carol">
           <PicCaro
             bigPic={BigPic}
             smallPicOne={smallPicOne}
             smallPicTwo={smallPicTwo}
           />
+          {/* <Laptop backImage={laptopBackground} animate={false} /> */}
         </div>
-        <div className="container m-200">
-          <div className="row">
-            <div className="col-lg-9 col-md-12">
-              <Ipad backImg={tabImage} header={raftHeader} />
-            </div>
-            <div className="col-lg-3 col-md-12">
-              <div className="phone-area">
-                <Iphone backGround={PhoneIMG} />
-              </div>
-            </div>
-          </div>
+        <div className="newp">
+          <LapPic src={laptopPic} alt="img" />
+          <LapPic src={laptopPicTwo} alt="img" />
         </div>
+
+        {/* <div className="phone-area">
+          <Ipad backImg={tabBackground} header={null} />
+        </div> */}
       </div>
     </Works>
   );
@@ -133,13 +128,6 @@ const Works = styled.div`
     width: 100%;
     height: 100%;
 
-    .new {
-      width: 100%;
-      height: fit-content;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
     .m-200 {
       padding-bottom: 200px;
 
@@ -150,20 +138,6 @@ const Works = styled.div`
         display: none;
       }
     }
-
-    .phone-area {
-      margin: auto;
-      height: 100%;
-      display: flex;
-      width: 100%;
-      justify-content: center;
-      align-items: end;
-
-      @media screen and (max-width: 991px) {
-        margin-top: 70px;
-      }
-    }
-
     .project-description {
       position: relative;
       width: 100%;
@@ -307,6 +281,33 @@ const Listing = styled.div`
     height: 1px;
     width: 100%;
     background-color: #b1b1b1;
+  }
+`;
+const LapPic = styled.img`
+  margin: 100px auto;
+  position: relative;
+  z-index: 0;
+  width: 1100px;
+  transform-origin: top;
+  pointer-events: none;
+  @media screen and (max-width: 1300px) {
+    width: 1000px;
+  }
+  @media screen and (max-width: 1100px) {
+    width: 900px;
+  }
+  @media screen and (max-width: 1050px) {
+    margin-top: 20px;
+  }
+  @media screen and (max-width: 1000px) {
+    width: 700px;
+  }
+  @media screen and (max-width: 767px) {
+    width: 700px;
+    margin: 10px auto;
+  }
+  @media screen and (max-width: 750px) {
+    display: none;
   }
 `;
 export default Projects;
