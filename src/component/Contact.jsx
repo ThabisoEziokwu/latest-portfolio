@@ -20,30 +20,30 @@ function Contact() {
   const getDetails = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
-  const sendMail = (e) => {
-    e.preventDefault();
-    const alert = document.querySelector(".alert");
-    const config = {
-      SecureToken: "30a059ec-0d45-45c1-b5d7-3482fd62d2c4",
-      To: "topghostly@gmail.com",
-      From: "topghostly@gmail.com",
-      Subject: "New portfolio message",
-      Body: `Name: ${form.name}, Email: ${form.mail}, Service: ${form.service}, Other Message: ${form.message}`,
-    };
-    if (window.Email) {
-      window.Email.send(config)
-        .then((message) => {
-          console.log(message);
-          alert.style.display = "block";
-          setTimeout(() => {
-            navigate("/");
-          }, 2000);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  };
+  // const sendMail = (e) => {
+  //   e.preventDefault();
+  //   const alert = document.querySelector(".alert");
+  //   const config = {
+  //     SecureToken: "30a059ec-0d45-45c1-b5d7-3482fd62d2c4",
+  //     To: "topghostly@gmail.com",
+  //     From: "topghostly@gmail.com",
+  //     Subject: "New portfolio message",
+  //     Body: `Name: ${form.name}, Email: ${form.mail}, Service: ${form.service}, Other Message: ${form.message}`,
+  //   };
+  //   if (window.Email) {
+  //     window.Email.send(config)
+  //       .then((message) => {
+  //         console.log(message);
+  //         alert.style.display = "block";
+  //         setTimeout(() => {
+  //           navigate("/");
+  //         }, 2000);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   }
+  // };
 
   return (
     <Contacts>
@@ -113,7 +113,7 @@ function Contact() {
           </div>
           <div className="col-md-8">
             <Head>Start a conversation</Head>
-            <form onSubmit={sendMail} className="contact-form">
+            <form className="contact-form">
               <Form>
                 <div className="sn">
                   <p>01</p>
@@ -240,7 +240,6 @@ function Contact() {
         animate={{
           top: "-115vh",
           transition: {
-            // times: [0.2, 0.6, 1],
             duration: 0.2,
             delay: 0.6,
           },
