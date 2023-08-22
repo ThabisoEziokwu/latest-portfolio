@@ -20,30 +20,6 @@ function Contact() {
   const getDetails = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
-  // const sendMail = (e) => {
-  //   e.preventDefault();
-  //   const alert = document.querySelector(".alert");
-  //   const config = {
-  //     SecureToken: "30a059ec-0d45-45c1-b5d7-3482fd62d2c4",
-  //     To: "topghostly@gmail.com",
-  //     From: "topghostly@gmail.com",
-  //     Subject: "New portfolio message",
-  //     Body: `Name: ${form.name}, Email: ${form.mail}, Service: ${form.service}, Other Message: ${form.message}`,
-  //   };
-  //   if (window.Email) {
-  //     window.Email.send(config)
-  //       .then((message) => {
-  //         console.log(message);
-  //         alert.style.display = "block";
-  //         setTimeout(() => {
-  //           navigate("/");
-  //         }, 2000);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   }
-  // };
 
   return (
     <Contacts>
@@ -581,4 +557,5 @@ const SocLinks = styled(Link)`
     transition: all 0.2s ease-in-out;
   }
 `;
+
 export default Contact;

@@ -25,14 +25,14 @@ function About({ setaboutHeight, setNavAbout }) {
     target: aboutRef,
     offset: ["start end", "end start"],
   });
-  const x = useTransform(scrollYProgress, [0, 1], [-1000, 4000]);
-  const y_head = useTransform(scrollYProgress, [0, 0.35], [200, -500]);
+  // const x = useTransform(scrollYProgress, [0, 1], [-1000, 4000]);
+  // const y_head = useTransform(scrollYProgress, [0, 0.35], [200, -500]);
 
   useEffect(() => {
     if (inView) {
       gsap.to(".back", {
         opacity: 0,
-        delay: 0.9,
+        delay: 0.5,
         duration: 2,
       });
       setNavAbout(true);

@@ -3,7 +3,6 @@ import logo from "../assets/images/portfolioLogo-01.png";
 import resume from "../assets/tope-resume.pdf";
 import Button from "./Button";
 import { motion, useAnimation } from "framer-motion";
-// import gsap from "gsap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../index.css";
 import Hamburger from "./Hamburger";
@@ -11,32 +10,6 @@ import { useEffect } from "react";
 import gsap from "gsap";
 
 function NavBar({ showLogo, aboutHeight, projectHeight }) {
-  // const logoGo = useAnimation();
-  // const nameCome = useAnimation();
-  // const handleLogohover = () => {
-  //   logoGo.start({
-  //     x: -40,
-  //     opacity: 0,
-  //     transition: {
-  //       delay: 0.09,
-  //     },
-  //   });
-  //   nameCome.start({
-  //     x: -60,
-  //     opacity: 1,
-  //   });
-  // };
-  // const handleLogoReturn = () => {
-  //   logoGo.start({
-  //     x: 0,
-  //     opacity: 1,
-  //   });
-  //   nameCome.start({
-  //     x: 150,
-  //     opacity: 1,
-  //   });
-  // };
-  // document.addEventListener("scroll", handleScroll);
   useEffect(() => {
     if (!showLogo) {
       gsap.to(".logo-cont", {

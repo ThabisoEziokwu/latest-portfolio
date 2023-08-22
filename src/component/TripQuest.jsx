@@ -63,6 +63,8 @@ function Projects() {
                     <span>Express</span>
                     <span>Amadeus API</span>
                     <span>MongooDb</span>
+                    <span>EJS</span>
+                    <span>JWT</span>
                   </p>
                   <div className="icons">
                     <Link
@@ -97,10 +99,6 @@ function Projects() {
           <LapPic src={laptopPic} alt="img" />
           <LapPic src={laptopPicTwo} alt="img" />
         </div>
-
-        {/* <div className="phone-area">
-          <Ipad backImg={tabBackground} header={null} />
-        </div> */}
       </div>
     </Works>
   );
