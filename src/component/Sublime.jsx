@@ -15,7 +15,7 @@ import realPhone from "../assets/images/agentPhoneReal-01.png";
 import arrow from "../assets/images/arrowBlack-01.png";
 import { RiExternalLinkLine, RiGithubLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
-function Projects({ setprojectHeight }) {
+function Sublime({ setprojectHeight }) {
   const blockRef = useRef();
   const { scrollYProgress } = useScroll({
     target: blockRef,
@@ -55,7 +55,7 @@ function Projects({ setprojectHeight }) {
               <UpReveal threshold={0.5}>
                 <ProjectName>
                   <img src={arrow} className="arrow" alt="img" />
-                  AgentMeet
+                  Sublime
                 </ProjectName>
               </UpReveal>
             </div>
@@ -73,9 +73,9 @@ function Projects({ setprojectHeight }) {
                     <p className="stacks">
                       <span>Node</span>
                       <span>Express</span>
-                      <span>EJS</span>
-                      <span>Firebase</span>
-                      <span>JWT</span>
+                      <span>React</span>
+                      <span>Locomotive-Scroll</span>
+                      <span>Nodemailer</span>
                     </p>
                     <div className="icons">
                       <Link
@@ -340,4 +340,4 @@ const IphoneIMG = styled.img`
     display: none;
   }
 `;
-export default Projects;
+export default Sublime;

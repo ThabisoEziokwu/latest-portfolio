@@ -7,6 +7,7 @@ import gsap from "gsap";
 
 function Laptop({ backImage, animate }) {
   const lapRef = useRef(null);
+  const screenRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: lapRef,
     offset: ["start end", "end start"],
@@ -40,7 +41,7 @@ function Laptop({ backImage, animate }) {
           distanceFromTop - scrollPosition < viewportHeight + 500 &&
           scrollPosition - distanceFromTop < viewportHeight
         ) {
-          gsap.to(".screen", {
+          gsap.to(screenRef.current, {
             backgroundPosition: `center ${theScroll}px`,
             duration: 0.3,
           });
@@ -59,7 +60,7 @@ function Laptop({ backImage, animate }) {
       }}
     >
       <Notch src={notch} alt="img" />
-      <Screen background={backImage} className="screen" />
+      <Screen background={backImage} ref={screenRef} />
       <MainImg src={macbook} alt="laptopImage" />
     </Lap>
   );

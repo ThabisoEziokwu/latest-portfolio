@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 
 function AgentPhone({ y, backGround }) {
   const phoneRef = useRef(null);
+  const phoneScreenRef = useRef(null);
 
   useEffect(() => {
     setTimeout(() => {
@@ -31,9 +32,8 @@ function AgentPhone({ y, backGround }) {
             distance - phoneScrollPosition < screenHeight + 500 &&
             phoneScrollPosition - distance < screenHeight
           ) {
-            gsap.to(".phone-screen", {
+            gsap.to(phoneScreenRef.current, {
               backgroundPosition: `center ${scroll}px`,
-              // duration: 0.5,
             });
           }
         };
@@ -49,7 +49,7 @@ function AgentPhone({ y, backGround }) {
       }}
     >
       <Logo src={whiteLogo} alt="img" />
-      <Screen background={backGround} className="phone-screen" />
+      <Screen background={backGround} ref={phoneScreenRef} />
       <img src={phone} className="phone" alt="img" />
     </Phone>
   );

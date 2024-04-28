@@ -6,6 +6,7 @@ import headerImg from "../assets/images/imageRaftHeader.png";
 
 function Ipad({ backImg, header }) {
   const padRef = useRef(null);
+  const tabScreenRef = useRef(null);
 
   useEffect(() => {
     setTimeout(() => {
@@ -31,7 +32,7 @@ function Ipad({ backImg, header }) {
             topDistanceValue - padScrollPosition < viewportHeight + 500 &&
             padScrollPosition - topDistanceValue < viewportHeight
           ) {
-            gsap.to(".tab-screen", {
+            gsap.to(tabScreenRef.current, {
               backgroundPosition: `center ${scrollMovement}px`,
               duration: 0.5,
             });
@@ -45,7 +46,7 @@ function Ipad({ backImg, header }) {
   return (
     <Pad ref={padRef}>
       {header && <Nav src={headerImg} alt="img" />}
-      <TabScreen background={backImg} className="tab-screen" />
+      <TabScreen background={backImg} ref={tabScreenRef} />
       <PadImg src={ipad} alt="img" />
     </Pad>
   );

@@ -3,6 +3,7 @@ import NavBar from "./component/NavBar";
 import Hero from "./component/Hero";
 import About from "./component/About";
 import AgentMeet from "./component/AgentMeet";
+import Sublime from "./component/Sublime";
 import ImageRaft from "./component/ImageRaft";
 import TripQuest from "./component/TripQuest";
 import Billette from "./component/Billette";
@@ -23,6 +24,7 @@ function LandingPage() {
   const [projectHeight, setprojectHeight] = useState(0);
   const [contactHeight, setcontactHeight] = useState(0);
   const [showLogo, setShowLogo] = useState(true);
+
   return (
     <Page className="whole-page">
       <SideNav
@@ -49,7 +51,8 @@ function LandingPage() {
         <Head className="container-sm">
           <span>Some things i&apos;ve built </span> 📂
         </Head>
-        <AgentMeet setprojectHeight={setprojectHeight} />
+        <Sublime setprojectHeight={setprojectHeight} />
+        <AgentMeet />
         <ImageRaft />
         <TripQuest />
         <Billette />
@@ -141,7 +144,7 @@ const Head = styled.h1`
 const CurtainIN = styled(motion.div)`
   position: fixed;
   background-color: #292929;
-  /* background-color: #d66565; */
+
   width: 100%;
   height: 110vh;
   top: 0;
