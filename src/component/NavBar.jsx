@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import logo from "../assets/images/portfolioLogo-01.png";
 import resume from "../assets/tope-resume.pdf";
-import Button from "./Button";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../index.css";
 import Hamburger from "./Hamburger";
@@ -21,6 +20,7 @@ function NavBar({ showLogo, aboutHeight, projectHeight }) {
       });
     }
   });
+
   return (
     <div
       className="container whole-container"
