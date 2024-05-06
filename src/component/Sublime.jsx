@@ -64,10 +64,10 @@ function Sublime({ setprojectHeight }) {
                 <motion.div className="project-text">
                   <UpReveal threshold={0.5}>
                     <p className="description">
-                      A web app built with Node.js and Express, allows users to
-                      effortlessly post, manage, and rent out hostels. This
-                      platform enebles seamless CRUD operations, providing a
-                      user-friendly and intuitive experience.
+                      Developed a Dynamic Website for Sublime Designs and
+                      Construction Associates Limited, Leveraging React for
+                      Frontend Interactivity and Node.js with Express for
+                      Backend Functionality.
                     </p>
 
                     <p className="stacks">
