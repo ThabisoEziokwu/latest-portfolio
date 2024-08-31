@@ -27,22 +27,6 @@ function Sublime({ setprojectHeight }) {
     }
   });
 
-  {
-    /* Code for initiating the sliding amination */
-  }
-  // const animate = useTransform(scrollYProgress, (pos) => {
-  //   return pos >= 0.39 ? "start" : "wait";
-  // });
-  // document.addEventListener("scroll", () => {
-  //   if (animate.current === "start") {
-  //     setAnimation(true);
-  //   }
-  // });
-
-  {
-    /* Code for initiating the sliding amination */
-  }
-
   return (
     <Distance dist={setprojectHeight}>
       <Works ref={blockRef}>

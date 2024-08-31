@@ -15,7 +15,7 @@ function Distance({ children, dist }) {
 
     setInterval(() => {
       if (ref.current) {
-        dist(handleDistance());
+        // dist(handleDistance());
       }
     }, 0);
   }, [dist]);
