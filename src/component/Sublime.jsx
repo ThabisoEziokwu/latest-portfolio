@@ -90,7 +90,7 @@ function Sublime({ setprojectHeight }) {
             />
           </div>
 
-
+          <Laptop backImage={laptopImage} animate={true} />
           <div className="phone-area">
             <AgentPhone y={null} />
             <IphoneIMG src={realPhone} alt="img" />
