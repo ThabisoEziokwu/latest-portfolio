@@ -392,10 +392,9 @@ const Spiner = styled.div`
   cursor: pointer;
   scale: 0.72;
 
-  @media screen and (max-width: 767px) {
-    width: 150px;
-    height: 150px;
-  }
+@media screen and (max-width: 750px){
+  display: none;
+}
 
 
   .text {

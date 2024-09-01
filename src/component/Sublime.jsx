@@ -88,9 +88,9 @@ function Sublime({ setprojectHeight }) {
           </div>
           <div className="carousel">
             <PicCaro
-              bigPic={CaroPic}
-              smallPicOne={smallPicOne}
-              smallPicTwo={smallPicTwo}
+              bigPic={sublimeBg}
+              smallPicOne={sublime2}
+              smallPicTwo={sublime3}
             />
           </div>
           <div className="media-holder">
@@ -139,6 +139,25 @@ const Works = styled.div`
       position: relative;
       width: 1100px;
       border-radius: 20px;
+      @media screen and (max-width: 1300px) {
+    width: 1000px;
+  }
+  @media screen and (max-width: 1100px) {
+    width: 900px;
+  }
+  @media screen and (max-width: 1050px) {
+    margin-top: 20px;
+  }
+  @media screen and (max-width: 1000px) {
+    width: 700px;
+  }
+  @media screen and (max-width: 767px) {
+    width: 700px;
+    margin: 10px auto;
+  }
+  @media screen and (max-width: 750px) {
+    display: none;
+  }
     }
     .media-holder{
       display: flex;

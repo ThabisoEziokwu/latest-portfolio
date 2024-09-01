@@ -105,6 +105,11 @@ const ViewPort = styled.div`
     align-items: center;
     padding-bottom: 8vh;
   }
+  @media screen and (max-width: 750px) {
+    height: fit-content;
+    padding-top: 100px;
+  }
+
 
   .canvas-container {
     width: 100%;

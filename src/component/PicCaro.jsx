@@ -45,6 +45,7 @@ const SmallPic = styled.div`
   background-image: url(${(props) => props.backgroundOne});
   background-size: cover;
   border-radius: 8px;
-  /* background-position: center 0px; */
+  background-size: cover;
+  background-position: center;
 `;
 export default PicCaro;
