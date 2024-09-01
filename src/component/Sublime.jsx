@@ -20,6 +20,7 @@ import RectBorder from "./RectBorder";
 // Imported pictured
 import sublimeBg from '/sublimeBig.png'
 import sublime2 from '/sublime2.png'
+import RevolvingLogo from "./RevolvingLogo";
 
 function Sublime({ setprojectHeight }) {
   const blockRef = useRef();
@@ -95,9 +96,10 @@ function Sublime({ setprojectHeight }) {
               smallPicTwo={smallPicTwo}
             />
           </div>
-
-          {/* <RectBorder/> */}
+          <RevolvingLogoPicHolder>
           <img src={sublimeBg} alt="subline index image" className="big-image"/>
+          <RevolvingLogo color={'white'} background={'none'}/>
+          </RevolvingLogoPicHolder>
           <img src={sublime2} alt="subline index image" className="big-image"/>
           {/* <div className="phone-area">
             <AgentPhone y={null} />
@@ -339,4 +341,8 @@ const IphoneIMG = styled.img`
     display: none;
   }
 `;
+
+const RevolvingLogoPicHolder = styled.div`
+  position: relative;
+`
 export default Sublime;
