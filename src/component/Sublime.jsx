@@ -15,6 +15,12 @@ import realPhone from "../assets/images/agentPhoneReal-01.png";
 import arrow from "../assets/images/arrowBlack-01.png";
 import { RiExternalLinkLine, RiGithubLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import RectBorder from "./RectBorder";
+
+// Imported pictured
+import sublimeBg from '/sublimeBig.png'
+import sublime2 from '/sublime2.png'
+
 function Sublime({ setprojectHeight }) {
   const blockRef = useRef();
   const { scrollYProgress } = useScroll({
@@ -90,11 +96,13 @@ function Sublime({ setprojectHeight }) {
             />
           </div>
 
-          <Laptop backImage={laptopImage} animate={true} />
-          <div className="phone-area">
+          {/* <RectBorder/> */}
+          <img src={sublimeBg} alt="subline index image" className="big-image"/>
+          <img src={sublime2} alt="subline index image" className="big-image"/>
+          {/* <div className="phone-area">
             <AgentPhone y={null} />
             <IphoneIMG src={realPhone} alt="img" />
-          </div>
+          </div> */}
         </div>
       </Works>
     </Distance>
@@ -127,6 +135,13 @@ const Works = styled.div`
   .cont {
     width: 100%;
     height: 100%;
+
+    img.big-image{
+      position: relative;
+      width: 1100px;
+      border-radius: 20px;
+      margin: 10px 0px;
+    }
 
     .phone-area {
       margin-top: 200px;
