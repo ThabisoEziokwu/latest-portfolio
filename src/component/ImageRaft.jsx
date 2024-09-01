@@ -14,10 +14,10 @@ import smallPicOne from "../assets/images/imageRaftSmall.png";
 import smallPicTwo from "../assets/images/imageRaftSmallTwo.png";
 import arrow from "../assets/images/arrowBlack-01.png";
 import { RiExternalLinkLine, RiGithubLine } from "react-icons/ri";
-import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
-import gsap from "gsap";
-import { useEffect } from "react";
+
+// Media import 
+import laptopImage from '/imageRaftLaptop.png'
 
 function Projects() {
   // const [animation, setAnimation] = useState(false);
@@ -111,7 +111,7 @@ function Projects() {
         <div className="container m-200">
           <div className="row">
             <div className="col-lg-9 col-md-12">
-              <Ipad backImg={tabImage} header={raftHeader} />
+              <LaptopImage src={laptopImage} alt="image raft laptop image"/>
             </div>
             <div className="col-lg-3 col-md-12">
               <div className="phone-area">
@@ -323,4 +323,32 @@ const Listing = styled.div`
     background-color: #b1b1b1;
   }
 `;
+
+const LaptopImage = styled.img`
+  /* margin: 10px auto; */
+  position: relative;
+  z-index: 0;
+  width: 1100px;
+  transform-origin: top;
+  pointer-events: none;
+  @media screen and (max-width: 1300px) {
+    width: 1000px;
+  }
+  @media screen and (max-width: 1100px) {
+    width: 900px;
+  }
+  @media screen and (max-width: 1050px) {
+    margin-top: 20px;
+  }
+  @media screen and (max-width: 1000px) {
+    width: 700px;
+  }
+  @media screen and (max-width: 767px) {
+    width: 700px;
+    margin: 10px auto;
+  }
+  @media screen and (max-width: 750px) {
+    display: none;
+  }
+`
 export default Projects;

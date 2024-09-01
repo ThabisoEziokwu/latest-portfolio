@@ -3,23 +3,20 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Laptop from "./Laptop";
 import { motion, useScroll } from "framer-motion";
 import { useRef } from "react";
-import laptopImage from "../assets/images/agentMeet.png";
-import AgentPhone from "./AgentPhone";
 import UpReveal from "../utils/UpReveal";
 import Distance from "../utils/Distance";
 import PicCaro from "./PicCaro";
 import CaroPic from "../assets/images/agentMeetBig.png";
 import smallPicOne from "../assets/images/agentmeetGlass.jpg";
 import smallPicTwo from "../assets/images/ageentMeetSmall.png";
-import realPhone from "../assets/images/agentPhoneReal-01.png";
 import arrow from "../assets/images/arrowBlack-01.png";
 import { RiExternalLinkLine, RiGithubLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
-import RectBorder from "./RectBorder";
 
 // Imported pictured
 import sublimeBg from '/sublimeBig.png'
 import sublime2 from '/sublime2.png'
+import sublime3 from '/sublime3.png'
 import RevolvingLogo from "./RevolvingLogo";
 
 function Sublime({ setprojectHeight }) {
@@ -96,15 +93,15 @@ function Sublime({ setprojectHeight }) {
               smallPicTwo={smallPicTwo}
             />
           </div>
-          <RevolvingLogoPicHolder>
-          <img src={sublimeBg} alt="subline index image" className="big-image"/>
-          <RevolvingLogo color={'white'} background={'none'}/>
-          </RevolvingLogoPicHolder>
+          <div className="media-holder">
+            <RevolvingLogoPicHolder>
+              <img src={sublimeBg} alt="subline index image" className="big-image"/>
+              <RevolvingLogo color={'white'} background={'none'}/>
+            </RevolvingLogoPicHolder>
           <img src={sublime2} alt="subline index image" className="big-image"/>
-          {/* <div className="phone-area">
-            <AgentPhone y={null} />
-            <IphoneIMG src={realPhone} alt="img" />
-          </div> */}
+          <img src={sublime3} alt="subline index image" className="big-image"/>
+          </div>
+
         </div>
       </Works>
     </Distance>
@@ -142,7 +139,11 @@ const Works = styled.div`
       position: relative;
       width: 1100px;
       border-radius: 20px;
-      margin: 10px 0px;
+    }
+    .media-holder{
+      display: flex;
+      flex-direction: column;
+      gap: 100px;
     }
 
     .phone-area {

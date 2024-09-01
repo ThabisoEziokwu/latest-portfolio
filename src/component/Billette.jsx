@@ -15,7 +15,6 @@ import { Link } from "react-router-dom";
 import UpReveal from "../utils/UpReveal";
 import laptopPic from "../assets/images/billetteLaptop.png";
 import arrow from "../assets/images/arrowBlack-01.png";
-import gsap from "gsap";
 
 function Projects() {
   const blockRef = useRef();
