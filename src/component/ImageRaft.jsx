@@ -110,7 +110,7 @@ function Projects() {
         </div>
         <div className="container m-200">
           <div className="row">
-            <div className="col-lg-9 col-md-12">
+            <div className="col-lg-9 col-md-12 image-cont">
               <LaptopImage src={laptopImage} alt="image raft laptop image"/>
             </div>
             <div className="col-lg-3 col-md-12">
@@ -129,6 +129,14 @@ const Works = styled.div`
   position: relative;
   z-index: 5;
   background: #f6f6f6;
+
+  .image-cont{
+    @media screen and (max-width: 768px){
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
   @media screen and (max-width: 750px) {
     padding-bottom: 50px;
   }
