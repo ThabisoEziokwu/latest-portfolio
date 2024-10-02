@@ -67,14 +67,14 @@ function Sublime({ setprojectHeight }) {
                     </p>
                     <div className="icons">
                       <Link
-                        to={"https://github.com/topghostly/AgentMeet"}
+                        to={"https://github.com/topghostly/sublime-v3"}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <RiGithubLine />
                       </Link>
                       <Link
-                        to={"https://fragile-wear-frog.cyclic.app/"}
+                        to={"https://sublimeconstruct.com/"}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
