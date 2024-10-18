@@ -124,6 +124,7 @@ function Projects() {
     </Works>
   );
 }
+
 const Works = styled.div`
   min-height: 100vh;
   position: relative;
