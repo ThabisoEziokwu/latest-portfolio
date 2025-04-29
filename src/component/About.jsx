@@ -105,7 +105,7 @@ function About({ setaboutHeight, setNavAbout }) {
             </Suspense>
           </Canvas>
           <div className="spinnig__container">
-            <SpinningTextSmall text={"ABOLAJI TEMITOPE • DEVELOPER • "} />
+            <SpinningTextSmall text={"THABISO EZIOKWU • DEVELOPER • "} />
           </div>
         </div>
         <div className="canva-container" ref={ref}>
@@ -158,19 +158,13 @@ function About({ setaboutHeight, setNavAbout }) {
             <div className="text-section">
               <h1>About Me </h1>
               <p className="main">
-                Hello and welcome to my portfolio! My name is <span>Tope</span>,
+                Hello and welcome to my portfolio! My name is <span>Thabiso</span>,
                 and I am a passionate programmer with a coding journey that
                 began in 2020, I have dedicated myself to mastering the art of{" "}
                 <span>JavaScript development</span>. My expertise lies in
                 creating
                 <span> dynamic web applications</span> using the power of
-                javaScript&apos;s vast ecosystem.
-                <br />
-                <br />
-                In addition to my work in web development, I am also studying
-                <span> Mechanical engineering</span> at college. This unique
-                combination of skills allows me to bring a fresh perspective to
-                problem-solving.
+                javaScript&apos;s vast ecosystem
                 <br />
                 <br />
                 Here are a few technologies i&apos;ve been working with
@@ -200,7 +194,7 @@ function About({ setaboutHeight, setNavAbout }) {
                 <div className="lang">
                   <p>
                     <TbPointFilled />
-                    GSAP
+                    Python
                   </p>
                   <p>
                     <TbPointFilled />

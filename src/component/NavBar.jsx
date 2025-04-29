@@ -70,8 +70,8 @@ function NavBar({ showLogo, aboutHeight, projectHeight }) {
         >
           {/* <Button>Resume</Button> */}
           <p>
-            <a href={resume} target="_blank" rel="noopener noreferrer">
-              Résume
+            <a href="https://wa.me/+27621088360" target="_blank" rel="noopener noreferrer">
+              WhatsApp
             </a>
           </p>
         </motion.div>

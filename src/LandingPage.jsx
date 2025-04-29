@@ -15,7 +15,7 @@ import { motion } from "framer-motion";
 
 function LandingPage() {
   useEffect(() => {
-    document.title = "Temitope Abolaji • web developer";
+    document.title = "Thabiso Eziokwu • web developer";
   });
 
   const [navFooter, setNavFooter] = useState(false);

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import AlertMessage from "./AlertMessage";
 import "bootstrap/dist/css/bootstrap.min.css";
-import profilePic from "../assets/images/profilePic.png";
+import profilePic from "../assets/images/profilePic.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import logo from "../assets/images/portfolioLogoWhite.png";
@@ -46,10 +46,10 @@ function Contact() {
               </div>
               <div className="bottom">
                 <p>
-                  <a href="mailto:td.bolaji@gmail.com">td.bolaji@gmail.com</a>
+                  <a href="mailto:teziokwu14@gmail.com">teziokwu14@gmail.com</a>
                 </p>
                 <p>
-                  <a href="tel:+2348113420013">+234 811 342 0013</a>
+                  <a href="tel:+27621088360">+27621088360</a>
                 </p>
               </div>
             </div>
@@ -64,26 +64,26 @@ function Contact() {
                   LinkedIn
                 </SocLinks>
                 <SocLinks
-                  to={"https://instagram.com/hayinla_"}
+                  to={"https://instagram.com/thabisoeziokwu"}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   instagram
                 </SocLinks>
                 <SocLinks
-                  to={"https://twitter.com/td_bolaji?s=21"}
+                  to={"https://twitter.com/thabisoezzy?s=11"}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Twitter
                 </SocLinks>
-                <SocLinks
+                {/* <SocLinks
                   to={"https://github.com/topghostly/"}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   GitHub
-                </SocLinks>
+                </SocLinks> */}
               </div>
             </div>
           </div>
@@ -100,7 +100,7 @@ function Contact() {
                   </label>
                   <input
                     type="text"
-                    placeholder="Seun Daniel *"
+                    placeholder="John Doe *"
                     name="name"
                     onChange={getDetails}
                     value={form.name}
@@ -118,7 +118,7 @@ function Contact() {
                   </label>
                   <input
                     type="text"
-                    placeholder="seun@daniel.com *"
+                    placeholder="johndoe@.com *"
                     name="mail"
                     onChange={getDetails}
                     required
@@ -152,7 +152,7 @@ function Contact() {
                   </label>
                   <input
                     type="text"
-                    placeholder="Hey Tope, I found your ... *"
+                    placeholder="Hey Thabiso, I found your ... *"
                     name="message"
                     onChange={getDetails}
                     required

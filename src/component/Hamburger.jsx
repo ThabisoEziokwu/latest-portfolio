@@ -123,7 +123,7 @@ function Hamburger({ aboutHeight, projectHeight }) {
           >
             CONTACT
           </SlideLink>
-          <SlideLink
+          {/* <SlideLink
             to={resume}
             target="_blank"
             rel="noopener noreferrer"
@@ -132,7 +132,7 @@ function Hamburger({ aboutHeight, projectHeight }) {
             onMouseLeave={linksDown}
           >
             RESUME
-          </SlideLink>
+          </SlideLink> */}
           <div className="line"></div>
 
           <div className="contact-ab">

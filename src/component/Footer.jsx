@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import profilePic from "../assets/images/profilePic.png";
+import profilePic from "../assets/images/profilePic.jpg";
 import arrow from "../assets/images/arrowWhite-01.png";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
@@ -61,12 +61,12 @@ function Footer({ setcontactHeight, setNavFooter, setShowLogo }) {
           <div className="press">
             <ConButton>
               <p>
-                <a href="tel:+2348113420013">+234 811 342 0013</a>
+                <a href="tel:+27621088360">+27621088360</a>
               </p>
             </ConButton>
             <ConButton>
               <p>
-                <a href="mailto:td.bolaji@gmail.com">td.bolaji@gmail.com</a>
+                <a href="mailto:teziokwu14@gmail.com">teziokwu14@gmail.com</a>
               </p>
             </ConButton>
           </div>
@@ -79,13 +79,13 @@ function Footer({ setcontactHeight, setNavFooter, setShowLogo }) {
                   <p>VERSION</p>
                 </div>
                 <div className="bottom">
-                  <p>2023 &copy; Edition</p>
+                  <p>2025 &copy; Edition</p>
                 </div>
                 <div className="line2"></div>
               </div>
             </BotBox>
 
-            <BotBox>
+            {/* <BotBox>
               <div className="top">
                 <p>SOCIALS</p>
               </div>
@@ -117,7 +117,7 @@ function Footer({ setcontactHeight, setNavFooter, setShowLogo }) {
                   GitHub
                 </SocLinks>
               </div>
-            </BotBox>
+            </BotBox> */}
           </div>
         </BottomFooter>
       </Foot>
