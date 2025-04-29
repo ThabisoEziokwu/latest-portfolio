@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Ipad from "./Ipad";
+// import Ipad from "./Ipad";
 import { motion, useScroll } from "framer-motion";
 import { useRef } from "react";
-import tabImage from "../assets/images/imageRaftTab.jpg";
-import raftHeader from "../assets/images/imageRaftHeader.png";
+// import tabImage from "../assets/images/imageRaftTab.jpg";
+// import raftHeader from "../assets/images/imageRaftHeader.png";
 import Iphone from "./Iphone";
 import PhoneIMG from "../assets/images/imageRaftPhone.jpg";
 import UpReveal from "../utils/UpReveal";
